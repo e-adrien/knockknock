@@ -1,0 +1,15 @@
+extends ./layout.pug
+
+block content
+  h1 Connection
+
+  form(method="post", action="/auth/login")
+    div(class="form-floating mb-3")
+      input(class="form-control", type="text", id="username", name="username", placeholder="username", autocomplete="username", required)
+      label(for="username") Login
+    div(class="form-floating mb-3")
+      input(class="form-control", type="password", id="password", name="password", placeholder="*****************", autocomplete="current-password", required)
+      label(for="password") Mot de passe
+    if errors.message
+      div(class="alert alert-danger", role="alert")= errors.message
+    button(class="btn btn-primary", type="submit") Me connecter

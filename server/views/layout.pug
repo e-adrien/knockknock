@@ -1,0 +1,38 @@
+doctype html
+html(lang=fr)
+  block vars
+  head
+    title Knock Knock
+    meta(charset="utf-8")
+    meta(name="description", content="Wake up devices on the LAN")
+    meta(name="robots", content="noindex, nofollow")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    link(rel="shortcut icon", href="/favicon.ico")
+    link(href="/main.css", rel="stylesheet", type="text/css")
+    script(type="text/javascript", src="/main.js")
+  body
+    nav(id="header", class="navbar bg-primary fixed-top navbar-expand-lg", data-bs-theme="dark")
+      div(class="container-fluid")
+        button(class="navbar-toggler", type="button", data-bs-toggle="collapse", data-bs-target="#header-navbar", aria-controls="header-navbar", aria-expanded="false", aria-label="Menu")
+          span(class="navbar-toggler-icon")
+        div(id="header-navbar", class="collapse navbar-collapse")
+          a(class="navbar-brand", href="#") Knock Knock
+          ul(class="navbar-nav mb-2 mb-lg-0 w-100")
+            li(class="nav-item dropdown ms-lg-auto")
+              button(class="btn btn-link nav-link dropdown-toggle d-flex align-items-center", id="lkp-theme", type="button", aria-expanded="false", data-bs-toggle="dropdown", data-bs-display="static")
+                i(class="bi bi-sun-fill")
+                span(class="d-lg-none ms-2") Toggle theme
+              ul(class="dropdown-menu dropdown-menu-end", aria-labelledby="lkp-theme", data-bs-popper="static")
+                li
+                  button(type="button", class="dropdown-item d-flex align-items-center", data-lkp-theme="light", data-lkp-theme-icon="sun-fill")
+                    i(class="bi bi-sun-fill me-1") Light
+                li
+                  button(type="button", class="dropdown-item d-flex align-items-center", data-lkp-theme="dark", data-lkp-theme-icon="moon-stars-fill")
+                    i(class="bi bi-moon-stars-fill me-1") Dark
+                li
+                  button(type="button", class="dropdown-item d-flex align-items-center", data-lkp-theme="auto", data-lkp-theme-icon="circle-half")
+                    i(class="bi bi-circle-half me-1") Auto
+
+    div(id="main", class="container")
+      block content

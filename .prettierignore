@@ -1,0 +1,7 @@
+# Generated files
+dist
+
+# node.js dependencies
+package.json
+package-lock.json
+node_modules/

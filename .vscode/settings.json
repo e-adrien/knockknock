@@ -1,0 +1,36 @@
+{
+	"search.exclude": {
+		"**/.git/**": true,
+		"**/node_modules/**": true,
+		"**/dist/**": true
+	},
+	"files.exclude": {
+		"**/.git/**": true,
+		"**/node_modules/**": true,
+		"**/dist/**": true
+	},
+	"files.watcherExclude": {
+		"**/.git/**": true,
+		"**/node_modules/**": true,
+		"**/dist/**": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true,
+		"source.organizeImports": true
+	},
+	"eslint.format.enable": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false,
+	"stylelint.validate": ["css", "scss"],
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
+}

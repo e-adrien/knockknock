@@ -1,0 +1,20 @@
+extends ./layout.pug
+
+block content
+  case code
+    when 403
+      h1(class="text-center fw-bold") 👮‍♀️ Oups...
+      h2(class="text-center my-3 py-3") Vous n’avez pas les droits pour effectuer cette opération.
+    when 404
+      h1(class="text-center fw-bold") Oups... :-(
+      h2(class="text-center my-3 py-3") La page demandée n’a pas pu être trouvée.
+    when 500
+      h1(class="text-center fw-bold") Aïe, aïe, aïe... :-(
+      h2(class="text-center my-3 py-3") Une erreur inconnue est survenue.
+      div(class="card")
+        div(class="card-header") Erreur&nbsp;:
+        div(class="card-body")
+          samp!= message
+    default
+      h1(class="text-center fw-bold") Aïe, aïe, aïe... :-(
+      h2(class="text-center my-3 py-3")= message

@@ -1,0 +1,12 @@
+{
+	"extends": "@tsconfig/next/tsconfig.json",
+	"compilerOptions": {
+		"target": "ES6",
+		"outDir": "../dist/assets",
+		"rootDir": ".",
+		"sourceMap": true,
+		"noEmit": false
+	},
+	"include": ["javascript/*"],
+	"exclude": ["node_modules"]
+}

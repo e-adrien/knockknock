@@ -1,0 +1,27 @@
+extends ./layout.pug
+
+block content
+  h1 Appareils
+  ul(class="list-group")
+    each device, index in devices
+      li(class="list-group-item d-flex justify-content-between align-items-start")
+        div(class="ms-2 me-auto")
+          div(class="fw-bold")= device.name
+          i= device.mac
+        button(type="button", class="btn btn-info align-self-center me-3", data-wakeup-device=index) Réveiller
+        if device.awake
+          if device.link
+            a(type="button", class="btn btn-info align-self-center me-3", href=device.link, target="_blank") Accéder
+          span(class="badge bg-success rounded-pill") Démarré
+        else
+          span(class="badge bg-danger rounded-pill") Éteint
+
+  div(class="toast-container position-fixed bottom-0 end-0 p-3")
+    div(id="js-wakeup-success-toast", class="toast align-items-center text-bg-success border-0", role="alert", aria-live="assertive", aria-atomic="true")
+      div(class="d-flex")
+        div(class="toast-body") Message correctement envoyé.
+        button(type="button", class="btn-close btn-close-white me-2 m-auto", data-bs-dismiss="toast", aria-label="Close")
+    div(id="js-wakeup-danger-toast", class="toast align-items-center text-bg-danger border-0", role="alert", aria-live="assertive", aria-atomic="true")
+      div(class="d-flex")
+        div(class="toast-body") Une erreur est survenue lors de l’envoi du message.
+        button(type="button", class="btn-close btn-close-white me-2 m-auto", data-bs-dismiss="toast", aria-label="Close")

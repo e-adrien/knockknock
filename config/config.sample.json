@@ -1,0 +1,17 @@
+{
+	"port": 1111,
+	"debug": true,
+	"credentials": [
+		{
+			"username": "username",
+			"password": "password"
+		}
+	],
+	"devices": [
+		{
+			"mac": "XX:XX:XX:XX:XX:XX",
+			"name": "Device",
+			"link": ""
+		}
+	]
+}

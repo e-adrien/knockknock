@@ -1,0 +1,59 @@
+name: QC Checks
+
+on:
+  push:
+    branches-ignore:
+      - renovate/*
+      - stable
+      - beta
+    tags-ignore:
+      - "**"
+
+jobs:
+  checks:
+    name: QC Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install
+        run: npm install
+
+      - name: ESLint checks
+        run: npm run eslint-check
+
+      - name: Stylelint checks
+        run: npm run stylelint-check
+
+      - name: Prettier checks
+        run: npm run prettier-check
+
+      - name: TSC checks
+        run: npm run tsc-check
+
+  build:
+    name: Build Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install
+        run: npm install
+
+      - name: Client build checks
+        run: npm run build-client
+
+      - name: Server build checks
+        run: npm run build-server

@@ -1,0 +1,6 @@
+# Generated files
+dist
+
+# node.js dependencies
+package.json
+node_modules/

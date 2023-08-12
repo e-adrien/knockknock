@@ -1,0 +1,16 @@
+{
+	"extends": ["stylelint-config-sass-guidelines"],
+	"ignoreFiles": [
+		"dist/**",
+		"public/images/**",
+		"public/javascript/**",
+		"server/**",
+		"package.json",
+		"node_modules/**"
+	],
+	"rules": {
+		"selector-max-id": 1,
+		"selector-max-compound-selectors": 4,
+		"max-nesting-depth": 3
+	}
+}
