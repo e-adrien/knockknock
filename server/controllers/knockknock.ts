@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { isArray } from "lodash";
 import nconf from "nconf";
-import { findLocalDevices } from "../helpers/local-devices";
+import { findLocalDevices } from "../helpers/localdevices";
 import { wake } from "../helpers/wakeonlan";
 
 type Device = { mac: string; name: string; link: string };

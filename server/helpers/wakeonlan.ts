@@ -3,6 +3,9 @@
  */
 import udp from "dgram";
 import net from "net";
+import { createLogger } from "./logger";
+
+const logger = createLogger("wakeonlan");
 
 function createMagicPacket(mac: string): Buffer {
   const MAC_REPEAT = 16;
@@ -24,7 +27,9 @@ function createMagicPacket(mac: string): Buffer {
   return buffer;
 }
 
-export function wake(mac: string, options?: { address?: string; port?: number }) {
+export function wake(mac: string, options?: { address?: string; port?: number }): Promise<boolean> {
+  logger.debug(`Send a WOL packet for ${mac}`);
+
   const { address, port } = Object.assign(
     {
       address: "255.255.255.255",

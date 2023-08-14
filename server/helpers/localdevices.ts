@@ -3,6 +3,9 @@ import { getIPRange } from "get-ip-range";
 import ip from "ip";
 import net from "net";
 import os from "os";
+import { createLogger } from "./logger";
+
+const logger = createLogger("localdevices");
 
 const TEN_MEGA_BYTE = 1024 * 1024 * 10;
 const ONE_MINUTE = 60 * 1000;
@@ -19,7 +22,6 @@ export interface LocalDevice {
 
 type FindResponse = Array<LocalDevice> | LocalDevice | undefined;
 
-let servers: Array<string>;
 const lock: { [key: string]: Promise<FindResponse> } = {};
 
 /**
@@ -39,11 +41,6 @@ function parseLinux(row: string, parseOne: boolean): LocalDevice | undefined {
     result = prepareOne(chunks);
   } else {
     result = prepareAll(chunks);
-  }
-
-  // Only resolve external ips.
-  if (servers.indexOf(result.ip) !== -1) {
-    return;
   }
 
   return result;
@@ -95,7 +92,7 @@ function getServers(): Array<string> {
 /**
  * Sends a ping to all servers to update the arp table.
  */
-function pingServers(): Promise<Array<string>> {
+function pingServers(servers: Array<string>): Promise<Array<string>> {
   return Promise.all(servers.map(pingServer));
 }
 
@@ -145,6 +142,7 @@ function parseAll(data: ExecReturn): Array<LocalDevice> | undefined {
   const rows = data.stdout.split("\n");
   return rows
     .map(function (row) {
+      logger.debug(`ARP row : ${row}`);
       return parseLinux(row, false);
     })
     .filter(Boolean) as Array<LocalDevice>;
@@ -179,8 +177,9 @@ function parseOne(data: ExecReturn): LocalDevice | undefined {
   }
 
   // remove first row (containing "headlines")
-  const rows = data.stdout.split("\n").slice(1)[0];
-  return parseLinux(rows, true);
+  const row = data.stdout.split("\n").slice(1)[0];
+  logger.debug(`ARP row : ${row}`);
+  return parseLinux(row, true);
 }
 
 /**
@@ -188,6 +187,8 @@ function parseOne(data: ExecReturn): LocalDevice | undefined {
  */
 function unlock(key: string): (data: FindResponse) => FindResponse {
   return function (data: FindResponse) {
+    logger.debug(`Found devices :`, { json: data });
+
     delete lock[key];
     return data;
   };
@@ -207,16 +208,13 @@ export function findLocalDevices({
 } = {}): Promise<FindResponse> {
   const key = String(address);
 
-  if (isRange(address)) {
-    servers = getIPRange(key);
-  } else {
-    servers = getServers();
-  }
+  const servers = isRange(address) ? getIPRange(key) : getServers();
 
   if (!lock[key]) {
     if (!address || isRange(key)) {
-      lock[key] = pingServers()
+      lock[key] = pingServers(servers)
         .then(() => arpAll(skipNameResolution, arpPath))
+        .then((devices) => devices?.filter((device) => servers.indexOf(device.ip) !== -1))
         .then(unlock(key));
     } else {
       lock[key] = pingServer(address)
