@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { isArray } from "lodash";
 import nconf from "nconf";
-import { findLocalDevices } from "../helpers/localdevices";
-import { wake } from "../helpers/wakeonlan";
+import { deepFreeze, findLocalDevices, wake } from "../helpers";
 
-type Device = { mac: string; name: string; link: string };
+type RequiredDevice = { device: string; delay: number };
+type Device = { mac: string; name: string; link: string; require?: RequiredDevice };
 
-const kDevices = Object.freeze((nconf.get("devices") as Array<Device>).map((el) => Object.freeze(el)));
+const kDevices = Object.freeze((nconf.get("devices") as Array<Device>).map((el) => deepFreeze(el)));
 
 const router = Router();
 
@@ -26,7 +26,12 @@ router.post("/:id", async (req: Request, res: Response, next: NextFunction): Pro
       return;
     }
 
-    await wake(kDevices[id].mac);
+    if (kDevices[id].require !== undefined) {
+      await wake(kDevices[id].require!.device);
+      setTimeout(() => wake(kDevices[id].mac), kDevices[id].require!.delay * 1000);
+    } else {
+      await wake(kDevices[id].mac);
+    }
 
     res.sendStatus(200);
   } catch (err) {

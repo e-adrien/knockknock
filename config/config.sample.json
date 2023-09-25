@@ -10,8 +10,17 @@
 	"devices": [
 		{
 			"mac": "XX:XX:XX:XX:XX:XX",
-			"name": "Device",
-			"link": ""
+			"name": "Device 1",
+			"link": "https://example.com"
+		},
+		{
+			"mac": "YY:YY:YY:YY:YY:YY",
+			"name": "Device 2",
+			"link": "https://example.com",
+			"require": {
+				"device": "XX:XX:XX:XX:XX:XX",
+				"delay": 30
+			}
 		}
 	]
 }
