@@ -7,7 +7,7 @@ export function sessions() {
   const MemoryStore = createMemoryStore(expressSession);
 
   return expressSession({
-    name: "linkopedia-sess",
+    name: "knockknock-sess",
     secret: kSessionSecret,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 3, // 3 days
