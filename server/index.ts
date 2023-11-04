@@ -9,9 +9,16 @@ nconf.file({ file: path.resolve(serverRootPath, "../config/config.json") });
 
 import { ensureLoggedIn } from "connect-ensure-login";
 import express from "express";
-import controllers from "./controllers/index";
-import { createLogger } from "./helpers";
-import { authentication, kUrlLoginPage, logError, logRequest, overrideHttpMethod, sessions } from "./middlewares";
+import controllers from "./controllers/index.js";
+import { createLogger } from "./helpers/index.js";
+import {
+  authentication,
+  kUrlLoginPage,
+  logError,
+  logRequest,
+  overrideHttpMethod,
+  sessions,
+} from "./middlewares/index.js";
 
 const logger = createLogger("Express");
 

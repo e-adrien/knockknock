@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import knockknock from "./knockknock";
+import knockknock from "./knockknock.js";
 
 const router = Router();
 

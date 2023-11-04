@@ -3,7 +3,7 @@ import { getIPRange } from "get-ip-range";
 import ip from "ip";
 import net from "net";
 import os from "os";
-import { createLogger } from "./logger";
+import { createLogger } from "./logger.js";
 
 const logger = createLogger("localdevices");
 

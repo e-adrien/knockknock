@@ -24,8 +24,10 @@
     "build-client": "webpack --config public/webpack.config.cjs",
     "build-server": "tsc --project server/tsconfig.json && node server/assets.cjs",
     "build": "npm run build-client && npm run build-server",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "test": "NODE_OPTIONS='--loader=ts-node/esm' TS_NODE_PROJECT='server/tsconfig.json' mocha --config server/.mocharc.json"
   },
+  "type": "module",
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@tsconfig/next": "^2.0.1",
@@ -39,7 +41,7 @@
     "@types/lodash": "^4.14.200",
     "@types/method-override": "^0.0.34",
     "@types/nconf": "^0.10.5",
-    "@types/node": "^20.8.9",
+    "@types/node": "^20.8.10",
     "@types/passport": "^1.0.14",
     "@types/passport-local": "^1.0.37",
     "@types/pug": "^2.0.8",
@@ -50,6 +52,7 @@
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "cssnano": "^6.0.1",
+    "execa": "^8.0.1",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "file-loader": "^6.2.0",
@@ -78,10 +81,12 @@
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^3.0.0",
+    "@types/mocha": "^10.0.3",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
+    "mocha": "^10.2.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "stylelint": "^15.11.0",

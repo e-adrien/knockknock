@@ -1,0 +1,37 @@
+name: Tests
+
+on:
+  push:
+    branches-ignore:
+      - stable
+      - beta
+    tags-ignore:
+      - "**"
+
+jobs:
+  checks:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install
+        run: npm install
+
+      - name: Run tests
+        env:
+          NODE_OPTIONS: --loader=ts-node/esm
+          TS_NODE_PROJECT: server/tsconfig.json
+        run: npx mocha --config server/.mocharc.json
+
+      - name: Client build checks
+        run: npm run build-client
+
+      - name: Server build checks
+        run: npm run build-server

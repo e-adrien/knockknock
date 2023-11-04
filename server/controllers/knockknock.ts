@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { isArray } from "lodash";
 import nconf from "nconf";
-import { deepFreeze, findLocalDevices, wake } from "../helpers";
+import { deepFreeze, findLocalDevices, wake } from "../helpers/index.js";
 
 type RequiredDevice = { device: string; delay: number };
 type Device = { mac: string; name: string; link: string; require?: RequiredDevice };
