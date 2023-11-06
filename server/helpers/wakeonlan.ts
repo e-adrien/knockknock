@@ -3,7 +3,7 @@
  */
 import udp from "dgram";
 import net from "net";
-import { createLogger } from "./logger";
+import { createLogger } from "./logger.js";
 
 const logger = createLogger("wakeonlan");
 

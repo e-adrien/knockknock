@@ -48,6 +48,23 @@
 				"group": "Debugging",
 				"order": 3
 			}
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Tests",
+			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/mocha",
+			"runtimeArgs": ["--config", "server/.mocharc.json"],
+			"outputCapture": "std",
+			"skipFiles": ["<node_internals>/**/*.js"],
+			"env": {
+				"NODE_OPTIONS": "--loader=ts-node/esm",
+				"TS_NODE_PROJECT": "server/tsconfig.json"
+			},
+			"presentation": {
+				"group": "Tests",
+				"order": 1
+			}
 		}
 	]
 }

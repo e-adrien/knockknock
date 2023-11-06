@@ -3,7 +3,8 @@
 	"compilerOptions": {
 		"outDir": "../dist",
 		"rootDir": ".",
-		"experimentalDecorators": true
+		"module": "ES2022",
+		"moduleResolution": "node"
 	},
 	"exclude": ["node_modules"]
 }
