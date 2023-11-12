@@ -1,4 +1,13 @@
-import { execa } from "execa";
+import { execa, ExecaError } from "execa";
+
+function isExecaError(error: unknown): error is ExecaError {
+  return (
+    error instanceof Error &&
+    (error as ExecaError).exitCode !== undefined &&
+    (error as ExecaError).stdout !== undefined &&
+    (error as ExecaError).stderr !== undefined
+  );
+}
 
 export class PingResult {
   public readonly transmitted: number;
@@ -37,6 +46,17 @@ export async function pingDevice(ipAddress: string): Promise<PingResult> {
 
     return PingResult.parseString(stdout);
   } catch (error) {
+    // Check the error
+    if (isExecaError(error) && error.exitCode === 1) {
+      // We can parse the stdout
+      try {
+        return PingResult.parseString(error.stdout);
+      } catch (err) {
+        // Nothing to do
+      }
+    }
+
+    // Throw an error
     throw new Error("Can't ping device");
   }
 }
