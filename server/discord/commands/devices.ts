@@ -6,8 +6,8 @@ export const data = new SlashCommandBuilder().setName("devices").setDescription(
 export async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
   const awakableDevices = await AwakableDevice.listAwakableDevices();
 
-  let msg = "Appareils\n```\n";
-  msg += awakableDevices.map((el) => el.name).join("\n");
+  let msg = "Appareils :\n```\n";
+  msg += awakableDevices.map((el) => el.nameAndStatus()).join("\n");
   msg += "\n```";
 
   await interaction.reply(msg);

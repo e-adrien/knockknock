@@ -8,19 +8,19 @@ async function checkDevice(neighbours: Array<Neighbour>, device: Device): Promis
   // Check if the device is awake
   if (neighbour?.state === NeighbourState.reachable) {
     // The device is on
-    return { ...device, awake: true };
+    return new AwakableDevice(device.mac, device.name, device.link, true);
   }
 
   // Check if we can ping the device
   const knownIpAddress = neighbour?.ipAddress ?? device.staticIpAddress;
   if (knownIpAddress === undefined) {
     // The device is off
-    return { ...device, awake: false };
+    return new AwakableDevice(device.mac, device.name, device.link, false);
   }
 
   // Try to ping the device
   const pingResult = await pingDevice(knownIpAddress);
-  return { ...device, awake: pingResult.succeeded() };
+  return new AwakableDevice(device.mac, device.name, device.link, pingResult.succeeded());
 }
 
 export class AwakableDevice {
@@ -36,7 +36,7 @@ export class AwakableDevice {
     this.awake = awake;
   }
 
-  static async listAwakableDevices(): Promise<Array<AwakableDevice>> {
+  public static async listAwakableDevices(): Promise<Array<AwakableDevice>> {
     // Scan neighbours
     const neighbours = await scanDevices();
 
@@ -47,5 +47,9 @@ export class AwakableDevice {
 
     // Return the list of awakable devices
     return awakableDevices;
+  }
+
+  public nameAndStatus(): string {
+    return this.awake ? `${this.name} [Démarré]` : `${this.name} [Arrêté]`;
   }
 }
