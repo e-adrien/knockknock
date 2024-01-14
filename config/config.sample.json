@@ -22,5 +22,10 @@
 				"delay": 30
 			}
 		}
-	]
+	],
+	"discord": {
+		"token": "discordbottoken",
+		"clientId": "discordapplicationid",
+		"guildId": "discordserverid"
+	}
 }

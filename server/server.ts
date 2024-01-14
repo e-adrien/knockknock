@@ -9,6 +9,7 @@ const publicRootPath =
 import { ensureLoggedIn } from "connect-ensure-login";
 import express from "express";
 import controllers from "./controllers/index.js";
+import { createDiscordBot, loadDiscordBotOptions } from "./discord/index.js";
 import { createLogger } from "./helpers/index.js";
 import {
   authentication,
@@ -39,3 +40,8 @@ const port = nconf.get("port") ?? 3000;
 app.listen(port, () => {
   console.log("serverListens on " + port);
 });
+
+const discordOptions = loadDiscordBotOptions(nconf.get("discord"));
+if (discordOptions !== null) {
+  createDiscordBot(serverRootPath, discordOptions);
+}
