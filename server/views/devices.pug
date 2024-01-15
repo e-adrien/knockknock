@@ -6,8 +6,11 @@ block content
     each device, index in devices
       li(class="list-group-item d-flex justify-content-between align-items-start")
         div(class="ms-2 me-auto")
-          div(class="fw-bold")= device.name
-          i= device.mac
+          div(class="fw-bold")
+            span= device.name
+            i= device.desc
+          small
+            i= device.mac
         button(type="button", class="btn btn-info align-self-center me-3", data-wakeup-device=index) Réveiller
         if device.awake
           if device.link

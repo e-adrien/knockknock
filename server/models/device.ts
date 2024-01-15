@@ -26,15 +26,24 @@ class RequiredDevice {
 export class Device {
   public readonly mac: string;
   public readonly name: string;
+  public readonly desc: string;
   public readonly link: string;
   public readonly staticIpAddress?: string;
   public readonly require?: RequiredDevice;
 
   private static kDevices: Array<Device> | null = null;
 
-  constructor(mac: string, name: string, link: string, staticIpAddress?: string, require?: RequiredDevice) {
+  constructor(
+    mac: string,
+    name: string,
+    desc: string,
+    link: string,
+    staticIpAddress?: string,
+    require?: RequiredDevice
+  ) {
     this.mac = mac;
     this.name = name;
+    this.desc = desc;
     this.link = link;
     this.staticIpAddress = staticIpAddress;
     this.require = require;
@@ -61,6 +70,6 @@ export class Device {
   public static loadFromConf(data: any): Device {
     const require = data.require ? RequiredDevice.loadFromConf(data.require) : undefined;
 
-    return new Device(data.mac, data.name, data.link, data.staticIpAddress, require);
+    return new Device(data.mac, data.name, data.desc, data.link, data.staticIpAddress, require);
   }
 }
