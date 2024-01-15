@@ -11,12 +11,16 @@
 		{
 			"mac": "XX:XX:XX:XX:XX:XX",
 			"name": "Device 1",
-			"link": "https://example.com"
+			"desc": "Device 1 description",
+			"link": "https://example.com",
+			"staticIpAddress": "111.222.333.444"
 		},
 		{
 			"mac": "YY:YY:YY:YY:YY:YY",
 			"name": "Device 2",
+			"desc": "Device 2 description",
 			"link": "https://example.com",
+			"staticIpAddress": "111.222.333.444",
 			"require": {
 				"device": "XX:XX:XX:XX:XX:XX",
 				"delay": 30
