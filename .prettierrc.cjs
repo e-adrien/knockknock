@@ -10,6 +10,12 @@ module.exports = {
       },
     },
     {
+      files: ["tsconfig.json"],
+      options: {
+        trailingComma: "none",
+      },
+    },
+    {
       files: ["*.pug"],
       options: {
         printWidth: 240,
