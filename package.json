@@ -7,7 +7,7 @@
     "Adrien ERAUD <e-adrien@users.noreply.github.com>"
   ],
   "engines": {
-    "node": "18.x || 20.x"
+    "node": "20.x"
   },
   "license": "MIT",
   "browserslist": "> 1% and last 2 version, not dead",
