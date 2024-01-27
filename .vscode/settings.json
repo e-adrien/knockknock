@@ -20,6 +20,8 @@
 		"source.organizeImports": "explicit"
 	},
 	"eslint.format.enable": true,
+	"prettier.configPath": ".prettierrc.cjs",
+	"prettier.ignorePath": ".prettierignore",
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
