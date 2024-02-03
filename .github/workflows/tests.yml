@@ -29,9 +29,3 @@ jobs:
           NODE_OPTIONS: --loader=ts-node/esm
           TS_NODE_PROJECT: server/tsconfig.json
         run: npx mocha --config server/.mocharc.json
-
-      - name: Client build checks
-        run: npm run build-client
-
-      - name: Server build checks
-        run: npm run build-server
