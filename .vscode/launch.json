@@ -65,6 +65,38 @@
 				"group": "Tests",
 				"order": 1
 			}
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Deploy Discord Commands",
+			"runtimeArgs": ["--loader", "ts-node/esm"],
+			"args": ["${workspaceFolder}/server/deploy-commands.ts"],
+			"env": {
+				"TS_NODE_PROJECT": "${workspaceFolder}/server/tsconfig.json"
+			},
+			"outputCapture": "std",
+			"skipFiles": ["<node_internals>/**"],
+			"presentation": {
+				"group": "Tasks",
+				"order": 1
+			}
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Create a Philips Hue API Key",
+			"runtimeArgs": ["--loader", "ts-node/esm"],
+			"args": ["${workspaceFolder}/server/create-hue-api-key.ts"],
+			"env": {
+				"TS_NODE_PROJECT": "${workspaceFolder}/server/tsconfig.json"
+			},
+			"outputCapture": "std",
+			"skipFiles": ["<node_internals>/**"],
+			"presentation": {
+				"group": "Tasks",
+				"order": 2
+			}
 		}
 	]
 }

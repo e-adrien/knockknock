@@ -31,5 +31,11 @@
 		"token": "discordbottoken",
 		"clientId": "discordapplicationid",
 		"guildId": "discordserverid"
+	},
+	"philipsHue": {
+		"bridgeIpAddress": "111.222.333.444",
+		"deviceType": "knockknock#inctance_name",
+		"hueUsername": "philipshueusername",
+		"hueApiKey": "philipshueapikey"
 	}
 }
