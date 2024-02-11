@@ -27,6 +27,7 @@
     "build": "npm run build-client && npm run build-server",
     "deploy-commands": "node dist/deploy-commands.js",
     "create-hue-api-key": "node dist/create-hue-api-key.js",
+    "list-hue-devices": "node dist/list-hue-devices.js",
     "start": "node dist/index.js"
   },
   "type": "module",
