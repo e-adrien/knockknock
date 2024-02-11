@@ -30,22 +30,18 @@ if (discordOptions === null) {
   // Construct and prepare an instance of the REST module
   const rest = new REST().setToken(discordOptions.token);
 
-  // and deploy your commands!
-  (async () => {
-    try {
-      console.log(`Started refreshing ${commands.length} application (/) commands.`);
+  // Deploy our commands
+  try {
+    console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
-      // The put method is used to fully refresh all commands in the guild with the current set
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const data: any = await rest.put(
-        Routes.applicationGuildCommands(discordOptions.clientId, discordOptions.guildId),
-        { body: commands }
-      );
+    // The put method is used to fully refresh all commands in the guild with the current set
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const data: any = await rest.put(Routes.applicationGuildCommands(discordOptions.clientId, discordOptions.guildId), {
+      body: commands,
+    });
 
-      console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-    } catch (error) {
-      // And of course, make sure you catch and log any errors!
-      console.error(error);
-    }
-  })();
+    console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+  } catch (error) {
+    console.error(error);
+  }
 }
