@@ -11,6 +11,7 @@ import express from "express";
 import controllers from "./controllers/index.js";
 import { createDiscordBot, loadDiscordBotOptions } from "./discord/index.js";
 import { createLogger } from "./helpers/index.js";
+import { listenPhilipsHueEvents, loadPhilipsHueOptions } from "./hue/index.js";
 import {
   authentication,
   kUrlLoginPage,
@@ -44,4 +45,14 @@ app.listen(port, () => {
 const discordOptions = loadDiscordBotOptions(nconf.get("discord"));
 if (discordOptions !== null) {
   createDiscordBot(serverRootPath, discordOptions);
+}
+
+const philipsHueOptions = loadPhilipsHueOptions(nconf.get("philipsHue"));
+if (
+  philipsHueOptions !== null &&
+  philipsHueOptions.hueApiKey !== null &&
+  philipsHueOptions.hueUsername !== null &&
+  philipsHueOptions.buttonsActions !== null
+) {
+  listenPhilipsHueEvents(philipsHueOptions);
 }

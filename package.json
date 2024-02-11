@@ -21,11 +21,14 @@
     "prettier-fix": "prettier --write \"**/*.{mjs,cjs,ts,js,json,yml,scss,pug}\"",
     "tsc-check": "tsc --noEmit --project server/tsconfig.json ",
     "qc": "npm run eslint-check && npm run stylelint-check && npm run prettier-check && npm run tsc-check",
+    "test": "NODE_OPTIONS='--loader=ts-node/esm' TS_NODE_PROJECT='server/tsconfig.json' mocha --config server/.mocharc.json",
     "build-client": "webpack --config public/webpack.config.cjs",
     "build-server": "tsc --project server/tsconfig.json && node server/assets.cjs",
     "build": "npm run build-client && npm run build-server",
-    "start": "node dist/index.js",
-    "test": "NODE_OPTIONS='--loader=ts-node/esm' TS_NODE_PROJECT='server/tsconfig.json' mocha --config server/.mocharc.json"
+    "deploy-commands": "node dist/deploy-commands.js",
+    "create-hue-api-key": "node dist/create-hue-api-key.js",
+    "list-hue-devices": "node dist/list-hue-devices.js",
+    "start": "node dist/index.js"
   },
   "type": "module",
   "dependencies": {
@@ -73,6 +76,7 @@
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
+    "undici": "^6.6.0",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
     "winston": "^3.11.0"
