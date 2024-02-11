@@ -97,6 +97,22 @@
 				"group": "Tasks",
 				"order": 2
 			}
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "List Philips Hue devices",
+			"runtimeArgs": ["--loader", "ts-node/esm"],
+			"args": ["${workspaceFolder}/server/list-hue-devices.ts"],
+			"env": {
+				"TS_NODE_PROJECT": "${workspaceFolder}/server/tsconfig.json"
+			},
+			"outputCapture": "std",
+			"skipFiles": ["<node_internals>/**"],
+			"presentation": {
+				"group": "Tasks",
+				"order": 2
+			}
 		}
 	]
 }

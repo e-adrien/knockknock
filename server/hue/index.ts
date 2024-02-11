@@ -1,9 +1,13 @@
+import { Client } from "undici";
+import { Device, HueEvent } from "../models/index.js";
+
 export type PhilipsHueOptions = {
   bridgeIpAddress: string;
   bridgeDeviceId: string;
   deviceType: string;
   hueUsername: string | null;
   hueApiKey: string | null;
+  buttonsActions: { [keyof: string]: string } | null;
 };
 
 export const philipsHueBridgeRootCA = `-----BEGIN CERTIFICATE-----
@@ -26,7 +30,15 @@ function stringOrNull(val: unknown): string | null {
     return null;
   }
 
-  return val !== "" ? null : val;
+  return val === "" ? null : val;
+}
+
+function readButtonsActions(val: unknown): { [keyof: string]: string } | null {
+  if (typeof val !== "object") {
+    return null;
+  }
+
+  return val as { [keyof: string]: string };
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,7 +60,47 @@ export function loadPhilipsHueOptions(opts: any): PhilipsHueOptions | null {
     deviceType: opts.deviceType,
     hueUsername: stringOrNull(opts.hueUsername),
     hueApiKey: stringOrNull(opts.hueApiKey),
+    buttonsActions: readButtonsActions(opts.buttonsActions),
   };
 }
 
-export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {}
+export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
+  const client = new Client(`https://${options.bridgeIpAddress}`, {
+    connect: {
+      ca: [philipsHueBridgeRootCA],
+      rejectUnauthorized: false,
+      servername: options.bridgeDeviceId,
+    },
+  });
+
+  const responseData = await client.request({
+    path: "/eventstream/clip/v2",
+    method: "GET",
+    headers: {
+      Accept: "text/event-stream",
+      "hue-application-key": options.hueUsername!,
+    },
+  });
+  responseData.body.on("data", async (data: Buffer) => {
+    for (const event of HueEvent.fromString(data.toString("utf8"))) {
+      if (!event.isButtonEvent() || options.buttonsActions![event.buttonEvent.id] === undefined) {
+        continue;
+      }
+
+      if (event.buttonEvent.button.last_event !== "initial_press") {
+        continue;
+      }
+
+      console.log(event.buttonEvent);
+      const deviceMac = options.buttonsActions![event.buttonEvent.id] as string;
+      const devices = Device.list();
+      const device = devices.find((el) => el.mac === deviceMac);
+      if (device !== undefined) {
+        await device.wakeup();
+        console.log(`Message correctement envoyé.`);
+      } else {
+        console.log(`Appareil inconnu : ${deviceMac}.`);
+      }
+    }
+  });
+}

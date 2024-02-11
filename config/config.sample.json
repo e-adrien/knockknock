@@ -34,8 +34,12 @@
 	},
 	"philipsHue": {
 		"bridgeIpAddress": "111.222.333.444",
+		"bridgeDeviceId": "ABCDEF1234567890",
 		"deviceType": "knockknock#inctance_name",
 		"hueUsername": "philipshueusername",
-		"hueApiKey": "philipshueapikey"
+		"hueApiKey": "philipshueapikey",
+		"buttonsActions": {
+			"ABC12345-AB12-CD34-EF45-ABCD12345678": "YY:YY:YY:YY:YY:YY"
+		}
 	}
 }
