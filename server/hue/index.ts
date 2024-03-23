@@ -80,6 +80,7 @@ export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
       Accept: "text/event-stream",
       "hue-application-key": options.hueUsername!,
     },
+    bodyTimeout: 0,
   });
   responseData.body.on("data", async (data: Buffer) => {
     for (const event of HueEvent.fromString(data.toString("utf8"))) {
