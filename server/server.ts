@@ -52,7 +52,7 @@ if (
   philipsHueOptions !== null &&
   philipsHueOptions.hueApiKey !== null &&
   philipsHueOptions.hueUsername !== null &&
-  philipsHueOptions.buttonsActions !== null
+  philipsHueOptions.buttons !== null
 ) {
   listenPhilipsHueEvents(philipsHueOptions);
 }

@@ -75,6 +75,8 @@ export class HueApiResponse {
         switch (value.type) {
           case "device":
             return HueDevice.fromJSON(value);
+          case "light":
+            return HueLight.fromJSON(value);
           default:
             throw new Error(`Unknown type: ${value.type}`);
         }
@@ -150,6 +152,63 @@ export class HueDevice extends HueApiData {
       }),
       json.type
     );
+  }
+}
+
+export type HueDeviceOwner = {
+  rid: string;
+  rtype: string;
+};
+
+export type HueLightOn = {
+  on: boolean;
+};
+
+export class HueLight extends HueApiData {
+  public readonly id: string;
+  public readonly idv1: string;
+  public readonly owner: HueDeviceOwner;
+  public readonly metadata: HueDeviceMetadata;
+  public readonly on: HueLightOn;
+
+  constructor(
+    id: string,
+    idv1: string,
+    owner: HueDeviceOwner,
+    metadata: HueDeviceMetadata,
+    on: HueLightOn,
+    type: string
+  ) {
+    super(type);
+    this.id = id;
+    this.idv1 = idv1;
+    this.owner = owner;
+    this.metadata = metadata;
+    this.on = on;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public static fromJSON(json: any): HueLight {
+    return new HueLight(
+      json.id,
+      json.id_v1,
+      {
+        rid: json.owner.rid,
+        rtype: json.owner.rtype,
+      },
+      {
+        name: json.metadata.name,
+        archetype: json.metadata.archetype,
+      },
+      {
+        on: json.on.on,
+      },
+      json.type
+    );
+  }
+
+  public isOn(): boolean {
+    return this.on.on;
   }
 }
 

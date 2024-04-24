@@ -1,5 +1,15 @@
 import { Client } from "undici";
-import { Device, HueEvent } from "../models/index.js";
+import { Device, HueApiError, HueApiSuccess, HueEvent, HueLight, parseHueApiResponseJson } from "../models/index.js";
+
+export enum PhilipsHueButtonActionType {
+  wakeUpDevice = "wakeUpDevice",
+  toggleLight = "toggleLight",
+}
+
+export type PhilipsHueButtonAction = {
+  type: PhilipsHueButtonActionType;
+  target: string;
+};
 
 export type PhilipsHueOptions = {
   bridgeIpAddress: string;
@@ -7,7 +17,7 @@ export type PhilipsHueOptions = {
   deviceType: string;
   hueUsername: string | null;
   hueApiKey: string | null;
-  buttonsActions: { [keyof: string]: string } | null;
+  buttons: { [keyof: string]: PhilipsHueButtonAction } | null;
 };
 
 export const philipsHueBridgeRootCA = `-----BEGIN CERTIFICATE-----
@@ -33,12 +43,12 @@ function stringOrNull(val: unknown): string | null {
   return val === "" ? null : val;
 }
 
-function readButtonsActions(val: unknown): { [keyof: string]: string } | null {
+function readButtons(val: unknown): { [keyof: string]: PhilipsHueButtonAction } | null {
   if (typeof val !== "object") {
     return null;
   }
 
-  return val as { [keyof: string]: string };
+  return val as { [keyof: string]: PhilipsHueButtonAction };
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -60,8 +70,61 @@ export function loadPhilipsHueOptions(opts: any): PhilipsHueOptions | null {
     deviceType: opts.deviceType,
     hueUsername: stringOrNull(opts.hueUsername),
     hueApiKey: stringOrNull(opts.hueApiKey),
-    buttonsActions: readButtonsActions(opts.buttonsActions),
+    buttons: readButtons(opts.buttons),
   };
+}
+
+async function wakeUpDevice(target: string) {
+  const deviceMac = target;
+  const devices = Device.list();
+  const device = devices.find((el) => el.mac === deviceMac);
+  if (device !== undefined) {
+    await device.wakeup();
+    console.log(`Message correctement envoyé.`);
+  } else {
+    console.log(`Appareil inconnu : ${deviceMac}.`);
+  }
+}
+
+async function toggleLight(options: PhilipsHueOptions, target: string) {
+  const client = new Client(`https://${options.bridgeIpAddress}`, {
+    connect: {
+      ca: [philipsHueBridgeRootCA],
+      rejectUnauthorized: false,
+      servername: options.bridgeDeviceId,
+    },
+  });
+
+  const responseData = await client.request({
+    path: `/clip/v2/resource/light/${target}`,
+    method: "GET",
+    headers: {
+      "hue-application-key": options.hueUsername!,
+    },
+  });
+  const response = parseHueApiResponseJson(await responseData.body.json());
+  if (response instanceof HueApiError) {
+    console.error(response);
+    return;
+  }
+  if (response instanceof HueApiSuccess) {
+    console.error("Unexpected API response");
+    return;
+  }
+  const light = response.data[0];
+  if (!(light instanceof HueLight)) {
+    console.error("Unexpected API response");
+    return;
+  }
+
+  await client.request({
+    path: `/clip/v2/resource/light/${target}`,
+    method: "PUT",
+    headers: {
+      "hue-application-key": options.hueUsername!,
+    },
+    body: JSON.stringify({ on: { on: !light.isOn() } }),
+  });
 }
 
 export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
@@ -84,7 +147,7 @@ export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
   });
   responseData.body.on("data", async (data: Buffer) => {
     for (const event of HueEvent.fromString(data.toString("utf8"))) {
-      if (!event.isButtonEvent() || options.buttonsActions![event.buttonEvent.id] === undefined) {
+      if (!event.isButtonEvent() || options.buttons![event.buttonEvent.id] === undefined) {
         continue;
       }
 
@@ -92,15 +155,16 @@ export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
         continue;
       }
 
-      console.log(event.buttonEvent);
-      const deviceMac = options.buttonsActions![event.buttonEvent.id] as string;
-      const devices = Device.list();
-      const device = devices.find((el) => el.mac === deviceMac);
-      if (device !== undefined) {
-        await device.wakeup();
-        console.log(`Message correctement envoyé.`);
-      } else {
-        console.log(`Appareil inconnu : ${deviceMac}.`);
+      const button = options.buttons![event.buttonEvent.id];
+      switch (button.type) {
+        case PhilipsHueButtonActionType.wakeUpDevice:
+          await wakeUpDevice(button.target);
+          break;
+        case PhilipsHueButtonActionType.toggleLight:
+          await toggleLight(options, button.target);
+          break;
+        default:
+          console.warn(`Unkown button type ${button.type}`);
       }
     }
   });

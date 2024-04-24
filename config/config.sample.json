@@ -38,8 +38,15 @@
 		"deviceType": "knockknock#inctance_name",
 		"hueUsername": "philipshueusername",
 		"hueApiKey": "philipshueapikey",
-		"buttonsActions": {
-			"ABC12345-AB12-CD34-EF45-ABCD12345678": "YY:YY:YY:YY:YY:YY"
+		"buttons": {
+			"ABC12345-AB12-CD34-EF45-ABCD12345678": {
+				"type": "wakeUpDevice",
+				"target": "YY:YY:YY:YY:YY:YY"
+			},
+			"ABC12345-AB12-CD34-EF45-ABCD87654321": {
+				"type": "toggleLight",
+				"target": "ABC12345-AB12-CD34-EF45-ABCD12345678"
+			}
 		}
 	}
 }
