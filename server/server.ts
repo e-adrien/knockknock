@@ -1,10 +1,9 @@
 import nconf from "nconf";
-import path from "path";
+import { resolve } from "path";
 import { fileURLToPath } from "url";
 
 const serverRootPath = fileURLToPath(new URL(".", import.meta.url));
-const publicRootPath =
-  process.env.TS_NODE_PROJECT !== undefined ? path.resolve(serverRootPath, "../dist") : serverRootPath;
+const publicRootPath = process.env.TS_NODE_PROJECT !== undefined ? resolve(serverRootPath, "../dist") : serverRootPath;
 
 import { ensureLoggedIn } from "connect-ensure-login";
 import express from "express";
@@ -20,14 +19,15 @@ import {
   overrideHttpMethod,
   sessions,
 } from "./middlewares/index.js";
+import { listenRingEvents, loadRingOptions } from "./ring/index.js";
 
 const logger = createLogger("Express");
 
 const app = express();
 app
   .set("view engine", "pug")
-  .set("views", path.resolve(serverRootPath, "views"))
-  .use(express.static(path.resolve(publicRootPath, "assets"), { etag: false }))
+  .set("views", resolve(serverRootPath, "views"))
+  .use(express.static(resolve(publicRootPath, "assets"), { etag: false }))
   .use(express.urlencoded({ extended: true }))
   .use(overrideHttpMethod())
   .use(logRequest(logger))
@@ -55,4 +55,9 @@ if (
   philipsHueOptions.buttons !== null
 ) {
   listenPhilipsHueEvents(philipsHueOptions);
+
+  const ringOptions = loadRingOptions(nconf.get("ring"), philipsHueOptions);
+  if (ringOptions !== null && ringOptions.contactSensors !== null) {
+    listenRingEvents(ringOptions, resolve(serverRootPath, "../config/config.json"));
+  }
 }

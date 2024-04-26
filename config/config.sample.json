@@ -48,5 +48,14 @@
 				"target": "ABC12345-AB12-CD34-EF45-ABCD12345678"
 			}
 		}
+	},
+	"ring": {
+		"refreshToken": "ringRefreshToken",
+		"contactSensors": {
+			"abc12345-ab12-cd34-ef45-abcd87654321": {
+				"type": "powerOnLight",
+				"target": "ABC12345-AB12-CD34-EF45-ABCD12345678"
+			}
+		}
 	}
 }

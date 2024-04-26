@@ -1,0 +1,140 @@
+import { readFileSync, writeFileSync } from "fs";
+import { RingApi, RingDevice, RingDeviceType } from "ring-client-api";
+import { Client } from "undici";
+import { PhilipsHueOptions, philipsHueBridgeRootCA } from "../hue/index.js";
+import { HueApiError, HueApiSuccess, HueLight, parseHueApiResponseJson } from "../models/index.js";
+
+export enum RingContactSensorActionType {
+  powerOnLight = "powerOnLight",
+}
+
+export type RingContactSensorAction = {
+  type: RingContactSensorActionType;
+  target: string;
+};
+
+export type RingOptions = {
+  refreshToken: string;
+  contactSensors: { [keyof: string]: RingContactSensorAction } | null;
+  philipsHueOptions: PhilipsHueOptions;
+};
+
+function readContactSensors(val: unknown): { [keyof: string]: RingContactSensorAction } | null {
+  if (typeof val !== "object") {
+    return null;
+  }
+
+  return val as { [keyof: string]: RingContactSensorAction };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function loadRingOptions(opts: any, philipsHueOptions: PhilipsHueOptions | null): RingOptions | null {
+  if (opts === null || typeof opts !== "object") {
+    return null;
+  }
+  if (typeof opts.refreshToken !== "string" || philipsHueOptions === null) {
+    return null;
+  }
+
+  return {
+    refreshToken: opts.refreshToken,
+    contactSensors: readContactSensors(opts.contactSensors),
+    philipsHueOptions: philipsHueOptions,
+  };
+}
+
+async function powerOnLight(options: PhilipsHueOptions, target: string) {
+  const client = new Client(`https://${options.bridgeIpAddress}`, {
+    connect: {
+      ca: [philipsHueBridgeRootCA],
+      rejectUnauthorized: false,
+      servername: options.bridgeDeviceId,
+    },
+  });
+
+  const responseData = await client.request({
+    path: `/clip/v2/resource/light/${target}`,
+    method: "GET",
+    headers: {
+      "hue-application-key": options.hueUsername!,
+    },
+  });
+  const response = parseHueApiResponseJson(await responseData.body.json());
+  if (response instanceof HueApiError) {
+    console.error(response);
+    return;
+  }
+  if (response instanceof HueApiSuccess) {
+    console.error("Unexpected API response");
+    return;
+  }
+  const light = response.data[0];
+  if (!(light instanceof HueLight)) {
+    console.error("Unexpected API response");
+    return;
+  }
+
+  if (!light.isOn()) {
+    await client.request({
+      path: `/clip/v2/resource/light/${target}`,
+      method: "PUT",
+      headers: {
+        "hue-application-key": options.hueUsername!,
+      },
+      body: JSON.stringify({ on: { on: true } }),
+    });
+  }
+}
+
+function listenContactSensorEvents(options: RingOptions, device: RingDevice, action: RingContactSensorAction) {
+  // Listen events on the device
+  console.log(`Listen data events on the contact sensor ${device.data.zid}`);
+  device.onData.subscribe((data) => {
+    // Check if the contact sensor is faulted
+    if (data.faulted === true) {
+      // Power on the ligth
+      console.log(`Faulted contact sensor ${device.data.zid}`);
+      powerOnLight(options.philipsHueOptions, action.target);
+    }
+  });
+}
+
+export async function listenRingEvents(options: RingOptions, configPath: string) {
+  try {
+    // Create a client
+    const ringApi = new RingApi({
+      refreshToken: options.refreshToken,
+    });
+
+    // Listen refresh token changes
+    ringApi.onRefreshTokenUpdated.subscribe(({ newRefreshToken }) => {
+      const confString = readFileSync(configPath, { encoding: "utf8" });
+      writeFileSync(configPath, confString.replace(options.refreshToken, newRefreshToken), { encoding: "utf8" });
+      options.refreshToken = newRefreshToken;
+      console.log("Updated Ring refresh token");
+    });
+
+    // List devices
+    const locations = await ringApi.getLocations();
+    for (const location of locations) {
+      const devices = await location.getDevices();
+      for (const device of devices) {
+        if (
+          device.deviceType === RingDeviceType.ContactSensor &&
+          options.contactSensors![device.data.zid] !== undefined
+        ) {
+          const action = options.contactSensors![device.data.zid];
+          switch (action.type) {
+            case RingContactSensorActionType.powerOnLight:
+              listenContactSensorEvents(options, device, action);
+              break;
+            default:
+              console.warn(`Unkown action type ${action.type}`);
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}

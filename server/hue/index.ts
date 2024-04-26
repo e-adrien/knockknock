@@ -1,4 +1,5 @@
 import { Client } from "undici";
+import { stringOrNull } from "../helpers/index.js";
 import { Device, HueApiError, HueApiSuccess, HueEvent, HueLight, parseHueApiResponseJson } from "../models/index.js";
 
 export enum PhilipsHueButtonActionType {
@@ -34,14 +35,6 @@ IEh1ZTEUMBIGA1UEAwwLcm9vdC1icmlkZ2WCFDuxUi22sYpLlwJY81Wrqy11phcO
 MAoGCCqGSM49BAMCA0gAMEUCIEBYYEOsa07TH7E5MJnGw557lVkORgit2Rm1h3B2
 sFgDAiEA1Fj/C3AN5psFMjo0//mrQebo0eKd3aWRx+pQY08mk48=
 -----END CERTIFICATE----`;
-
-function stringOrNull(val: unknown): string | null {
-  if (typeof val !== "string") {
-    return null;
-  }
-
-  return val === "" ? null : val;
-}
 
 function readButtons(val: unknown): { [keyof: string]: PhilipsHueButtonAction } | null {
   if (typeof val !== "object") {
@@ -155,16 +148,16 @@ export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
         continue;
       }
 
-      const button = options.buttons![event.buttonEvent.id];
-      switch (button.type) {
+      const action = options.buttons![event.buttonEvent.id];
+      switch (action.type) {
         case PhilipsHueButtonActionType.wakeUpDevice:
-          await wakeUpDevice(button.target);
+          await wakeUpDevice(action.target);
           break;
         case PhilipsHueButtonActionType.toggleLight:
-          await toggleLight(options, button.target);
+          await toggleLight(options, action.target);
           break;
         default:
-          console.warn(`Unkown button type ${button.type}`);
+          console.warn(`Unkown action type ${action.type}`);
       }
     }
   });
