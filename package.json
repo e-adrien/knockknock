@@ -57,7 +57,7 @@
     "css-minimizer-webpack-plugin": "^7.0.0",
     "cssnano": "^7.0.1",
     "discord.js": "^14.15.2",
-    "execa": "^8.0.1",
+    "execa": "^9.0.2",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "file-loader": "^6.2.0",
