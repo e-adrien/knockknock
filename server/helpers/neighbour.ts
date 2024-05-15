@@ -1,5 +1,4 @@
 import { execa } from "execa";
-import { EOL } from "os";
 
 export enum NeighbourState {
   permanent = "PERMANENT",
@@ -43,16 +42,14 @@ export class Neighbour {
     return new Neighbour(ipAddress, netInterface, macAddress, state, isRouter);
   }
 
-  public static parseLines(string: string): Neighbour[] {
-    const lines = string.split(EOL);
-
+  public static parseLines(lines: string[]): Neighbour[] {
     return lines.map((line) => Neighbour.parseString(line));
   }
 }
 
 export async function scanDevices(): Promise<Neighbour[]> {
   try {
-    const { stdout } = await execa("ip", ["neigh", "show"]);
+    const { stdout } = await execa("ip", ["neigh", "show"], { lines: true });
 
     return Neighbour.parseLines(stdout);
   } catch (error) {

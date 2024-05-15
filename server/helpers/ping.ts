@@ -1,6 +1,7 @@
 import { execa, ExecaError } from "execa";
+import { EOL } from "os";
 
-function isExecaError(error: unknown): error is ExecaError {
+function isExecaError(error: unknown): error is ExecaError<{ lines: true }> {
   return (
     error instanceof Error &&
     (error as ExecaError).exitCode !== undefined &&
@@ -42,15 +43,15 @@ export class PingResult {
 
 export async function pingDevice(ipAddress: string): Promise<PingResult> {
   try {
-    const { stdout } = await execa("ping", ["-c", "1", "-w", "1", ipAddress]);
+    const { stdout } = await execa("ping", ["-c", "1", "-w", "1", ipAddress], { lines: true });
 
-    return PingResult.parseString(stdout);
+    return PingResult.parseString(stdout.join(EOL));
   } catch (error) {
     // Check the error
     if (isExecaError(error) && error.exitCode === 1) {
       // We can parse the stdout
       try {
-        return PingResult.parseString(error.stdout);
+        return PingResult.parseString(error.stdout.join(EOL));
       } catch (err) {
         // Nothing to do
       }
