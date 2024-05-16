@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from "fs";
 import { RingApi, RingDevice, RingDeviceType } from "ring-client-api";
+import { getTimes } from "suncalc-ts";
 import { Client } from "undici";
 import { PhilipsHueOptions, philipsHueBridgeRootCA } from "../hue/index.js";
 import { HueApiError, HueApiSuccess, HueLight, parseHueApiResponseJson } from "../models/index.js";
@@ -11,12 +12,19 @@ export enum RingContactSensorActionType {
 export type RingContactSensorAction = {
   type: RingContactSensorActionType;
   target: string;
+  onlyAtNight?: boolean;
+};
+
+type RingLocation = {
+  latitude: number;
+  longitude: number;
 };
 
 export type RingOptions = {
   refreshToken: string;
   contactSensors: { [keyof: string]: RingContactSensorAction } | null;
   philipsHueOptions: PhilipsHueOptions;
+  location: RingLocation | null;
 };
 
 function readContactSensors(val: unknown): { [keyof: string]: RingContactSensorAction } | null {
@@ -25,6 +33,17 @@ function readContactSensors(val: unknown): { [keyof: string]: RingContactSensorA
   }
 
   return val as { [keyof: string]: RingContactSensorAction };
+}
+
+function readLocation(val: unknown): RingLocation | null {
+  if (val === null || typeof val !== "object") {
+    return null;
+  }
+  if (typeof (val as RingLocation).latitude !== "number" || typeof (val as RingLocation).longitude !== "number") {
+    return null;
+  }
+
+  return val as RingLocation;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -40,10 +59,20 @@ export function loadRingOptions(opts: any, philipsHueOptions: PhilipsHueOptions 
     refreshToken: opts.refreshToken,
     contactSensors: readContactSensors(opts.contactSensors),
     philipsHueOptions: philipsHueOptions,
+    location: readLocation(opts.location),
   };
 }
 
-async function powerOnLight(options: PhilipsHueOptions, target: string) {
+let isNight = true;
+function checkCurrentTime(latitude: number, longitude: number): void {
+  const now = new Date();
+  const times = getTimes(now, latitude, longitude);
+
+  isNight = now < times.sunriseEnd || times.sunsetStart < now;
+  console.log(`Updated isNight value: ${isNight} [sunriseEnd=${times.sunriseEnd}, sunsetStart=${times.sunsetStart}]`);
+}
+
+async function powerOnLight(options: PhilipsHueOptions, target: string): Promise<void> {
   const client = new Client(`https://${options.bridgeIpAddress}`, {
     connect: {
       ca: [philipsHueBridgeRootCA],
@@ -86,7 +115,7 @@ async function powerOnLight(options: PhilipsHueOptions, target: string) {
   }
 }
 
-function listenContactSensorEvents(options: RingOptions, device: RingDevice, action: RingContactSensorAction) {
+function listenContactSensorEvents(options: RingOptions, device: RingDevice, action: RingContactSensorAction): void {
   // Listen events on the device
   console.log(`Listen data events on the contact sensor ${device.data.zid}`);
   device.onData.subscribe((data) => {
@@ -94,12 +123,14 @@ function listenContactSensorEvents(options: RingOptions, device: RingDevice, act
     if (data.faulted === true) {
       // Power on the ligth
       console.log(`Faulted contact sensor ${device.data.zid}`);
-      powerOnLight(options.philipsHueOptions, action.target);
+      if (action.onlyAtNight !== true || isNight) {
+        powerOnLight(options.philipsHueOptions, action.target);
+      }
     }
   });
 }
 
-export async function listenRingEvents(options: RingOptions, configPath: string) {
+export async function listenRingEvents(options: RingOptions, configPath: string): Promise<void> {
   try {
     // Create a client
     const ringApi = new RingApi({
@@ -113,6 +144,12 @@ export async function listenRingEvents(options: RingOptions, configPath: string)
       options.refreshToken = newRefreshToken;
       console.log("Updated Ring refresh token");
     });
+
+    // Monitor day/night changes
+    if (options.location !== null) {
+      const { latitude, longitude } = options.location!;
+      setInterval(() => checkCurrentTime(latitude, longitude), 1000);
+    }
 
     // List devices
     const locations = await ringApi.getLocations();
