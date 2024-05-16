@@ -1,6 +1,6 @@
 {
   "name": "knockknock",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Wake up devices on the LAN",
   "author": "Adrien ERAUD",
   "contributors": [
@@ -42,7 +42,7 @@
     "@types/express": "^4.17.21",
     "@types/express-session": "^1.18.0",
     "@types/fs-extra": "^11.0.4",
-    "@types/lodash": "^4.17.1",
+    "@types/lodash": "^4.17.3",
     "@types/method-override": "^0.0.35",
     "@types/nconf": "^0.10.6",
     "@types/node": "^20.12.12",
