@@ -69,7 +69,6 @@ function checkCurrentTime(latitude: number, longitude: number): void {
   const times = getTimes(now, latitude, longitude);
 
   isNight = now < times.sunriseEnd || times.sunsetStart < now;
-  console.log(`Updated isNight value: ${isNight} [sunriseEnd=${times.sunriseEnd}, sunsetStart=${times.sunsetStart}]`);
 }
 
 async function powerOnLight(options: PhilipsHueOptions, target: string): Promise<void> {
@@ -148,7 +147,7 @@ export async function listenRingEvents(options: RingOptions, configPath: string)
     // Monitor day/night changes
     if (options.location !== null) {
       const { latitude, longitude } = options.location!;
-      setInterval(() => checkCurrentTime(latitude, longitude), 1000);
+      setInterval(() => checkCurrentTime(latitude, longitude), 60000);
     }
 
     // List devices
