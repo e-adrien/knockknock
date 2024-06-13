@@ -19,9 +19,7 @@ function setTheme(theme: ThemeMode): void {
 }
 
 function showActiveTheme(theme: ThemeMode): void {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const activeThemeIcon = document.querySelector<HTMLElement>("#lkp-theme i")!;
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const btnToActive = document.querySelector<HTMLButtonElement>(`[data-lkp-theme="${theme}"]`)!;
   const iconOfActiveBtn = btnToActive.dataset.lkpThemeIcon;
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const { pathExistsSync, ensureDirSync, emptyDirSync, copySync } = require("fs-extra");
 const { resolve } = require("path");
 const tsConfig = require("./tsconfig.json");

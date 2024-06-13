@@ -2,17 +2,26 @@
 	"search.exclude": {
 		"**/.git/**": true,
 		"**/node_modules/**": true,
+		"**/.yarn/**": true,
 		"**/dist/**": true
 	},
 	"files.exclude": {
 		"**/.git/**": true,
 		"**/node_modules/**": true,
+		"**/.yarn/**": true,
 		"**/dist/**": true
 	},
 	"files.watcherExclude": {
 		"**/.git/**": true,
 		"**/node_modules/**": true,
+		"**/.yarn/**": true,
 		"**/dist/**": true
+	},
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit",
+		"source.organizeImports": "explicit"
 	},
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -20,26 +29,20 @@
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"[scss]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[pug]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"editor.codeActionsOnSave": {
-		"source.fixAll": "explicit",
-		"source.organizeImports": "explicit"
-	},
 	"eslint.enable": true,
-	"eslint.format.enable": true,
-	"prettier.configPath": ".prettierrc.cjs",
-	"prettier.ignorePath": ".prettierignore",
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+	],
 	"css.validate": false,
 	"less.validate": false,
 	"scss.validate": false,
-	"stylelint.enable": true,
-	"stylelint.validate": ["css", "scss"]
+	"stylelint.validate": ["css", "scss"],
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"prettier.configPath": "prettier.config.js",
+	"prettier.ignorePath": ".prettierignore"
 }

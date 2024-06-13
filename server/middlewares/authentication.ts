@@ -99,7 +99,7 @@ export function authentication() {
       res.redirect(kUrlLoginPage);
     });
   });
-  router.get(kUrlLoginPage, async (req: Request, res: Response): Promise<void> => {
+  router.get(kUrlLoginPage, async (_req: Request, res: Response): Promise<void> => {
     res.render("login", { errors: {}, fields: {} });
   });
 
@@ -107,7 +107,7 @@ export function authentication() {
   return [
     passport.authenticate("session"),
     router,
-    (req: Request, res: Response, next: NextFunction): void => {
+    (_req: Request, _res: Response, next: NextFunction): void => {
       next();
     },
   ];

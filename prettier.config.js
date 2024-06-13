@@ -1,10 +1,10 @@
-module.exports = {
+const config = {
   plugins: ["@prettier/plugin-pug"],
   printWidth: 120,
   trailingComma: "es5",
   overrides: [
     {
-      files: [".eslintrc.*", ".prettierrc.*", "*.json", "*.md"],
+      files: ["eslint.config.js", "prettier.config.js", "*.json", "*.md"],
       options: {
         printWidth: 80,
       },
@@ -27,3 +27,5 @@ module.exports = {
   pugIdNotation: "as-is",
   pugClassNotation: "attribute",
 };
+
+export default config;

@@ -1,4 +1,3 @@
-/* eslint-disable  @typescript-eslint/no-var-requires, no-undef */
 const path = require("path");
 const sass = require("sass");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");

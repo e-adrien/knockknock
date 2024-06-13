@@ -52,7 +52,7 @@ export async function scanDevices(): Promise<Neighbour[]> {
     const { stdout } = await execa("ip", ["neigh", "show"], { lines: true });
 
     return Neighbour.parseLines(stdout);
-  } catch (error) {
+  } catch (_err) {
     throw new Error("Can't scan devices");
   }
 }

@@ -52,7 +52,7 @@ export async function pingDevice(ipAddress: string): Promise<PingResult> {
       // We can parse the stdout
       try {
         return PingResult.parseString(error.stdout.join(EOL));
-      } catch (err) {
+      } catch (_err) {
         // Nothing to do
       }
     }

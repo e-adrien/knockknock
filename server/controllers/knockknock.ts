@@ -21,7 +21,7 @@ router.post("/:id", async (req: Request, res: Response, next: NextFunction): Pro
   }
 });
 
-router.get("/", async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+router.get("/", async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const awakableDevices = await AwakableDevice.listAwakableDevices();
 
