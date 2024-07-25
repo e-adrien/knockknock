@@ -1,14 +1,21 @@
 {
-  "scanSettings": {
-    "baseBranches": []
-  },
-  "checkRunSettings": {
-    "vulnerableCheckRunConclusionLevel": "failure",
-    "displayMode": "diff",
-    "useMendCheckNames": true
-  },
-  "issueSettings": {
-    "minSeverityLevel": "LOW",
-    "issueType": "DEPENDENCY"
-  }
+	"scanSettings": {
+		"configMode": "AUTO",
+		"enableLicenseViolations": false,
+		"baseBranches": []
+	},
+	"checkRunSettings": {
+		"vulnerableCheckRunConclusionLevel": "failure",
+		"displayMode": "diff",
+		"useMendCheckNames": true
+	},
+	"issueSettings": {
+		"minSeverityLevel": "LOW",
+		"issueType": "DEPENDENCY"
+	},
+	"remediateSettings": {
+		"workflowRules": {
+			"enabled": true
+		}
+	}
 }

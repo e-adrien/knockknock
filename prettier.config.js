@@ -21,6 +21,12 @@ const config = {
         printWidth: 240,
       },
     },
+    {
+      files: ["*.scss"],
+      options: {
+        singleQuote: true,
+      },
+    },
   ],
   pugExplicitDiv: true,
   pugAttributeSeparator: "always",

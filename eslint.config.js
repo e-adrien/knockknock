@@ -9,7 +9,15 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   prettierConfig,
   {
-    ignores: ["package.json", "node_modules/*", ".yarn/*", "dist/*"],
+    ignores: [
+      "package.json",
+      "package-lock.json",
+      "eslint.config.js",
+      "prettier.config.js",
+      "node_modules/*",
+      ".yarn/*",
+      "dist/*",
+    ],
   },
   {
     files: ["**/*.ts"],
