@@ -73,7 +73,7 @@
     "postcss": "^8.4.40",
     "postcss-loader": "^8.1.1",
     "pug": "^3.0.3",
-    "ring-client-api": "^12.1.1",
+    "ring-client-api": "^13.0.1",
     "sass": "^1.77.8",
     "sass-loader": "^16.0.0",
     "suncalc-ts": "^2.0.1",
