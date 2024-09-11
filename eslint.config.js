@@ -2,6 +2,7 @@ import eslint from "@eslint/js";
 import prettierConfig from "eslint-config-prettier";
 import * as espree from "espree";
 import globals from "globals";
+import { join } from "path";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
@@ -23,7 +24,10 @@ export default tseslint.config(
     files: ["**/*.ts"],
     languageOptions: {
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: [],
+          defaultProject: join(import.meta.dirname, "server/tsconfig.json"),
+        },
         tsconfigRootDir: import.meta.dirname,
         ecmaVersion: 2022,
         globals: {
