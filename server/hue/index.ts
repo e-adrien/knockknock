@@ -1,4 +1,5 @@
-import { Client } from "undici";
+import { Client, Dispatcher, EventSource } from "undici";
+import { IncomingHttpHeaders } from "undici/types/header.js";
 import { stringOrNull } from "../helpers/index.js";
 import { Device, HueApiError, HueApiSuccess, HueEvent, HueLight, parseHueApiResponseJson } from "../models/index.js";
 
@@ -120,45 +121,67 @@ async function toggleLight(options: PhilipsHueOptions, target: string) {
   });
 }
 
-export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
-  const client = new Client(`https://${options.bridgeIpAddress}`, {
-    connect: {
-      ca: [philipsHueBridgeRootCA],
-      rejectUnauthorized: false,
-      servername: options.bridgeDeviceId,
-    },
-  });
-
-  const responseData = await client.request({
-    path: "/eventstream/clip/v2",
-    method: "GET",
-    headers: {
-      Accept: "text/event-stream",
-      "hue-application-key": options.hueUsername!,
-    },
-    bodyTimeout: 0,
-  });
-  responseData.body.on("data", async (data: Buffer) => {
-    for (const event of HueEvent.fromString(data.toString("utf8"))) {
-      if (!event.isButtonEvent() || options.buttons![event.buttonEvent.id] === undefined) {
-        continue;
-      }
-
-      if (event.buttonEvent.button.last_event !== "initial_press") {
-        continue;
-      }
-
-      const action = options.buttons![event.buttonEvent.id];
-      switch (action.type) {
-        case PhilipsHueButtonActionType.wakeUpDevice:
-          await wakeUpDevice(action.target);
-          break;
-        case PhilipsHueButtonActionType.toggleLight:
-          await toggleLight(options, action.target);
-          break;
-        default:
-          console.warn(`Unkown action type ${action.type}`);
-      }
+async function onMessage(options: PhilipsHueOptions, data: string): Promise<void> {
+  for (const event of HueEvent.fromString(data)) {
+    if (!event.isButtonEvent() || options.buttons![event.buttonEvent.id] === undefined) {
+      continue;
     }
+
+    if (event.buttonEvent.button.last_event !== "initial_press") {
+      continue;
+    }
+
+    const action = options.buttons![event.buttonEvent.id];
+    switch (action.type) {
+      case PhilipsHueButtonActionType.wakeUpDevice:
+        await wakeUpDevice(action.target);
+        break;
+      case PhilipsHueButtonActionType.toggleLight:
+        await toggleLight(options, action.target);
+        break;
+      default:
+        console.warn(`Unkown action type ${action.type}`);
+    }
+  }
+}
+
+export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
+  class EventSourceClient extends Client {
+    constructor(options: PhilipsHueOptions) {
+      super(`https://${options.bridgeIpAddress}`, {
+        connect: {
+          ca: [philipsHueBridgeRootCA],
+          rejectUnauthorized: false,
+          servername: options.bridgeDeviceId,
+        },
+        bodyTimeout: 0,
+      });
+    }
+
+    dispatch(opts: Dispatcher.DispatchOptions, handler: Dispatcher.DispatchHandlers) {
+      const headers = (opts.headers ?? []) as unknown as IncomingHttpHeaders;
+      headers["Accept"] = "text/event-stream";
+      headers["hue-application-key"] = options.hueUsername!;
+      opts.headers = headers;
+      return super.dispatch(opts, handler);
+    }
+  }
+
+  const client = new EventSourceClient(options);
+
+  const responseData = new EventSource(`https://${options.bridgeIpAddress}/eventstream/clip/v2`, {
+    dispatcher: client,
+  });
+
+  responseData.addEventListener("open", () => {
+    console.log("Connected to the Philips Hue Bridge.");
+  });
+
+  responseData.addEventListener("error", () => {
+    console.log("Connection to the Philips Hue Bridge lost.");
+  });
+
+  responseData.addEventListener("message", (message: MessageEvent) => {
+    onMessage(options, message.data);
   });
 }
