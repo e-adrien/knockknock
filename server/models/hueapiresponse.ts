@@ -243,14 +243,8 @@ export class HueEvent {
   }
 
   public static fromString(raw: string): Array<HueEvent> {
-    const [idLine, dataLine] = raw.split("\n");
-
-    if (idLine === ": hi") {
-      return [];
-    }
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (JSON.parse(dataLine.replace(/^data:\s+/, "")) as Array<any>).map((event) => {
+    return (JSON.parse(raw) as Array<any>).map((event) => {
       return new HueEvent(event.creationtime, event.data, event.id, event.type);
     });
   }
