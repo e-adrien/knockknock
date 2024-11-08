@@ -1,4 +1,4 @@
-import { Client, Dispatcher, EventSource, MessageEvent } from "undici";
+import { Client, Dispatcher, ErrorEvent, EventSource, MessageEvent } from "undici";
 import { IncomingHttpHeaders } from "undici/types/header.js";
 import { stringOrNull } from "../helpers/index.js";
 import { Device, HueApiError, HueApiSuccess, HueEvent, HueLight, parseHueApiResponseJson } from "../models/index.js";
@@ -177,8 +177,8 @@ export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
     console.log("Connected to the Philips Hue Bridge.");
   });
 
-  responseData.addEventListener("error", function () {
-    console.log("Connection to the Philips Hue Bridge lost.");
+  responseData.addEventListener("error", function (event: ErrorEvent) {
+    console.error(`Connection to the Philips Hue Bridge lost. ${event.message}`);
   });
 
   responseData.addEventListener("message", function (message: MessageEvent<string>) {
