@@ -70,26 +70,26 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "picocolors": "^1.1.1",
-    "postcss": "^8.4.47",
+    "postcss": "^8.4.49",
     "postcss-loader": "^8.1.1",
     "pug": "^3.0.3",
     "ring-client-api": "^13.1.0",
-    "sass": "^1.80.6",
+    "sass": "^1.81.0",
     "sass-loader": "^16.0.3",
     "suncalc-ts": "^2.0.3",
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
     "typescript": "^5.6.3",
-    "undici": "^6.20.1",
+    "undici": "^6.21.0",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
-    "winston": "^3.16.0"
+    "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.14.0",
+    "@eslint/js": "^9.15.0",
     "@prettier/plugin-pug": "^3.2.0",
     "@types/mocha": "^10.0.9",
-    "eslint": "^9.14.0",
+    "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.12.0",
     "mocha": "^10.8.2",
@@ -98,6 +98,6 @@
     "stylelint": "^16.10.0",
     "stylelint-config-sass-guidelines": "^12.1.0",
     "ts-node": "^10.9.2",
-    "typescript-eslint": "^8.13.0"
+    "typescript-eslint": "^8.14.0"
   }
 }
