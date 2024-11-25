@@ -45,7 +45,7 @@
     "@types/lodash": "^4.17.13",
     "@types/method-override": "^0.0.35",
     "@types/nconf": "^0.10.7",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.9.4",
     "@types/passport": "^1.0.17",
     "@types/passport-local": "^1.0.38",
     "@types/pug": "^2.0.10",
@@ -73,13 +73,13 @@
     "postcss": "^8.4.49",
     "postcss-loader": "^8.1.1",
     "pug": "^3.0.3",
-    "ring-client-api": "^13.1.0",
+    "ring-client-api": "^13.2.0",
     "sass": "^1.81.0",
     "sass-loader": "^16.0.3",
     "suncalc-ts": "^2.0.3",
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
     "undici": "^6.21.0",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
@@ -88,7 +88,7 @@
   "devDependencies": {
     "@eslint/js": "^9.15.0",
     "@prettier/plugin-pug": "^3.2.0",
-    "@types/mocha": "^10.0.9",
+    "@types/mocha": "^10.0.10",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.12.0",
@@ -98,6 +98,6 @@
     "stylelint": "^16.10.0",
     "stylelint-config-sass-guidelines": "^12.1.0",
     "ts-node": "^10.9.2",
-    "typescript-eslint": "^8.15.0"
+    "typescript-eslint": "^8.16.0"
   }
 }
