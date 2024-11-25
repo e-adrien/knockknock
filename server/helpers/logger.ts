@@ -2,7 +2,7 @@ import nconf from "nconf";
 import os from "os";
 import { createColors } from "picocolors";
 import { inspect } from "util";
-import { createLogger as createWinstonLogger, format, Logger, transports } from "winston";
+import { createLogger as createWinstonLogger, format, Logform, Logger, transports } from "winston";
 const { combine, colorize, label, timestamp, printf } = format;
 const { gray, magenta } = createColors(true); // Force colors activation
 
@@ -11,6 +11,14 @@ function pretty(data: unknown) {
 }
 
 const level = nconf.get("debug") === true ? "debug" : "info";
+
+interface LogData extends Logform.TransformableInfo {
+  message: string;
+  label: string;
+  timestamp: string;
+  error?: Error;
+  json?: unknown;
+}
 
 export function createLogger(name: string): Logger {
   return createWinstonLogger({
@@ -21,7 +29,8 @@ export function createLogger(name: string): Logger {
           colorize(),
           label({ label: name }),
           timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-          printf(({ level, message, label, timestamp, error, json }) => {
+          printf(function (info) {
+            const { level, message, label, timestamp, error, json } = info as LogData;
             if (error !== undefined) {
               return `[${gray(timestamp)}] [${level}] [${magenta(label)}] : ${message}${os.EOL}${error.stack}`;
             }
