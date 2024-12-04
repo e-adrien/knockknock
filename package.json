@@ -7,7 +7,7 @@
     "Adrien ERAUD <e-adrien@users.noreply.github.com>"
   ],
   "engines": {
-    "node": "22.x || 24.x"
+    "node": "20.x || 22.x || 24.x"
   },
   "license": "MIT",
   "browserslist": "> 1% and last 2 version, not dead",
@@ -36,7 +36,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@tsconfig/next": "^2.0.3",
-    "@tsconfig/node22": "^22.0.0",
+    "@tsconfig/node20": "^20.1.4",
     "@types/bootstrap": "^5.2.10",
     "@types/connect-ensure-login": "^0.1.9",
     "@types/express": "^5.0.0",

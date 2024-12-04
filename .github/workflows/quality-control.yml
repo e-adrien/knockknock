@@ -3,7 +3,6 @@ name: QC Checks
 on:
   push:
     branches-ignore:
-      - renovate/*
       - stable
       - beta
     tags-ignore:
@@ -17,10 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js 22
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "20"
 
       - name: Install
         run: npm install
@@ -37,20 +36,30 @@ jobs:
       - name: TSC checks
         run: npm run tsc-check
 
-  build:
-    name: Build Checks
+  tests:
+    name: Tests Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x]
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js 22
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: ${{ matrix.node-version }}
 
       - name: Install
         run: npm install
+
+      - name: Run tests
+        env:
+          NODE_OPTIONS: --loader=ts-node/esm
+          TS_NODE_PROJECT: server/tsconfig.json
+        run: npx mocha --config server/.mocharc.json
 
       - name: Client build checks
         run: npm run build-client
