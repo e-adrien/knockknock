@@ -158,7 +158,7 @@ export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
       });
     }
 
-    dispatch(opts: Dispatcher.DispatchOptions, handler: Dispatcher.DispatchHandlers) {
+    dispatch(opts: Dispatcher.DispatchOptions, handler: Dispatcher.DispatchHandler) {
       const headers = (opts.headers ?? []) as unknown as IncomingHttpHeaders;
       headers["Accept"] = "text/event-stream";
       headers["hue-application-key"] = options.hueUsername!;
