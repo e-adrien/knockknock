@@ -3,6 +3,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import nconf from "nconf";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
+import { UserAccount } from "../interfaces/index.js";
 
 export const kUrlLoginPage = "/auth/login";
 export const kUrlLogoutPage = "/auth/logout";
@@ -17,10 +18,6 @@ type AuthenticateCallback = (
   user: Express.User | false | null | undefined,
   info: { message: string } | undefined
 ) => void;
-
-export type UserAccount = {
-  username: string;
-};
 
 function checkCredential(username: string, password: string, credential: Credential): boolean {
   return (
@@ -55,7 +52,7 @@ export function authentication() {
   );
 
   // Add serializers
-  passport.serializeUser(function (user: UserAccount, done) {
+  passport.serializeUser(function (user: UserAccount, done: (err?: Error | null, id?: unknown) => void) {
     done(null, user.username);
   });
   passport.deserializeUser(async function (username: string, done) {

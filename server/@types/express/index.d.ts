@@ -1,4 +1,4 @@
-import { UserAccount } from "../../middlewares/authentication";
+import { UserAccount } from "../../interfaces/index.js";
 
 export {};
 
@@ -21,7 +21,7 @@ declare module "express-session" {
   interface SessionData {
     passport:
       | {
-          user: string | UserAccount | undefined;
+          user: UserAccount | string | undefined;
         }
       | undefined;
   }
