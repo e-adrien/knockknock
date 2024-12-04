@@ -10,9 +10,10 @@ export function sessions() {
     name: "knockknock-sess",
     secret: kSessionSecret,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 3, // 3 days
-      path: "/",
+      secure: true,
       httpOnly: true,
+      path: "/",
+      maxAge: 1000 * 60 * 60 * 24 * 3, // 3 days
     },
     resave: false,
     rolling: true,
