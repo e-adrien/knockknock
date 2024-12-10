@@ -1,7 +1,9 @@
 import { Client, Dispatcher, ErrorEvent, EventSource, MessageEvent } from "undici";
 import { IncomingHttpHeaders } from "undici/types/header.js";
-import { stringOrNull } from "../helpers/index.js";
+import { createLogger, stringOrNull } from "../helpers/index.js";
 import { Device, HueApiError, HueApiSuccess, HueEvent, HueLight, parseHueApiResponseJson } from "../models/index.js";
+
+const logger = createLogger("express:hue");
 
 export enum PhilipsHueButtonActionType {
   wakeUpDevice = "wakeUpDevice",
@@ -74,9 +76,9 @@ async function wakeUpDevice(target: string) {
   const device = devices.find((el) => el.mac === deviceMac);
   if (device !== undefined) {
     await device.wakeup();
-    console.log(`Message correctement envoyé.`);
+    logger.info(`Message correctement envoyé.`);
   } else {
-    console.log(`Appareil inconnu : ${deviceMac}.`);
+    logger.warn(`Appareil inconnu : ${deviceMac}.`);
   }
 }
 
@@ -98,16 +100,16 @@ async function toggleLight(options: PhilipsHueOptions, target: string) {
   });
   const response = parseHueApiResponseJson(await responseData.body.json());
   if (response instanceof HueApiError) {
-    console.error(response);
+    logger.error(response);
     return;
   }
   if (response instanceof HueApiSuccess) {
-    console.error("Unexpected API response");
+    logger.error("Unexpected API response");
     return;
   }
   const light = response.data[0];
   if (!(light instanceof HueLight)) {
-    console.error("Unexpected API response");
+    logger.error("Unexpected API response");
     return;
   }
 
@@ -140,7 +142,7 @@ async function onMessage(options: PhilipsHueOptions, data: string): Promise<void
         await toggleLight(options, action.target);
         break;
       default:
-        console.warn(`Unkown action type ${action.type}`);
+        logger.warn(`Unkown action type ${action.type}`);
     }
   }
 }
@@ -174,11 +176,11 @@ export async function listenPhilipsHueEvents(options: PhilipsHueOptions) {
   });
 
   responseData.addEventListener("open", function () {
-    console.log("Connected to the Philips Hue Bridge.");
+    logger.info("Connected to the Philips Hue Bridge.");
   });
 
   responseData.addEventListener("error", function (event: ErrorEvent) {
-    console.error(`Connection to the Philips Hue Bridge lost. ${event.message}`);
+    logger.error(`Connection to the Philips Hue Bridge lost. ${event.message}`);
   });
 
   responseData.addEventListener("message", function (message: MessageEvent<string>) {

@@ -21,7 +21,7 @@ import {
 } from "./middlewares/index.js";
 import { listenRingEvents, loadRingOptions } from "./ring/index.js";
 
-const logger = createLogger("Express");
+const logger = createLogger("express");
 
 const app = express();
 app
@@ -40,7 +40,7 @@ app
 
 const port = nconf.get("port") ?? 3000;
 app.listen(port, () => {
-  console.log("serverListens on " + port);
+  logger.info(`Server listens on ${port}`);
 });
 
 const discordOptions = loadDiscordBotOptions(nconf.get("discord"));

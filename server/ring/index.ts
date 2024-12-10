@@ -2,8 +2,11 @@ import { readFileSync, writeFileSync } from "fs";
 import { RingApi, RingDevice, RingDeviceType } from "ring-client-api";
 import { getTimes } from "suncalc-ts";
 import { Client } from "undici";
+import { createLogger } from "../helpers/index.js";
 import { PhilipsHueOptions, philipsHueBridgeRootCA } from "../hue/index.js";
 import { HueApiError, HueApiSuccess, HueLight, parseHueApiResponseJson } from "../models/index.js";
+
+const logger = createLogger("express:ring");
 
 export enum RingContactSensorActionType {
   powerOnLight = "powerOnLight",
@@ -89,16 +92,16 @@ async function powerOnLight(options: PhilipsHueOptions, target: string): Promise
   });
   const response = parseHueApiResponseJson(await responseData.body.json());
   if (response instanceof HueApiError) {
-    console.error(response);
+    logger.error(response);
     return;
   }
   if (response instanceof HueApiSuccess) {
-    console.error("Unexpected API response");
+    logger.error("Unexpected API response");
     return;
   }
   const light = response.data[0];
   if (!(light instanceof HueLight)) {
-    console.error("Unexpected API response");
+    logger.error("Unexpected API response");
     return;
   }
 
@@ -116,12 +119,12 @@ async function powerOnLight(options: PhilipsHueOptions, target: string): Promise
 
 function listenContactSensorEvents(options: RingOptions, device: RingDevice, action: RingContactSensorAction): void {
   // Listen events on the device
-  console.log(`Listen data events on the contact sensor ${device.data.zid}`);
+  logger.info(`Listen data events on the contact sensor ${device.data.zid}`);
   device.onData.subscribe((data) => {
     // Check if the contact sensor is faulted
     if (data.faulted === true) {
       // Power on the ligth
-      console.log(`Faulted contact sensor ${device.data.zid}`);
+      logger.info(`Faulted contact sensor ${device.data.zid}`);
       if (action.onlyAtNight !== true || isNight) {
         powerOnLight(options.philipsHueOptions, action.target);
       }
@@ -141,7 +144,7 @@ export async function listenRingEvents(options: RingOptions, configPath: string)
       const confString = readFileSync(configPath, { encoding: "utf8" });
       writeFileSync(configPath, confString.replace(options.refreshToken, newRefreshToken), { encoding: "utf8" });
       options.refreshToken = newRefreshToken;
-      console.log("Updated Ring refresh token");
+      logger.info("Updated Ring refresh token");
     });
 
     // Monitor day/night changes
@@ -165,12 +168,12 @@ export async function listenRingEvents(options: RingOptions, configPath: string)
               listenContactSensorEvents(options, device, action);
               break;
             default:
-              console.warn(`Unkown action type ${action.type}`);
+              logger.warn(`Unkown action type ${action.type}`);
           }
         }
       }
     }
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 }
