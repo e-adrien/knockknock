@@ -73,7 +73,7 @@
     "postcss": "^8.4.49",
     "postcss-loader": "^8.1.1",
     "pug": "^3.0.3",
-    "ring-client-api": "13.2.0",
+    "ring-client-api": "13.2.1",
     "sass": "^1.82.0",
     "sass-loader": "^16.0.4",
     "suncalc-ts": "^2.0.4",
@@ -81,7 +81,7 @@
     "ts-loader": "^9.5.1",
     "typescript": "^5.7.2",
     "undici": "^7.1.0",
-    "webpack": "^5.97.0",
+    "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4",
     "winston": "^3.17.0"
   },
