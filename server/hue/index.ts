@@ -1,12 +1,21 @@
 import { Client, Dispatcher, ErrorEvent, EventSource, MessageEvent } from "undici";
 import { IncomingHttpHeaders } from "undici/types/header.js";
 import { createLogger, stringOrNull } from "../helpers/index.js";
-import { Device, HueApiError, HueApiSuccess, HueEvent, HueLight, parseHueApiResponseJson } from "../models/index.js";
+import {
+  Device,
+  HueApiError,
+  HueApiSuccess,
+  HueEvent,
+  HueGroupedLight,
+  HueLight,
+  parseHueApiResponseJson,
+} from "../models/index.js";
 
 const logger = createLogger("express:hue");
 
 export enum PhilipsHueButtonActionType {
   wakeUpDevice = "wakeUpDevice",
+  toggleGroupedLight = "toggleGroupedLight",
   toggleLight = "toggleLight",
 }
 
@@ -82,6 +91,47 @@ async function wakeUpDevice(target: string) {
   }
 }
 
+async function toggleGroupedLight(options: PhilipsHueOptions, target: string) {
+  const client = new Client(`https://${options.bridgeIpAddress}`, {
+    connect: {
+      ca: [philipsHueBridgeRootCA],
+      rejectUnauthorized: false,
+      servername: options.bridgeDeviceId,
+    },
+  });
+
+  const responseData = await client.request({
+    path: `/clip/v2/resource/grouped_light/${target}`,
+    method: "GET",
+    headers: {
+      "hue-application-key": options.hueUsername!,
+    },
+  });
+  const response = parseHueApiResponseJson(await responseData.body.json());
+  if (response instanceof HueApiError) {
+    logger.error(response);
+    return;
+  }
+  if (response instanceof HueApiSuccess) {
+    logger.error("Unexpected API response");
+    return;
+  }
+  const groupedLight = response.data[0];
+  if (!(groupedLight instanceof HueGroupedLight)) {
+    logger.error("Unexpected API response");
+    return;
+  }
+
+  await client.request({
+    path: `/clip/v2/resource/grouped_light/${target}`,
+    method: "PUT",
+    headers: {
+      "hue-application-key": options.hueUsername!,
+    },
+    body: JSON.stringify({ on: { on: !groupedLight.isOn() } }),
+  });
+}
+
 async function toggleLight(options: PhilipsHueOptions, target: string) {
   const client = new Client(`https://${options.bridgeIpAddress}`, {
     connect: {
@@ -137,6 +187,9 @@ async function onMessage(options: PhilipsHueOptions, data: string): Promise<void
     switch (action.type) {
       case PhilipsHueButtonActionType.wakeUpDevice:
         await wakeUpDevice(action.target);
+        break;
+      case PhilipsHueButtonActionType.toggleGroupedLight:
+        await toggleGroupedLight(options, action.target);
         break;
       case PhilipsHueButtonActionType.toggleLight:
         await toggleLight(options, action.target);

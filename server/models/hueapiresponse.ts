@@ -75,8 +75,12 @@ export class HueApiResponse {
         switch (value.type) {
           case "device":
             return HueDevice.fromJSON(value);
+          case "grouped_light":
+            return HueGroupedLight.fromJSON(value);
           case "light":
             return HueLight.fromJSON(value);
+          case "room":
+            return HueRoom.fromJSON(value);
           default:
             throw new Error(`Unknown type: ${value.type}`);
         }
@@ -164,6 +168,41 @@ export type HueLightOn = {
   on: boolean;
 };
 
+export class HueGroupedLight extends HueApiData {
+  public readonly id: string;
+  public readonly idv1: string;
+  public readonly owner: HueDeviceOwner;
+  public readonly on: HueLightOn;
+
+  constructor(id: string, idv1: string, owner: HueDeviceOwner, on: HueLightOn, type: string) {
+    super(type);
+    this.id = id;
+    this.idv1 = idv1;
+    this.owner = owner;
+    this.on = on;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public static fromJSON(json: any): HueGroupedLight {
+    return new HueGroupedLight(
+      json.id,
+      json.id_v1,
+      {
+        rid: json.owner.rid,
+        rtype: json.owner.rtype,
+      },
+      {
+        on: json.on.on,
+      },
+      json.type
+    );
+  }
+
+  public isOn(): boolean {
+    return this.on.on;
+  }
+}
+
 export class HueLight extends HueApiData {
   public readonly id: string;
   public readonly idv1: string;
@@ -209,6 +248,56 @@ export class HueLight extends HueApiData {
 
   public isOn(): boolean {
     return this.on.on;
+  }
+}
+
+export type HueRoomChild = {
+  rid: string;
+  rtype: string;
+};
+
+export class HueRoom extends HueApiData {
+  public readonly id: string;
+  public readonly idv1: string;
+  public readonly children: Array<HueRoomChild>;
+  public readonly metadata: HueDeviceMetadata;
+  public readonly services: Array<HueDeviceService>;
+
+  constructor(
+    id: string,
+    idv1: string,
+    children: Array<HueRoomChild>,
+    metadata: HueDeviceMetadata,
+    services: Array<HueDeviceService>,
+    type: string
+  ) {
+    super(type);
+    this.id = id;
+    this.idv1 = idv1;
+    this.children = children;
+    this.metadata = metadata;
+    this.services = services;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public static fromJSON(json: any): HueRoom {
+    return new HueRoom(
+      json.id,
+      json.id_v1,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      json.children.map((child: any) => {
+        return { rid: child.rid, rtype: child.rtype };
+      }),
+      {
+        name: json.metadata.name,
+        archetype: json.metadata.archetype,
+      },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      json.services.map((service: any) => {
+        return { ...service };
+      }),
+      json.type
+    );
   }
 }
 
