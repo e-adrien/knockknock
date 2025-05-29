@@ -1,6 +1,6 @@
 {
   "name": "knockknock",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "description": "Wake up devices on the LAN",
   "author": "Adrien ERAUD",
   "contributors": [
@@ -76,7 +76,7 @@
     "ring-client-api": "14.0.1",
     "sass": "^1.89.0",
     "sass-loader": "^16.0.5",
-    "suncalc-ts": "^2.0.8",
+    "suncalc-ts": "^2.0.9",
     "terser-webpack-plugin": "^5.3.14",
     "ts-loader": "^9.5.2",
     "typescript": "^5.8.3",
