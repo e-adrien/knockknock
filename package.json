@@ -86,10 +86,10 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.31.0",
+    "@eslint/js": "^9.32.0",
     "@prettier/plugin-pug": "^3.4.0",
     "@types/mocha": "^10.0.10",
-    "eslint": "^9.31.0",
+    "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.3.0",
     "mocha": "^11.7.1",
