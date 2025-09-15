@@ -22,6 +22,7 @@ const loginLimiter = rateLimit({
   standardHeaders: true, // Return rate limit info in the RateLimit-* headers
   legacyHeaders: false, // Disable the X-RateLimit-* headers
 });
+
 type AuthenticateCallback = (
   err: unknown,
   user: Express.User | false | null | undefined,
@@ -74,32 +75,28 @@ export function authentication() {
 
   // Add authentication routes
   const router = Router();
-  router.post(
-    kUrlLoginPage,
-    loginLimiter,
-    (req: Request, res: Response, next: NextFunction): void => {
-      passport.authenticate("local", function (err, user, info) {
+  router.post(kUrlLoginPage, loginLimiter, (req: Request, res: Response, next: NextFunction): void => {
+    passport.authenticate("local", function (err, user, info) {
+      if (err) {
+        return next(err);
+      }
+
+      if (!user) {
+        return res.render("login", {
+          errors: { message: info?.message },
+          fields: { email: req.body.email },
+        });
+      }
+
+      req.logIn(user, (err) => {
         if (err) {
           return next(err);
         }
 
-        if (!user) {
-          return res.render("login", {
-            errors: { message: info?.message },
-            fields: { email: req.body.email },
-          });
-        }
-
-        req.logIn(user, (err) => {
-          if (err) {
-            return next(err);
-          }
-
-          res.redirect(kUrlWelcomePage);
-        });
-      } as AuthenticateCallback)(req, res, next);
-    }
-  );
+        res.redirect(kUrlWelcomePage);
+      });
+    } as AuthenticateCallback)(req, res, next);
+  });
   router.get(kUrlLogoutPage, (req: Request, res: Response, next: NextFunction): void => {
     req.logout(function (err) {
       if (err) {
