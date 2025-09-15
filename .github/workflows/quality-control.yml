@@ -2,11 +2,13 @@ name: QC Checks
 
 on:
   push:
-    branches-ignore:
-      - stable
-      - beta
-    tags-ignore:
-      - "**"
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   checks:
