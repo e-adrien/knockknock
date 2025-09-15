@@ -1,5 +1,6 @@
 import { timingSafeEqual } from "crypto";
 import { NextFunction, Request, Response, Router } from "express";
+import rateLimit from "express-rate-limit";
 import nconf from "nconf";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
@@ -13,6 +14,14 @@ type Credential = { username: string; password: string };
 
 const kCredentials = Object.freeze((nconf.get("credentials") as Array<Credential>).map((el) => Object.freeze(el)));
 
+// Rate limiter for login endpoint
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // limit each IP to 5 login requests per windowMs
+  message: "Too many login attempts from this IP, please try again after 15 minutes.",
+  standardHeaders: true, // Return rate limit info in the RateLimit-* headers
+  legacyHeaders: false, // Disable the X-RateLimit-* headers
+});
 type AuthenticateCallback = (
   err: unknown,
   user: Express.User | false | null | undefined,
@@ -65,28 +74,32 @@ export function authentication() {
 
   // Add authentication routes
   const router = Router();
-  router.post(kUrlLoginPage, (req: Request, res: Response, next: NextFunction): void => {
-    passport.authenticate("local", function (err, user, info) {
-      if (err) {
-        return next(err);
-      }
-
-      if (!user) {
-        return res.render("login", {
-          errors: { message: info?.message },
-          fields: { email: req.body.email },
-        });
-      }
-
-      req.logIn(user, (err) => {
+  router.post(
+    kUrlLoginPage,
+    loginLimiter,
+    (req: Request, res: Response, next: NextFunction): void => {
+      passport.authenticate("local", function (err, user, info) {
         if (err) {
           return next(err);
         }
 
-        res.redirect(kUrlWelcomePage);
-      });
-    } as AuthenticateCallback)(req, res, next);
-  });
+        if (!user) {
+          return res.render("login", {
+            errors: { message: info?.message },
+            fields: { email: req.body.email },
+          });
+        }
+
+        req.logIn(user, (err) => {
+          if (err) {
+            return next(err);
+          }
+
+          res.redirect(kUrlWelcomePage);
+        });
+      } as AuthenticateCallback)(req, res, next);
+    }
+  );
   router.get(kUrlLogoutPage, (req: Request, res: Response, next: NextFunction): void => {
     req.logout(function (err) {
       if (err) {
