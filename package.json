@@ -101,5 +101,16 @@
     "ts-node": "^10.9.2",
     "typescript-eslint": "^8.43.0"
   },
+  "dependenciesMeta": {
+    "@parcel/watcher": {
+      "built": true
+    },
+    "ffmpeg-for-homebridge": {
+      "built": true
+    },
+    "protobufjs": {
+      "built": true
+    }
+  },
   "packageManager": "yarn@4.9.4"
 }

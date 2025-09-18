@@ -4572,6 +4572,13 @@ __metadata:
     webpack: "npm:^5.101.3"
     webpack-cli: "npm:^6.0.1"
     winston: "npm:^3.17.0"
+  dependenciesMeta:
+    "@parcel/watcher":
+      built: true
+    ffmpeg-for-homebridge:
+      built: true
+    protobufjs:
+      built: true
   languageName: unknown
   linkType: soft
 
