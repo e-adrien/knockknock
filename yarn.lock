@@ -330,7 +330,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.37.0, @eslint/js@npm:^9.35.0":
+"@eslint/js@npm:9.37.0, @eslint/js@npm:^9.37.0":
   version: 9.37.0
   resolution: "@eslint/js@npm:9.37.0"
   checksum: 10/2ead426ed47af0b914c7d7064eb59fede858483cf9511f78ded840708aca578138f2a6c375916d520f4f2ecf25945f4bd47b8a84e42106b4eb46f7708a36db1d
@@ -545,7 +545,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@noble/curves@npm:^1.3.0":
+"@noble/curves@npm:^1.3.0, @noble/curves@npm:^1.8.1":
   version: 1.9.7
   resolution: "@noble/curves@npm:1.9.7"
   dependencies:
@@ -880,7 +880,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@peculiar/x509@npm:^1.9.2":
+"@peculiar/x509@npm:^1.12.3, @peculiar/x509@npm:^1.9.2":
   version: 1.14.0
   resolution: "@peculiar/x509@npm:1.14.0"
   dependencies:
@@ -1042,15 +1042,6 @@ __metadata:
     generate-function: "npm:^2.3.1"
     is-plain-object: "npm:^2.0.3"
   checksum: 10/fbd8c30f04db3fc6228bccf8f6e91572d0e162d10a902ed310e762761897b7100c63bb140250022135891fc2e9682b021c3dab2748831dcede87d8052f8ae74b
-  languageName: node
-  linkType: hard
-
-"@shinyoshiaki/ebml-builder@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@shinyoshiaki/ebml-builder@npm:0.0.1"
-  dependencies:
-    lodash.memoize: "npm:^4.1.2"
-  checksum: 10/841c3a4ecb4820da15523347d5af49327d7c83a3f6f9020f31f95aaaa987955ea97b29e152e6c7ba4f083c76b8e712de123c792afd400a8d4b6d01d130ce76d9
   languageName: node
   linkType: hard
 
@@ -1345,7 +1336,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.18.3":
+"@types/node@npm:^22.18.9":
   version: 22.18.10
   resolution: "@types/node@npm:22.18.10"
   dependencies:
@@ -2844,6 +2835,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-fns@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "date-fns@npm:4.1.0"
+  checksum: 10/d5f6e9de5bbc52310f786099e18609289ed5e30af60a71e0646784c8185ddd1d0eebcf7c96b7faaaefc4a8366f3a3a4244d099b6d0866ee2bec80d1361e64342
+  languageName: node
+  linkType: hard
+
 "debug@npm:2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
@@ -2934,7 +2932,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discord.js@npm:^14.22.1":
+"discord.js@npm:^14.23.2":
   version: 14.23.2
   resolution: "discord.js@npm:14.23.2"
   dependencies:
@@ -3239,7 +3237,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^9.35.0":
+"eslint@npm:^9.37.0":
   version: 9.37.0
   resolution: "eslint@npm:9.37.0"
   dependencies:
@@ -3684,7 +3682,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^11.3.1":
+"fs-extra@npm:^11.3.2":
   version: 11.3.2
   resolution: "fs-extra@npm:11.3.2"
   dependencies:
@@ -4586,7 +4584,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "knockknock@workspace:."
   dependencies:
-    "@eslint/js": "npm:^9.35.0"
+    "@eslint/js": "npm:^9.37.0"
     "@popperjs/core": "npm:^2.11.8"
     "@prettier/plugin-pug": "npm:^3.4.2"
     "@tsconfig/next": "npm:^2.0.3"
@@ -4600,7 +4598,7 @@ __metadata:
     "@types/method-override": "npm:^3.0.0"
     "@types/mocha": "npm:^10.0.10"
     "@types/nconf": "npm:^0.10.7"
-    "@types/node": "npm:^22.18.3"
+    "@types/node": "npm:^22.18.9"
     "@types/passport": "npm:^1.0.17"
     "@types/passport-local": "npm:^1.0.38"
     "@types/pug": "npm:^2.0.10"
@@ -4611,21 +4609,21 @@ __metadata:
     css-loader: "npm:^7.1.2"
     css-minimizer-webpack-plugin: "npm:^7.0.2"
     cssnano: "npm:^7.1.1"
-    discord.js: "npm:^14.22.1"
-    eslint: "npm:^9.35.0"
+    discord.js: "npm:^14.23.2"
+    eslint: "npm:^9.37.0"
     eslint-config-prettier: "npm:^10.1.8"
     execa: "npm:^9.6.0"
     express: "npm:^5.1.0"
     express-rate-limit: "npm:^8.1.0"
     express-session: "npm:^1.18.2"
     file-loader: "npm:^6.2.0"
-    fs-extra: "npm:^11.3.1"
+    fs-extra: "npm:^11.3.2"
     globals: "npm:^16.4.0"
     lodash: "npm:^4.17.21"
     memorystore: "npm:^1.6.7"
     method-override: "npm:^3.0.0"
     mini-css-extract-plugin: "npm:^2.9.4"
-    mocha: "npm:^11.7.2"
+    mocha: "npm:^11.7.4"
     nconf: "npm:^0.13.0"
     nodemon: "npm:^3.1.10"
     passport: "npm:^0.7.0"
@@ -4635,21 +4633,21 @@ __metadata:
     postcss-loader: "npm:^8.2.0"
     prettier: "npm:^3.6.2"
     pug: "npm:^3.0.3"
-    ring-client-api: "npm:14.0.1"
-    sass: "npm:^1.92.1"
+    ring-client-api: "npm:14.1.0"
+    sass: "npm:^1.93.2"
     sass-loader: "npm:^16.0.5"
-    stylelint: "npm:^16.24.0"
+    stylelint: "npm:^16.25.0"
     stylelint-config-sass-guidelines: "npm:^12.1.0"
     suncalc-ts: "npm:^2.0.9"
     terser-webpack-plugin: "npm:^5.3.14"
     ts-loader: "npm:^9.5.4"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.2"
-    typescript-eslint: "npm:^8.43.0"
+    typescript: "npm:^5.9.3"
+    typescript-eslint: "npm:^8.46.0"
     undici: "npm:^7.16.0"
-    webpack: "npm:^5.101.3"
+    webpack: "npm:^5.102.1"
     webpack-cli: "npm:^6.0.1"
-    winston: "npm:^3.17.0"
+    winston: "npm:^3.18.3"
   dependenciesMeta:
     "@parcel/watcher":
       built: true
@@ -5160,7 +5158,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mocha@npm:^11.7.2":
+"mocha@npm:^11.7.4":
   version: 11.7.4
   resolution: "mocha@npm:11.7.4"
   dependencies:
@@ -5192,7 +5190,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mp4box@npm:^0.5.2, mp4box@npm:^0.5.3":
+"mp4box@npm:^0.5.3":
   version: 0.5.4
   resolution: "mp4box@npm:0.5.4"
   checksum: 10/8faca9aa91d36f8942b3ca001c2a59a791beb0ed493f5918d1cb6580788db8f0b973d7455ee810b303c4f4f6de1df5a353681d2517e7257b69fb3df41ab7d997
@@ -6528,24 +6526,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ring-client-api@npm:14.0.1":
-  version: 14.0.1
-  resolution: "ring-client-api@npm:14.0.1"
+"ring-client-api@npm:14.1.0":
+  version: 14.1.0
+  resolution: "ring-client-api@npm:14.1.0"
   dependencies:
     "@eneris/push-receiver": "npm:4.3.0"
     "@homebridge/camera-utils": "npm:^3.0.0"
     colors: "npm:1.4.0"
-    debug: "npm:^4.4.0"
+    debug: "npm:^4.4.3"
     json-bigint: "npm:^1.0.0"
     rxjs: "npm:^7.8.2"
-    systeminformation: "npm:^5.25.11"
-    undici: "npm:^7.8.0"
-    uuid: "npm:^11.1.0"
-    werift: "npm:0.22.1"
+    systeminformation: "npm:^5.27.10"
+    undici: "npm:^7.16.0"
+    uuid: "npm:^13.0.0"
+    werift: "npm:0.22.2"
   bin:
     ring-auth-cli: lib/ring-auth-cli.js
     ring-device-data-cli: lib/ring-device-data-cli.js
-  checksum: 10/63e311e0132e973dd02f57f0caa92eba248af804143edcd78bc8e2fbda692ea415c237d73e657043f05ca1438f9b84af5e0999f3f762dccf9fd5f2a0b9a45032
+  checksum: 10/752675c55abfff4b600d8809ee14ccc32835db05a8c8bb5f8b3bf27c7145e2e5274f0437a4f6f3560be54db22fa706dc77a4d7928ba416b15d96b3d2fe1c7325
   languageName: node
   linkType: hard
 
@@ -6634,7 +6632,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.92.1":
+"sass@npm:^1.93.2":
   version: 1.93.2
   resolution: "sass@npm:1.93.2"
   dependencies:
@@ -7054,7 +7052,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:^16.24.0":
+"stylelint@npm:^16.25.0":
   version: 16.25.0
   resolution: "stylelint@npm:16.25.0"
   dependencies:
@@ -7177,7 +7175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"systeminformation@npm:^5.23.5, systeminformation@npm:^5.25.11":
+"systeminformation@npm:^5.23.5, systeminformation@npm:^5.27.10":
   version: 5.27.11
   resolution: "systeminformation@npm:5.27.11"
   bin:
@@ -7446,7 +7444,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-eslint@npm:^8.43.0":
+"typescript-eslint@npm:^8.46.0":
   version: 8.46.0
   resolution: "typescript-eslint@npm:8.46.0"
   dependencies:
@@ -7461,7 +7459,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.9.2":
+"typescript@npm:^5.9.3":
   version: 5.9.3
   resolution: "typescript@npm:5.9.3"
   bin:
@@ -7471,7 +7469,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.9.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.9.3#optional!builtin<compat/typescript>":
   version: 5.9.3
   resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
@@ -7518,7 +7516,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^7.16.0, undici@npm:^7.8.0":
+"undici@npm:^7.16.0":
   version: 7.16.0
   resolution: "undici@npm:7.16.0"
   checksum: 10/2bb71672b23d3dc0f56f1b7fb6c936e4487a350db46eaafc03f2f9107f99cdf8e51ecdd32e589e2381ef47a64b6369cfb31f328b2c3ea663023aa47bc5258b9e
@@ -7601,7 +7599,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^11.1.0":
+"uuid@npm:^11.0.5":
   version: 11.1.0
   resolution: "uuid@npm:11.1.0"
   bin:
@@ -7610,12 +7608,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^9.0.0":
-  version: 9.0.1
-  resolution: "uuid@npm:9.0.1"
+"uuid@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "uuid@npm:13.0.0"
   bin:
-    uuid: dist/bin/uuid
-  checksum: 10/9d0b6adb72b736e36f2b1b53da0d559125ba3e39d913b6072f6f033e0c87835b414f0836b45bcfaf2bdf698f92297fea1c3cc19b0b258bc182c9c43cc0fab9f2
+    uuid: dist-node/bin/uuid
+  checksum: 10/2742b24d1e00257e60612572e4d28679423469998cafbaf1fe9f1482e3edf9c40754b31bfdb3d08d71b29239f227a304588f75210b3b48f2609f0673f1feccef
   languageName: node
   linkType: hard
 
@@ -7698,7 +7696,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.101.3":
+"webpack@npm:^5.102.1":
   version: 5.102.1
   resolution: "webpack@npm:5.102.1"
   dependencies:
@@ -7805,38 +7803,36 @@ __metadata:
   languageName: node
   linkType: hard
 
-"werift@npm:0.22.1":
-  version: 0.22.1
-  resolution: "werift@npm:0.22.1"
+"werift@npm:0.22.2":
+  version: 0.22.2
+  resolution: "werift@npm:0.22.2"
   dependencies:
     "@fidm/x509": "npm:^1.2.1"
     "@minhducsun2002/leb128": "npm:^1.0.0"
-    "@noble/curves": "npm:^1.3.0"
-    "@peculiar/x509": "npm:^1.9.2"
+    "@noble/curves": "npm:^1.8.1"
+    "@peculiar/x509": "npm:^1.12.3"
     "@shinyoshiaki/binary-data": "npm:^0.6.1"
-    "@shinyoshiaki/ebml-builder": "npm:^0.0.1"
     "@shinyoshiaki/jspack": "npm:^0.0.6"
     aes-js: "npm:^3.1.2"
+    buffer: "npm:^6.0.3"
     buffer-crc32: "npm:^1.0.0"
-    date-fns: "npm:^2.29.3"
+    date-fns: "npm:^4.1.0"
     debug: "npm:^4.4.0"
     int64-buffer: "npm:1.1.0"
     ip: "npm:^2.0.1"
     lodash: "npm:^4.17.21"
-    mp4box: "npm:^0.5.2"
+    mp4box: "npm:^0.5.3"
     multicast-dns: "npm:^7.2.5"
     nano-time: "npm:^1.0.0"
-    p-cancelable: "npm:^2.1.1"
-    rx.mini: "npm:^1.2.2"
     turbo-crc32: "npm:^1.0.1"
     tweetnacl: "npm:^1.0.3"
-    uuid: "npm:^9.0.0"
+    uuid: "npm:^11.0.5"
     werift-common: "npm:*"
     werift-dtls: "npm:*"
     werift-ice: "npm:*"
     werift-rtp: "npm:*"
     werift-sctp: "npm:*"
-  checksum: 10/8cd123948bc73a7b22e421f3cf7a50d45d24de69cabe682d2c9aeda574e66e52db080ee22892c05dd2744747b965389430ad699d925568d192ee64a954c95445
+  checksum: 10/d10377257172927632da9b6ad883a216fcd3d24ab24a37f3fa7a419a166c313b29c6e11ebddca151f970e808d5b24dcadd2f71dfc408c446e8553c13f43ed59e
   languageName: node
   linkType: hard
 
@@ -7891,7 +7887,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston@npm:^3.17.0":
+"winston@npm:^3.18.3":
   version: 3.18.3
   resolution: "winston@npm:3.18.3"
   dependencies:
