@@ -52,7 +52,12 @@ export function logRequest(logger: Logger): (req: Request, res: Response, next: 
 
       // Log the request
       logger.info(
-        gray(`${req.method} ${req.originalUrl ?? req.url}`) + ` ${res.statusCode} ` + gray(`${res.responseTimeMs}ms`)
+        "[" +
+          gray(req.ip) +
+          "] " +
+          gray(`${req.method} ${req.url}`) +
+          ` ${res.statusCode} ` +
+          gray(`${res.responseTimeMs}ms`)
       );
 
       // return

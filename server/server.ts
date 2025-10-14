@@ -25,7 +25,8 @@ const logger = createLogger("express");
 
 const app = express();
 app
-  .set("trust proxy", true)
+  .disable("x-powered-by")
+  .set("trust proxy", "loopback")
   .set("view engine", "pug")
   .set("views", resolve(serverRootPath, "views"))
   .use(express.static(resolve(publicRootPath, "assets"), { etag: false }))

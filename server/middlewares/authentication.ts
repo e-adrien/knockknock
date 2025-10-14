@@ -1,6 +1,6 @@
 import { timingSafeEqual } from "crypto";
 import { NextFunction, Request, Response, Router } from "express";
-import rateLimit from "express-rate-limit";
+import { ipKeyGenerator, rateLimit } from "express-rate-limit";
 import nconf from "nconf";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
@@ -21,6 +21,13 @@ const loginLimiter = rateLimit({
   message: "Too many login attempts from this IP, please try again after 15 minutes.",
   standardHeaders: true, // Return rate limit info in the RateLimit-* headers
   legacyHeaders: false, // Disable the X-RateLimit-* headers
+  keyGenerator: (req) => {
+    // Check if it's an IPv4-mapped address
+    const reqIp = /::ffff:((?:[0-9]+\.){3}[0-9]+)/.exec(req.ip!);
+
+    // use ipKeyGenerator to apply a /56 subnet to IPv6 users (IPv4 returned unchanged)
+    return ipKeyGenerator(reqIp !== null ? reqIp[1]! : req.ip!, 56);
+  },
 });
 
 type AuthenticateCallback = (
@@ -106,7 +113,7 @@ export function authentication() {
       res.redirect(kUrlLoginPage);
     });
   });
-  router.get(kUrlLoginPage, async (_req: Request, res: Response): Promise<void> => {
+  router.get(kUrlLoginPage, loginLimiter, async (_req: Request, res: Response): Promise<void> => {
     res.render("login", { errors: {}, fields: {} });
   });
 
