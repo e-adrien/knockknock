@@ -1096,10 +1096,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/next@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@tsconfig/next@npm:2.0.3"
-  checksum: 10/35a004bfca70e21f536aa7ef910d4ed0a09316ecc012952b0ba9ceb11ae333eb38f4c613fba79d91341a36db5af1b494dcadb0e35da0841ad47d08d65934f778
+"@tsconfig/next@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@tsconfig/next@npm:2.0.4"
+  checksum: 10/c86fd0b61b21ea4e31c724c002bd3c834c9916fa27ee045281b8030a6e97a45167b153d5465842f2a782c30e0814764e539134121774243e976fe0004ba3c804
   languageName: node
   linkType: hard
 
@@ -1131,10 +1131,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node22@npm:^22.0.2":
-  version: 22.0.2
-  resolution: "@tsconfig/node22@npm:22.0.2"
-  checksum: 10/b9fb6543856cbac8b9b79c234bbefa3415f083e0a46e6f0fbe418fe21c5d086440222e1383258d75ebac951cbe17564a6d146fafc59c889d6302decd1a7880dd
+"@tsconfig/node22@npm:^22.0.3":
+  version: 22.0.3
+  resolution: "@tsconfig/node22@npm:22.0.3"
+  checksum: 10/3abd924dde08d76b946af730c4e1452fbe50e42a4fcde641e57a899303579fe3c082fc0f0aa44c0769d4dbf69ef87b69aa41063fcbad0a9661582e7473178674
   languageName: node
   linkType: hard
 
@@ -1338,7 +1338,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^24.10.0":
+"@types/node@npm:^24.10.1":
   version: 24.10.1
   resolution: "@types/node@npm:24.10.1"
   dependencies:
@@ -4647,8 +4647,8 @@ __metadata:
     "@eslint/js": "npm:^9.39.1"
     "@popperjs/core": "npm:^2.11.8"
     "@prettier/plugin-pug": "npm:^3.4.2"
-    "@tsconfig/next": "npm:^2.0.3"
-    "@tsconfig/node22": "npm:^22.0.2"
+    "@tsconfig/next": "npm:^2.0.4"
+    "@tsconfig/node22": "npm:^22.0.3"
     "@types/bootstrap": "npm:^5.2.10"
     "@types/connect-ensure-login": "npm:^0.1.9"
     "@types/express": "npm:^5.0.5"
@@ -4658,7 +4658,7 @@ __metadata:
     "@types/method-override": "npm:^3.0.0"
     "@types/mocha": "npm:^10.0.10"
     "@types/nconf": "npm:^0.10.7"
-    "@types/node": "npm:^24.10.0"
+    "@types/node": "npm:^24.10.1"
     "@types/passport": "npm:^1.0.17"
     "@types/passport-local": "npm:^1.0.38"
     "@types/pug": "npm:^2.0.10"
@@ -4685,7 +4685,7 @@ __metadata:
     mini-css-extract-plugin: "npm:^2.9.4"
     mocha: "npm:^11.7.5"
     nconf: "npm:^0.13.0"
-    nodemon: "npm:^3.1.10"
+    nodemon: "npm:^3.1.11"
     passport: "npm:^0.7.0"
     passport-local: "npm:^1.0.0"
     picocolors: "npm:^1.1.1"
@@ -4693,7 +4693,7 @@ __metadata:
     postcss-loader: "npm:^8.2.0"
     prettier: "npm:^3.6.2"
     pug: "npm:^3.0.3"
-    ring-client-api: "npm:14.1.0"
+    ring-client-api: "npm:14.2.0"
     sass: "npm:^1.94.0"
     sass-loader: "npm:^16.0.6"
     stylelint: "npm:^16.25.0"
@@ -5370,9 +5370,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^3.1.10":
-  version: 3.1.10
-  resolution: "nodemon@npm:3.1.10"
+"nodemon@npm:^3.1.11":
+  version: 3.1.11
+  resolution: "nodemon@npm:3.1.11"
   dependencies:
     chokidar: "npm:^3.5.2"
     debug: "npm:^4"
@@ -5386,7 +5386,7 @@ __metadata:
     undefsafe: "npm:^2.0.5"
   bin:
     nodemon: bin/nodemon.js
-  checksum: 10/af5f63d0b4af3ee54f60c136996692232f836815ddd37c0368fd8e50c31dd0180a4db5cdb7f4c2c5a96b31c77f30a77c2253ac34438913839846098af813fd20
+  checksum: 10/0f43d2c70abe0764e26e438dbe0c78bc429746a558dabf5dd94b13f6f3a79b4bd7d5793347acafddaee5eab594a806c2ad43efc999d342e28d185661718da8dc
   languageName: node
   linkType: hard
 
@@ -6674,9 +6674,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ring-client-api@npm:14.1.0":
-  version: 14.1.0
-  resolution: "ring-client-api@npm:14.1.0"
+"ring-client-api@npm:14.2.0":
+  version: 14.2.0
+  resolution: "ring-client-api@npm:14.2.0"
   dependencies:
     "@eneris/push-receiver": "npm:4.3.0"
     "@homebridge/camera-utils": "npm:^3.0.0"
@@ -6684,14 +6684,14 @@ __metadata:
     debug: "npm:^4.4.3"
     json-bigint: "npm:^1.0.0"
     rxjs: "npm:^7.8.2"
-    systeminformation: "npm:^5.27.10"
+    systeminformation: "npm:^5.27.11"
     undici: "npm:^7.16.0"
     uuid: "npm:^13.0.0"
     werift: "npm:0.22.2"
   bin:
     ring-auth-cli: lib/ring-auth-cli.js
     ring-device-data-cli: lib/ring-device-data-cli.js
-  checksum: 10/752675c55abfff4b600d8809ee14ccc32835db05a8c8bb5f8b3bf27c7145e2e5274f0437a4f6f3560be54db22fa706dc77a4d7928ba416b15d96b3d2fe1c7325
+  checksum: 10/c944e063696fd5da8466a42561181b8beb24d09ee7d13aa61b17798dc96eef639ecbbb318353764262ad8cff364c988511b2dba3f3797631e931831b5aa1f81b
   languageName: node
   linkType: hard
 
@@ -7323,7 +7323,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"systeminformation@npm:^5.23.5, systeminformation@npm:^5.27.10":
+"systeminformation@npm:^5.23.5, systeminformation@npm:^5.27.11":
   version: 5.27.11
   resolution: "systeminformation@npm:5.27.11"
   bin:
