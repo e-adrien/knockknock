@@ -45,21 +45,21 @@
     "@types/lodash": "^4.17.20",
     "@types/method-override": "^3.0.0",
     "@types/nconf": "^0.10.7",
-    "@types/node": "^24.9.2",
+    "@types/node": "^24.10.0",
     "@types/passport": "^1.0.17",
     "@types/passport-local": "^1.0.38",
     "@types/pug": "^2.0.10",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "^10.4.22",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "connect-ensure-login": "^0.1.1",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.2",
     "cssnano": "^7.1.2",
-    "discord.js": "^14.24.1",
+    "discord.js": "^14.24.2",
     "execa": "^9.6.0",
     "express": "^5.1.0",
-    "express-rate-limit": "^8.2.0",
+    "express-rate-limit": "^8.2.1",
     "express-session": "^1.18.2",
     "file-loader": "^6.2.0",
     "fs-extra": "^11.3.2",
@@ -75,7 +75,7 @@
     "postcss-loader": "^8.2.0",
     "pug": "^3.0.3",
     "ring-client-api": "14.1.0",
-    "sass": "^1.93.2",
+    "sass": "^1.94.0",
     "sass-loader": "^16.0.6",
     "suncalc-ts": "^3.0.0",
     "terser-webpack-plugin": "^5.3.14",
@@ -87,19 +87,19 @@
     "winston": "^3.18.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.38.0",
+    "@eslint/js": "^9.39.1",
     "@prettier/plugin-pug": "^3.4.2",
     "@types/mocha": "^10.0.10",
-    "eslint": "^9.38.0",
+    "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
-    "globals": "^16.4.0",
-    "mocha": "^11.7.4",
+    "globals": "^16.5.0",
+    "mocha": "^11.7.5",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "stylelint": "^16.25.0",
     "stylelint-config-sass-guidelines": "^12.1.0",
     "ts-node": "^10.9.2",
-    "typescript-eslint": "^8.46.2"
+    "typescript-eslint": "^8.46.4"
   },
   "dependenciesMeta": {
     "@parcel/watcher": {
@@ -112,5 +112,5 @@
       "built": true
     }
   },
-  "packageManager": "yarn@4.10.3"
+  "packageManager": "yarn@4.11.0"
 }
