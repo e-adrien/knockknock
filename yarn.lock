@@ -1147,10 +1147,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node22@npm:^22.0.3":
-  version: 22.0.3
-  resolution: "@tsconfig/node22@npm:22.0.3"
-  checksum: 10/3abd924dde08d76b946af730c4e1452fbe50e42a4fcde641e57a899303579fe3c082fc0f0aa44c0769d4dbf69ef87b69aa41063fcbad0a9661582e7473178674
+"@tsconfig/node22@npm:^22.0.4":
+  version: 22.0.5
+  resolution: "@tsconfig/node22@npm:22.0.5"
+  checksum: 10/2e21177946aa0bcd705e8303cd0844eb66d2abc1ceb9ca7bd7762443676e599bb11e7f7b257c027d8dec9d1c62cda114d1a3df5e38699c6b4943e6acadac261d
   languageName: node
   linkType: hard
 
@@ -4636,7 +4636,7 @@ __metadata:
     "@popperjs/core": "npm:^2.11.8"
     "@prettier/plugin-pug": "npm:^3.4.2"
     "@tsconfig/next": "npm:^2.0.4"
-    "@tsconfig/node22": "npm:^22.0.3"
+    "@tsconfig/node22": "npm:^22.0.4"
     "@types/bootstrap": "npm:^5.2.10"
     "@types/connect-ensure-login": "npm:^0.1.9"
     "@types/express": "npm:^5.0.5"
