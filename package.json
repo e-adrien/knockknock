@@ -75,7 +75,7 @@
     "postcss-loader": "^8.2.0",
     "pug": "^3.0.3",
     "ring-client-api": "14.2.0",
-    "sass": "^1.94.1",
+    "sass": "^1.94.2",
     "sass-loader": "^16.0.6",
     "suncalc-ts": "^3.0.0",
     "terser-webpack-plugin": "^5.3.14",
