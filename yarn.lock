@@ -3355,7 +3355,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^9.5.1, execa@npm:^9.6.0":
+"execa@npm:^9.5.1":
   version: 9.6.0
   resolution: "execa@npm:9.6.0"
   dependencies:
@@ -3372,6 +3372,26 @@ __metadata:
     strip-final-newline: "npm:^4.0.0"
     yoctocolors: "npm:^2.1.1"
   checksum: 10/53443be93d847ff5b52d31ed3714f77aab764fb6c1d72dc7019214ab1cb1a69888e2158ba846426a8ea51443c110fe7a86de61ffb9ee5687b00120fbd739b8a4
+  languageName: node
+  linkType: hard
+
+"execa@npm:^9.6.1":
+  version: 9.6.1
+  resolution: "execa@npm:9.6.1"
+  dependencies:
+    "@sindresorhus/merge-streams": "npm:^4.0.0"
+    cross-spawn: "npm:^7.0.6"
+    figures: "npm:^6.1.0"
+    get-stream: "npm:^9.0.0"
+    human-signals: "npm:^8.0.1"
+    is-plain-obj: "npm:^4.1.0"
+    is-stream: "npm:^4.0.1"
+    npm-run-path: "npm:^6.0.0"
+    pretty-ms: "npm:^9.2.0"
+    signal-exit: "npm:^4.1.0"
+    strip-final-newline: "npm:^4.0.0"
+    yoctocolors: "npm:^2.1.1"
+  checksum: 10/d0f7a2185152379f8772f6d780b188f2728a95b9a68d1a897f58805d7ba6bd55eaa5e128cb66a274251a6b5e4d9388332b1417bd7d46c25e020e4e55725cf79e
   languageName: node
   linkType: hard
 
@@ -3409,7 +3429,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:^5.1.0":
+"express@npm:^5.2.0":
   version: 5.2.1
   resolution: "express@npm:5.2.1"
   dependencies:
@@ -4644,8 +4664,8 @@ __metadata:
     discord.js: "npm:^14.25.1"
     eslint: "npm:^9.39.1"
     eslint-config-prettier: "npm:^10.1.8"
-    execa: "npm:^9.6.0"
-    express: "npm:^5.1.0"
+    execa: "npm:^9.6.1"
+    express: "npm:^5.2.0"
     express-rate-limit: "npm:^8.2.1"
     express-session: "npm:^1.18.2"
     file-loader: "npm:^6.2.0"
@@ -4663,7 +4683,7 @@ __metadata:
     picocolors: "npm:^1.1.1"
     postcss: "npm:^8.5.6"
     postcss-loader: "npm:^8.2.0"
-    prettier: "npm:^3.7.1"
+    prettier: "npm:^3.7.3"
     pug: "npm:^3.0.3"
     ring-client-api: "npm:14.2.0"
     sass: "npm:^1.94.2"
@@ -6166,12 +6186,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.7.1":
-  version: 3.7.3
-  resolution: "prettier@npm:3.7.3"
+"prettier@npm:^3.7.3":
+  version: 3.7.4
+  resolution: "prettier@npm:3.7.4"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10/f83ca7e3c69717c1e2f7a95af2d9700eea520c235dfc0f94727a550a4bf0f14eda956a9b2682991b4f1da4605247b3cd3c5547bf2ada4a3ca718bc9ca230040a
+  checksum: 10/b4d00ea13baed813cb777c444506632fb10faaef52dea526cacd03085f01f6db11fc969ccebedf05bf7d93c3960900994c6adf1b150e28a31afd5cfe7089b313
   languageName: node
   linkType: hard
 
