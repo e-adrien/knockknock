@@ -35,7 +35,7 @@
   "type": "module",
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@tsconfig/next": "^2.0.4",
+    "@tsconfig/next": "^2.0.5",
     "@tsconfig/node22": "^22.0.5",
     "@types/bootstrap": "^5.2.10",
     "@types/connect-ensure-login": "^0.1.9",
@@ -45,7 +45,7 @@
     "@types/lodash": "^4.17.21",
     "@types/method-override": "^3.0.0",
     "@types/nconf": "^0.10.7",
-    "@types/node": "^24.10.1",
+    "@types/node": "^24.10.4",
     "@types/passport": "^1.0.17",
     "@types/passport-local": "^1.0.38",
     "@types/pug": "^2.0.10",
@@ -54,7 +54,7 @@
     "bootstrap-icons": "^1.13.1",
     "connect-ensure-login": "^0.1.1",
     "css-loader": "^7.1.2",
-    "css-minimizer-webpack-plugin": "^7.0.2",
+    "css-minimizer-webpack-plugin": "^7.0.4",
     "cssnano": "^7.1.2",
     "discord.js": "^14.25.1",
     "execa": "^9.6.1",
@@ -75,22 +75,22 @@
     "postcss-loader": "^8.2.0",
     "pug": "^3.0.3",
     "ring-client-api": "14.2.0",
-    "sass": "^1.94.2",
+    "sass": "^1.96.0",
     "sass-loader": "^16.0.6",
     "suncalc-ts": "^3.0.1",
-    "terser-webpack-plugin": "^5.3.14",
+    "terser-webpack-plugin": "^5.3.16",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "undici": "^7.16.0",
     "webpack": "^5.103.0",
     "webpack-cli": "^6.0.1",
-    "winston": "^3.18.3"
+    "winston": "^3.19.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^9.39.2",
     "@prettier/plugin-pug": "^3.4.2",
     "@types/mocha": "^10.0.10",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.5.0",
     "mocha": "^11.7.5",
@@ -99,7 +99,7 @@
     "stylelint": "^16.26.1",
     "stylelint-config-sass-guidelines": "^12.1.0",
     "ts-node": "^10.9.2",
-    "typescript-eslint": "^8.48.1"
+    "typescript-eslint": "^8.49.0"
   },
   "dependenciesMeta": {
     "@parcel/watcher": {
