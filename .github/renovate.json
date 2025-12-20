@@ -1,9 +1,5 @@
 {
-	"extends": [
-		"config:recommended",
-		"helpers:pinGitHubActionDigests",
-		":semanticCommits"
-	],
+	"extends": ["config:best-practices", ":semanticCommits"],
 	"timezone": "Europe/Paris",
 	"schedule": [
 		"after 8:00 am and before 6:00 pm on the first day of the month"
