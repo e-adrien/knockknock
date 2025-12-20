@@ -2065,7 +2065,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.22":
+"autoprefixer@npm:^10.4.23":
   version: 10.4.23
   resolution: "autoprefixer@npm:10.4.23"
   dependencies:
@@ -4642,7 +4642,7 @@ __metadata:
     "@types/passport": "npm:^1.0.17"
     "@types/passport-local": "npm:^1.0.38"
     "@types/pug": "npm:^2.0.10"
-    autoprefixer: "npm:^10.4.22"
+    autoprefixer: "npm:^10.4.23"
     bootstrap: "npm:^5.3.8"
     bootstrap-icons: "npm:^1.13.1"
     connect-ensure-login: "npm:^0.1.1"
@@ -4674,7 +4674,7 @@ __metadata:
     prettier: "npm:^3.7.4"
     pug: "npm:^3.0.3"
     ring-client-api: "npm:14.2.0"
-    sass: "npm:^1.96.0"
+    sass: "npm:^1.97.0"
     sass-loader: "npm:^16.0.6"
     stylelint: "npm:^16.26.1"
     stylelint-config-sass-guidelines: "npm:^12.1.0"
@@ -4685,7 +4685,7 @@ __metadata:
     typescript: "npm:^5.9.3"
     typescript-eslint: "npm:^8.49.0"
     undici: "npm:^7.16.0"
-    webpack: "npm:^5.103.0"
+    webpack: "npm:^5.104.0"
     webpack-cli: "npm:^6.0.1"
     winston: "npm:^3.19.0"
   dependenciesMeta:
@@ -6684,9 +6684,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.96.0":
-  version: 1.97.0
-  resolution: "sass@npm:1.97.0"
+"sass@npm:^1.97.0":
+  version: 1.97.1
+  resolution: "sass@npm:1.97.1"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^4.0.0"
@@ -6697,7 +6697,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10/f740cc373c0760eb7cd04989a508381123708c0c3b0bb7d3df9a20900345b24f47c36103d41ef875fa7d99c7f7960a3190a078a695701d0c749d4c29302b7d91
+  checksum: 10/c493d08f63ecd82b6db94bed16c1fffc0cccf94fc30f73f0f09fa6023a811cafb3862697d8a24264b511541474d2be5fac7ddba00ed56738d13f1837c93721b5
   languageName: node
   linkType: hard
 
@@ -7735,9 +7735,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.103.0":
-  version: 5.104.0
-  resolution: "webpack@npm:5.104.0"
+"webpack@npm:^5.104.0":
+  version: 5.104.1
+  resolution: "webpack@npm:5.104.1"
   dependencies:
     "@types/eslint-scope": "npm:^3.7.7"
     "@types/estree": "npm:^1.0.8"
@@ -7769,7 +7769,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 10/354e19ce9d00b3b47d0161a2dda6cb657ad27c7c572052fe66562c96a310821e95ac83b4b4296f8b929d310d3ab5be2ac31a83f89db303dbee4b5eb906fb0b4d
+  checksum: 10/c22b58fdf41d993971516154cb621d13b7b61dd744b7e2c6be972e9afcc9942694a8aaa322c07fba46448c69d663023ff53d0aeeb00eb0b125d83ace5ca8fa3c
   languageName: node
   linkType: hard
 
