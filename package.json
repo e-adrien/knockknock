@@ -62,7 +62,7 @@
     "express-rate-limit": "^8.2.1",
     "express-session": "^1.18.2",
     "file-loader": "^6.2.0",
-    "fs-extra": "^11.3.2",
+    "fs-extra": "^11.3.3",
     "lodash": "^4.17.21",
     "memorystore": "^1.6.7",
     "method-override": "^3.0.0",
@@ -75,14 +75,14 @@
     "postcss-loader": "^8.2.0",
     "pug": "^3.0.3",
     "ring-client-api": "14.2.0",
-    "sass": "^1.97.0",
+    "sass": "^1.97.1",
     "sass-loader": "^16.0.6",
     "suncalc-ts": "^3.0.1",
     "terser-webpack-plugin": "^5.3.16",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "undici": "^7.16.0",
-    "webpack": "^5.104.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
     "winston": "^3.19.0"
   },
@@ -99,7 +99,7 @@
     "stylelint": "16.26.1",
     "stylelint-config-sass-guidelines": "12.1.0",
     "ts-node": "10.9.2",
-    "typescript-eslint": "8.50.0"
+    "typescript-eslint": "8.50.1"
   },
   "dependenciesMeta": {
     "@parcel/watcher": {
