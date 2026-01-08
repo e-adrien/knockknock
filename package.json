@@ -75,13 +75,13 @@
     "postcss-loader": "^8.2.0",
     "pug": "^3.0.3",
     "ring-client-api": "14.2.0",
-    "sass": "^1.97.1",
+    "sass": "^1.97.2",
     "sass-loader": "^16.0.6",
     "suncalc-ts": "^3.0.1",
     "terser-webpack-plugin": "^5.3.16",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
-    "undici": "^7.16.0",
+    "undici": "^7.18.2",
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
     "winston": "^3.19.0"
@@ -99,7 +99,7 @@
     "stylelint": "16.26.1",
     "stylelint-config-sass-guidelines": "12.1.0",
     "ts-node": "10.9.2",
-    "typescript-eslint": "8.51.0"
+    "typescript-eslint": "8.52.0"
   },
   "dependenciesMeta": {
     "@parcel/watcher": {
