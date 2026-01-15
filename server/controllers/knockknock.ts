@@ -6,7 +6,7 @@ const router = Router();
 
 router.post("/:id", async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const id = parseInt(req.params.id, 10);
+    const id = parseInt(req.params.id as string, 10);
     const devices = Device.list();
     if (isNaN(id) || id < 0 || devices.length <= id) {
       res.sendStatus(404);
