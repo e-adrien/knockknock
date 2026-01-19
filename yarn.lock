@@ -58,7 +58,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cacheable/memory@npm:^2.0.6":
+"@cacheable/memory@npm:^2.0.7":
   version: 2.0.7
   resolution: "@cacheable/memory@npm:2.0.7"
   dependencies:
@@ -70,7 +70,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cacheable/utils@npm:^2.3.2, @cacheable/utils@npm:^2.3.3":
+"@cacheable/utils@npm:^2.3.3":
   version: 2.3.3
   resolution: "@cacheable/utils@npm:2.3.3"
   dependencies:
@@ -2080,11 +2080,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.9.0":
-  version: 2.9.14
-  resolution: "baseline-browser-mapping@npm:2.9.14"
+  version: 2.9.15
+  resolution: "baseline-browser-mapping@npm:2.9.15"
   bin:
     baseline-browser-mapping: dist/cli.js
-  checksum: 10/a329881e5f673c0834843640e9c954c478f643fb983449c99850392e48cf52dfb1dc3de8d81c6a6a2802c86310833accc5e3deb6bef5fb6e329989e28ca5489b
+  checksum: 10/ff303d989833084798f89ad9962004a8a39f4f93d06a2d092036d063f126c4a78d00b1137ce9d78ced10b8cf7304e59ef58508af51f0a4d3e001e8a579cda146
   languageName: node
   linkType: hard
 
@@ -2263,16 +2263,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cacheable@npm:^2.2.0":
-  version: 2.3.1
-  resolution: "cacheable@npm:2.3.1"
+"cacheable@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "cacheable@npm:2.3.2"
   dependencies:
-    "@cacheable/memory": "npm:^2.0.6"
-    "@cacheable/utils": "npm:^2.3.2"
-    hookified: "npm:^1.14.0"
+    "@cacheable/memory": "npm:^2.0.7"
+    "@cacheable/utils": "npm:^2.3.3"
+    hookified: "npm:^1.15.0"
     keyv: "npm:^5.5.5"
-    qified: "npm:^0.5.3"
-  checksum: 10/585cd4d741a00576d1c19eefabfea23ca9d9e2d0570f9cc5292071942f5b9c6e906ddba143f598151b79d4f320a1f5f1bfccc0a977408da8c3fab1001d5e262d
+    qified: "npm:^0.6.0"
+  checksum: 10/5f7a398133a09e1f71653f7e4299e3e15ecca2556e063a2a82b4751de801fc8df4c829e77f45632b52d856fdd835467bc43179707ff0208a606d64017a71e2c4
   languageName: node
   linkType: hard
 
@@ -2323,9 +2323,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001759, caniuse-lite@npm:^1.0.30001760":
-  version: 1.0.30001764
-  resolution: "caniuse-lite@npm:1.0.30001764"
-  checksum: 10/24c6f402902181faa997a6da1cb63410f9376e9e8a33d733121862e7665d200a54d70e551c5626748f78078401c0744496a58d0451fceb8f7fa12498ae12ff20
+  version: 1.0.30001765
+  resolution: "caniuse-lite@npm:1.0.30001765"
+  checksum: 10/d7e90e3c02bbab9aa69c28c8c609284d51275396b8e5646ad9fd89b7bc7adcfcd1f5414be25399adde985eadf8d0041fda6d86c1e58384b69b5a9f03a916eb18
   languageName: node
   linkType: hard
 
@@ -3503,11 +3503,11 @@ __metadata:
   linkType: hard
 
 "file-entry-cache@npm:^11.1.1":
-  version: 11.1.1
-  resolution: "file-entry-cache@npm:11.1.1"
+  version: 11.1.2
+  resolution: "file-entry-cache@npm:11.1.2"
   dependencies:
-    flat-cache: "npm:^6.1.19"
-  checksum: 10/c71b7ef9ec2105a9c4206b3afb84ac32c46fe58803381a28c709a7911904d8aebfc8fb1520ba4967ce4187eabe88bd4d572d22c64a9d6b22be7de1baf7c08d06
+    flat-cache: "npm:^6.1.20"
+  checksum: 10/608a988db343f3ddcbf96ec93697daae2bbde2976763960b979c55de64d5ae3779c014d5308dbea5bfb42386c3e492b117d8715824b74079efcc1f5d27b8836c
   languageName: node
   linkType: hard
 
@@ -3585,14 +3585,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flat-cache@npm:^6.1.19":
-  version: 6.1.19
-  resolution: "flat-cache@npm:6.1.19"
+"flat-cache@npm:^6.1.20":
+  version: 6.1.20
+  resolution: "flat-cache@npm:6.1.20"
   dependencies:
-    cacheable: "npm:^2.2.0"
+    cacheable: "npm:^2.3.2"
     flatted: "npm:^3.3.3"
-    hookified: "npm:^1.13.0"
-  checksum: 10/6d920e3aded4fdc62932ff67dded965d213f4c57f8da25f2fac81376a8982c6684bc65e4fd31a008edfcbd41b3f48771ddf4cb84cd13e0ecf410d9a00dfd867b
+    hookified: "npm:^1.15.0"
+  checksum: 10/e8bf0b73ca210c907361c2899571b101cfc413212fff2d171f8f512d1e0608a549289bcac07a57c36dd51697c4c09e305d74d76e110dfc75af302b8cf6fe0535
   languageName: node
   linkType: hard
 
@@ -3952,7 +3952,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hookified@npm:^1.13.0, hookified@npm:^1.14.0":
+"hookified@npm:^1.13.0, hookified@npm:^1.14.0, hookified@npm:^1.15.0":
   version: 1.15.0
   resolution: "hookified@npm:1.15.0"
   checksum: 10/d4b2a57883e66a46d4f007184094be4c1687387a89b070ff38935af2f6a59bbc1c1a021a2fa6203336b58b4cff219c0834ecaf5ecd6e88e5f783675a3735eaac
@@ -5077,14 +5077,14 @@ __metadata:
   linkType: hard
 
 "mini-css-extract-plugin@npm:^2.9.4":
-  version: 2.9.4
-  resolution: "mini-css-extract-plugin@npm:2.9.4"
+  version: 2.10.0
+  resolution: "mini-css-extract-plugin@npm:2.10.0"
   dependencies:
     schema-utils: "npm:^4.0.0"
     tapable: "npm:^2.2.1"
   peerDependencies:
     webpack: ^5.0.0
-  checksum: 10/24a0418dc49baed58a10a8b81e4d2fe474e89ccdc9370a7c69bd0aeeb5a70d2b4ee12f33b98c95a68423c79c1de7cc2a25aaa2105600b712e7d594cb0d56c9d4
+  checksum: 10/bae5350ab82171c6c9a22a4397df14aa69280f5ff0e1ff4d2429ea841bc096927b1e27ba7b75a9c3dd77bd44bab449d6197bd748381f1326cbc8befcb10d1a9e
   languageName: node
   linkType: hard
 
@@ -6365,12 +6365,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qified@npm:^0.5.3":
-  version: 0.5.3
-  resolution: "qified@npm:0.5.3"
+"qified@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "qified@npm:0.6.0"
   dependencies:
-    hookified: "npm:^1.13.0"
-  checksum: 10/186339404248e700070d3f15ec25ce27d890fe2d9fb744cdc3519120356fe32a84a50809b220c33f57855be72382744578888b2dc136ea56eb85b24f87750f35
+    hookified: "npm:^1.14.0"
+  checksum: 10/69a6340d290d6a322b2fc36a958b9a3ee6014c5e5bd2d46ac77498f1b9686efbc1b0ab6d2d1d42b720dad0eeec1ff18a4b29b7618e33435104f8cd6a3909ae70
   languageName: node
   linkType: hard
 
@@ -7237,11 +7237,11 @@ __metadata:
   linkType: hard
 
 "systeminformation@npm:^5.23.5, systeminformation@npm:^5.27.11":
-  version: 5.30.4
-  resolution: "systeminformation@npm:5.30.4"
+  version: 5.30.5
+  resolution: "systeminformation@npm:5.30.5"
   bin:
     systeminformation: lib/cli.js
-  checksum: 10/b1fcc1344a5b3f3fc10b9c8ee189a5907954a2b27ef193632624d9d17770b40ea553884f160caf6a805f6ecebe21fcf4c35bdd590534813433449685c81b189a
+  checksum: 10/bef76777d6909673f7a1d6380f9ec289f49c6bbd6a08c748a036755d57938eafee1faff0e49b688f17ae49bee5085c9b5ccbc1de18d4b4d4dfa6311f21db8f22
   conditions: (os=darwin | os=linux | os=win32 | os=freebsd | os=openbsd | os=netbsd | os=sunos | os=android)
   languageName: node
   linkType: hard
