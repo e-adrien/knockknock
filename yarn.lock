@@ -4662,7 +4662,7 @@ __metadata:
     sass-loader: "npm:^16.0.6"
     stylelint: "npm:17.0.0"
     stylelint-config-standard-scss: "npm:17.0.0"
-    suncalc-ts: "npm:^3.0.1"
+    suncalc-ts: "npm:^3.0.2"
     terser-webpack-plugin: "npm:^5.3.16"
     ts-loader: "npm:^9.5.4"
     ts-node: "npm:10.9.2"
@@ -7161,10 +7161,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"suncalc-ts@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "suncalc-ts@npm:3.0.1"
-  checksum: 10/a1e7477da28313877e64a801d72d97eec4cf98385af2a78de66042807bf687ec1c1f811e999efc50153cea28b19fef475637a2f671962fa1dd03262ec0e244f8
+"suncalc-ts@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "suncalc-ts@npm:3.0.2"
+  checksum: 10/fc7fad09f32e4551228fb6f66f1a00d07242b7f7b46f7a511aa061bf0fd4c56aa2c8b2492dcf6ec7ec4b208936d9532cf8f7c91035de7be5cb1d6dd10820e5cd
   languageName: node
   linkType: hard
 
