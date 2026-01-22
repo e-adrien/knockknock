@@ -4646,7 +4646,7 @@ __metadata:
     lodash: "npm:^4.17.23"
     memorystore: "npm:^1.6.7"
     method-override: "npm:^3.0.0"
-    mini-css-extract-plugin: "npm:^2.9.4"
+    mini-css-extract-plugin: "npm:^2.10.0"
     mocha: "npm:11.7.5"
     nconf: "npm:^0.13.0"
     nodemon: "npm:3.1.11"
@@ -5083,7 +5083,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:^2.9.4":
+"mini-css-extract-plugin@npm:^2.10.0":
   version: 2.10.0
   resolution: "mini-css-extract-plugin@npm:2.10.0"
   dependencies:
