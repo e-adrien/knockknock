@@ -63,7 +63,7 @@
     "express-session": "^1.18.2",
     "file-loader": "^6.2.0",
     "fs-extra": "^11.3.3",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "memorystore": "^1.6.7",
     "method-override": "^3.0.0",
     "mini-css-extract-plugin": "^2.9.4",
