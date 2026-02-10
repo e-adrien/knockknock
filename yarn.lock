@@ -1328,12 +1328,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^24.10.9":
-  version: 24.10.9
-  resolution: "@types/node@npm:24.10.9"
+"@types/node@npm:^24.10.11":
+  version: 24.10.12
+  resolution: "@types/node@npm:24.10.12"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10/c831395567689bdd59d0f3826332ff15c3f3f8e6acf160d7f75ce45e5476427c10ac484031c5c8d3480ae8d1729d95f3354ef4cc359364107e22da5a22e3797c
+  checksum: 10/94231e8ff4151a97719d9f996a67e8eee01041f337d710762cafbbab2d15290da91c4a0d27b9577fa95d85ce678524d53e1b193f2270850b0746a6e9a43932d4
   languageName: node
   linkType: hard
 
@@ -3055,13 +3055,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.0.0, enhanced-resolve@npm:^5.17.4":
+"enhanced-resolve@npm:^5.0.0":
   version: 5.18.4
   resolution: "enhanced-resolve@npm:5.18.4"
   dependencies:
     graceful-fs: "npm:^4.2.4"
     tapable: "npm:^2.2.0"
   checksum: 10/dcd477cb694d9cc84109a03269c13d3da0851d50099fd3fa7c56b2867dd720d59c7f1431bd47c9cad2825ad52588bd71d3a68cf1e5ee0bc57551d8a3fab4e6f2
+  languageName: node
+  linkType: hard
+
+"enhanced-resolve@npm:^5.19.0":
+  version: 5.19.0
+  resolution: "enhanced-resolve@npm:5.19.0"
+  dependencies:
+    graceful-fs: "npm:^4.2.4"
+    tapable: "npm:^2.3.0"
+  checksum: 10/b537d52173bf1ba903c623f96a43ea3b51466ee2b606b2fcca30d73d453fd79c8683dccbb83523de27cd02763c906f11486e2591a4335e6afe49fa5ad6e67b83
   languageName: node
   linkType: hard
 
@@ -4615,7 +4625,7 @@ __metadata:
     "@types/method-override": "npm:^3.0.0"
     "@types/mocha": "npm:10.0.10"
     "@types/nconf": "npm:^0.10.7"
-    "@types/node": "npm:^24.10.9"
+    "@types/node": "npm:^24.10.11"
     "@types/passport": "npm:^1.0.17"
     "@types/passport-local": "npm:^1.0.38"
     "@types/pug": "npm:^2.0.10"
@@ -4652,8 +4662,8 @@ __metadata:
     pug: "npm:^3.0.3"
     ring-client-api: "npm:14.2.0"
     sass: "npm:^1.97.3"
-    sass-loader: "npm:^16.0.6"
-    stylelint: "npm:17.1.0"
+    sass-loader: "npm:^16.0.7"
+    stylelint: "npm:17.1.1"
     stylelint-config-standard-scss: "npm:17.0.0"
     suncalc-ts: "npm:^3.0.2"
     terser-webpack-plugin: "npm:^5.3.16"
@@ -4661,8 +4671,8 @@ __metadata:
     ts-node: "npm:10.9.2"
     typescript: "npm:^5.9.3"
     typescript-eslint: "npm:8.54.0"
-    undici: "npm:^7.20.0"
-    webpack: "npm:^5.104.1"
+    undici: "npm:^7.21.0"
+    webpack: "npm:^5.105.0"
     webpack-cli: "npm:^6.0.1"
     winston: "npm:^3.19.0"
   dependenciesMeta:
@@ -6611,13 +6621,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^16.0.6":
-  version: 16.0.6
-  resolution: "sass-loader@npm:16.0.6"
+"sass-loader@npm:^16.0.7":
+  version: 16.0.7
+  resolution: "sass-loader@npm:16.0.7"
   dependencies:
     neo-async: "npm:^2.6.2"
   peerDependencies:
-    "@rspack/core": 0.x || 1.x
+    "@rspack/core": 0.x || ^1.0.0 || ^2.0.0-0
     node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
     sass: ^1.3.0
     sass-embedded: "*"
@@ -6633,7 +6643,7 @@ __metadata:
       optional: true
     webpack:
       optional: true
-  checksum: 10/ff4d11c48a4286dbee0de0aa9c9225e96a4390039f8fccc3333e21b7d9ac27c4ed9572212ec733a31723ec740808f6d446aea20f1d05fd47e6ce0f23d4942fb8
+  checksum: 10/074be7eadbbb2e14f581b06e9f1ec010807d76bd5cc5cd9c6a120fa377f1b94a7f8dc4b0eea5b12cf34511e9b00fe056093b7da02e849d3f2513bfe21e9f660f
   languageName: node
   linkType: hard
 
@@ -7092,9 +7102,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:17.1.0":
-  version: 17.1.0
-  resolution: "stylelint@npm:17.1.0"
+"stylelint@npm:17.1.1":
+  version: 17.1.1
+  resolution: "stylelint@npm:17.1.1"
   dependencies:
     "@csstools/css-parser-algorithms": "npm:^4.0.0"
     "@csstools/css-syntax-patches-for-csstree": "npm:^1.0.25"
@@ -7136,7 +7146,7 @@ __metadata:
     write-file-atomic: "npm:^7.0.0"
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: 10/004f04546ec4a0defd05f977d74ff346b34d1af18f0507ae7015c72926f4f10e3a83a4246b5369e579f2557a1cd6e8708ea647210f02730f36d4b8e982a9d359
+  checksum: 10/f253a5af2c294b30043b7c17903cecdd596227d28d684bfc0b7f54634ffdee246b5743c7e61c9048c17e9ce0ae3bb7368876109f932073a343428fc86b0cba9a
   languageName: node
   linkType: hard
 
@@ -7556,10 +7566,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^7.16.0, undici@npm:^7.20.0":
+"undici@npm:^7.16.0":
   version: 7.20.0
   resolution: "undici@npm:7.20.0"
   checksum: 10/09ca3e1255cf05f3c76e6dff2ae760131ea5bba57290b9b184bd94f5167939548e7ea73292c524c25eb91f5a2152623394d4c6124e222d34fcd53ef733c6b156
+  languageName: node
+  linkType: hard
+
+"undici@npm:^7.21.0":
+  version: 7.21.0
+  resolution: "undici@npm:7.21.0"
+  checksum: 10/2025ba33bd42a22267d0a7f0a9369e4901ef7b7244ed335c79fd4aaa510471d104b6826e74d055077ed57155482fb5cbf716a02f7bba4dbab402087882f40e67
   languageName: node
   linkType: hard
 
@@ -7685,7 +7702,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"watchpack@npm:^2.4.4":
+"watchpack@npm:^2.5.1":
   version: 2.5.1
   resolution: "watchpack@npm:2.5.1"
   dependencies:
@@ -7743,9 +7760,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.104.1":
-  version: 5.104.1
-  resolution: "webpack@npm:5.104.1"
+"webpack@npm:^5.105.0":
+  version: 5.105.0
+  resolution: "webpack@npm:5.105.0"
   dependencies:
     "@types/eslint-scope": "npm:^3.7.7"
     "@types/estree": "npm:^1.0.8"
@@ -7757,7 +7774,7 @@ __metadata:
     acorn-import-phases: "npm:^1.0.3"
     browserslist: "npm:^4.28.1"
     chrome-trace-event: "npm:^1.0.2"
-    enhanced-resolve: "npm:^5.17.4"
+    enhanced-resolve: "npm:^5.19.0"
     es-module-lexer: "npm:^2.0.0"
     eslint-scope: "npm:5.1.1"
     events: "npm:^3.2.0"
@@ -7770,14 +7787,14 @@ __metadata:
     schema-utils: "npm:^4.3.3"
     tapable: "npm:^2.3.0"
     terser-webpack-plugin: "npm:^5.3.16"
-    watchpack: "npm:^2.4.4"
+    watchpack: "npm:^2.5.1"
     webpack-sources: "npm:^3.3.3"
   peerDependenciesMeta:
     webpack-cli:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 10/c22b58fdf41d993971516154cb621d13b7b61dd744b7e2c6be972e9afcc9942694a8aaa322c07fba46448c69d663023ff53d0aeeb00eb0b125d83ace5ca8fa3c
+  checksum: 10/95e0a0f04fc324e0e3b378a81d111b1739579cda7224cbf904f894e8c4f3a8edce35a26bc06d2e6d558b335e6e0315f50a62fb1bef410053b965a5985fe38bd8
   languageName: node
   linkType: hard
 
