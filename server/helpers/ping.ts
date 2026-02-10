@@ -58,6 +58,6 @@ export async function pingDevice(ipAddress: string): Promise<PingResult> {
     }
 
     // Throw an error
-    throw new Error("Can't ping device");
+    throw new Error("Can't ping device", { cause: error });
   }
 }
