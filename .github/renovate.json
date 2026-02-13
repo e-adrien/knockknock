@@ -1,33 +1,4 @@
 {
-	"extends": ["config:best-practices", ":semanticCommits"],
-	"timezone": "Europe/Paris",
-	"schedule": [
-		"after 8:00 am and before 6:00 pm on the first day of the month"
-	],
-	"rangeStrategy": "bump",
-	"lockFileMaintenance": {
-		"enabled": true,
-		"schedule": ["after 8:00 am and before 10:00 am on Monday"],
-		"automerge": true,
-		"automergeType": "pr",
-		"automergeStrategy": "squash"
-	},
-	"packageRules": [
-		{
-			"matchDatasources": ["npm"],
-			"minimumReleaseAge": "3 days"
-		},
-		{
-			"matchDatasources": ["npm"],
-			"matchUpdateTypes": ["minor", "patch"],
-			"matchPackageNames": ["*"],
-			"groupName": "all non-major dependencies",
-			"groupSlug": "all-minor-patch",
-			"automerge": true,
-			"automergeType": "pr",
-			"automergeStrategy": "squash"
-		}
-	],
-	"ignoreDeps": [],
-	"ignorePaths": []
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["local>e-adrien/.github"]
 }
