@@ -36,7 +36,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@tsconfig/next": "^2.0.6",
-    "@tsconfig/node22": "^22.0.5",
+    "@tsconfig/node24": "^24.0.0",
     "@types/bootstrap": "^5.2.10",
     "@types/connect-ensure-login": "^0.1.9",
     "@types/express": "^5.0.6",
