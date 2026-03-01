@@ -1080,10 +1080,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/next@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "@tsconfig/next@npm:2.0.5"
-  checksum: 10/88df0cb8f208a9c3f12554ed37c941362782b1b440e5caae7d4b56c77137ec8df9bf1cb50d22638576ef594e6321fac2403c678a2d2cb48013e9f7b43b2e9cab
+"@tsconfig/next@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "@tsconfig/next@npm:2.0.6"
+  checksum: 10/b90a4acc98d6f7ec632064007f9b6a2cedfee068b852fd64aa3a6455180e655c83e1b7e33071f3a6d2c81b2346bb474e266db07bc683ec189370e0cb2c3cf04f
   languageName: node
   linkType: hard
 
@@ -1322,12 +1322,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^24.10.13":
-  version: 24.10.13
-  resolution: "@types/node@npm:24.10.13"
+"@types/node@npm:^24.10.14":
+  version: 24.11.0
+  resolution: "@types/node@npm:24.11.0"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10/c779d14cf17758a9d603e0c0978c8045bd070e259617ec16f4ddac419ec11aac0e0cf2bb013dab008fdbd2f46c39f82397884662bbdfabeb19bef0079679ea48
+  checksum: 10/d2f4f898c6a0f14980e55c697904fb58681729fc46b4e264d5f64dc391b23da73c9b422cfffbca28c045e6e8eca72dab5f28ed633faa95398ef1528af5398382
   languageName: node
   linkType: hard
 
@@ -4581,7 +4581,7 @@ __metadata:
     "@eslint/js": "npm:10.0.1"
     "@popperjs/core": "npm:^2.11.8"
     "@prettier/plugin-pug": "npm:3.4.2"
-    "@tsconfig/next": "npm:^2.0.5"
+    "@tsconfig/next": "npm:^2.0.6"
     "@tsconfig/node22": "npm:^22.0.5"
     "@types/bootstrap": "npm:^5.2.10"
     "@types/connect-ensure-login": "npm:^0.1.9"
@@ -4592,7 +4592,7 @@ __metadata:
     "@types/method-override": "npm:^3.0.0"
     "@types/mocha": "npm:10.0.10"
     "@types/nconf": "npm:^0.10.7"
-    "@types/node": "npm:^24.10.13"
+    "@types/node": "npm:^24.10.14"
     "@types/passport": "npm:^1.0.17"
     "@types/passport-local": "npm:^1.0.38"
     "@types/pug": "npm:^2.0.10"
