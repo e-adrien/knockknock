@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from "fs";
-import { RingApi, RingDevice, RingDeviceType } from "ring-client-api";
+import { Location, RingApi, RingDevice, RingDeviceType } from "ring-client-api";
+import { StreamingSession } from "ring-client-api/streaming/streaming-session";
 import { getTimes } from "suncalc-ts";
 import { Client } from "undici";
 import { createLogger } from "../helpers/index.js";
@@ -10,13 +11,19 @@ const logger = createLogger("express:ring");
 
 export enum RingContactSensorActionType {
   powerOnLight = "powerOnLight",
+  startLiveStream = "startLiveStream",
 }
 
-export type RingContactSensorAction = {
-  type: RingContactSensorActionType;
-  target: string;
-  onlyAtNight?: boolean;
-};
+export type RingContactSensorAction =
+  | {
+      type: RingContactSensorActionType.powerOnLight;
+      target: string;
+      onlyAtNight?: boolean;
+    }
+  | {
+      type: RingContactSensorActionType.startLiveStream;
+      target: number;
+    };
 
 type RingLocation = {
   latitude: number;
@@ -25,17 +32,23 @@ type RingLocation = {
 
 export type RingOptions = {
   refreshToken: string;
-  contactSensors: { [keyof: string]: RingContactSensorAction } | null;
+  contactSensors: { [key: string]: Array<RingContactSensorAction> | RingContactSensorAction } | null;
   philipsHueOptions: PhilipsHueOptions;
   location: RingLocation | null;
 };
 
-function readContactSensors(val: unknown): { [keyof: string]: RingContactSensorAction } | null {
-  if (typeof val !== "object") {
+function readContactSensors(
+  val: unknown
+): { [key: string]: Array<RingContactSensorAction> | RingContactSensorAction } | null {
+  if (val === null || typeof val !== "object") {
     return null;
   }
 
-  return val as { [keyof: string]: RingContactSensorAction };
+  return val as { [key: string]: Array<RingContactSensorAction> | RingContactSensorAction };
+}
+
+function castAsArray(val: Array<RingContactSensorAction> | RingContactSensorAction): Array<RingContactSensorAction> {
+  return Array.isArray(val) ? val : [val];
 }
 
 function readLocation(val: unknown): RingLocation | null {
@@ -117,16 +130,93 @@ async function powerOnLight(options: PhilipsHueOptions, target: string): Promise
   }
 }
 
-function listenContactSensorEvents(options: RingOptions, device: RingDevice, action: RingContactSensorAction): void {
+async function startLiveStream(location: Location, target: number): Promise<StreamingSession | null> {
+  try {
+    const cameras = await location.cameras;
+    const camera = cameras.find((cam) => cam.id === target);
+    if (!camera) {
+      logger.error(`Camera ${target} can't be found in the location ${location.name}`);
+      return null;
+    }
+
+    const alarmMode = await location.getAlarmMode();
+    if (alarmMode !== "none") {
+      logger.warn(`The alarm mode is "${alarmMode}", don't start live stream on camera ${target}`);
+      return null;
+    }
+
+    const stream = await camera.startLiveCall();
+    logger.info(`Started live stream on camera ${target}`);
+    stream.onCallEnded.subscribe(() => {
+      logger.info(`Live stream ended on camera ${target}`);
+    });
+
+    return stream;
+  } catch (error) {
+    logger.error(`Failed to start live stream on camera ${target}:`, error);
+    return null;
+  }
+}
+
+async function stopLiveStream(liveStream: Promise<StreamingSession | null>, target: number): Promise<null> {
+  try {
+    const stream = await liveStream;
+    if (stream !== null) {
+      stream.stop();
+    }
+  } catch (error) {
+    logger.error(`Failed to stop live stream on camera ${target}:`, error);
+  }
+
+  return null;
+}
+
+function listenContactSensorEvents(
+  options: RingOptions,
+  location: Location,
+  device: RingDevice,
+  actions: Array<RingContactSensorAction>
+): void {
+  // Live stream reference to stop it when the contact sensor is no longer faulted
+  let liveStream: Promise<StreamingSession | null> | null = null;
+
   // Listen events on the device
   logger.info(`Listen data events on the contact sensor ${device.data.zid}`);
   device.onData.subscribe((data) => {
     // Check if the contact sensor is faulted
     if (data.faulted === true) {
-      // Power on the ligth
+      // Log the event
       logger.info(`Faulted contact sensor ${device.data.zid}`);
-      if (action.onlyAtNight !== true || isNight) {
-        powerOnLight(options.philipsHueOptions, action.target);
+
+      // Iterate through actions
+      for (const action of actions) {
+        switch (action.type) {
+          case RingContactSensorActionType.powerOnLight:
+            if (action.onlyAtNight !== true || isNight) {
+              powerOnLight(options.philipsHueOptions, action.target);
+            }
+            break;
+          case RingContactSensorActionType.startLiveStream:
+            if (liveStream === null) {
+              liveStream = startLiveStream(location, action.target);
+            }
+            break;
+        }
+      }
+    } else {
+      // Log the event
+      logger.info(`Contact sensor ${device.data.zid} is no longer faulted`);
+
+      // Iterate through actions
+      for (const action of actions) {
+        switch (action.type) {
+          case RingContactSensorActionType.startLiveStream:
+            if (liveStream !== null) {
+              stopLiveStream(liveStream, action.target);
+              liveStream = null;
+            }
+            break;
+        }
       }
     }
   });
@@ -153,23 +243,18 @@ export async function listenRingEvents(options: RingOptions, configPath: string)
       setInterval(() => checkCurrentTime(latitude, longitude), 60000);
     }
 
-    // List devices
+    // Iterate through locations
     const locations = await ringApi.getLocations();
     for (const location of locations) {
+      // List devices
       const devices = await location.getDevices();
       for (const device of devices) {
         if (
           device.deviceType === RingDeviceType.ContactSensor &&
           options.contactSensors![device.data.zid] !== undefined
         ) {
-          const action = options.contactSensors![device.data.zid];
-          switch (action.type) {
-            case RingContactSensorActionType.powerOnLight:
-              listenContactSensorEvents(options, device, action);
-              break;
-            default:
-              logger.warn(`Unkown action type ${action.type}`);
-          }
+          // Listen events on the contact sensor
+          listenContactSensorEvents(options, location, device, castAsArray(options.contactSensors![device.data.zid]));
         }
       }
     }

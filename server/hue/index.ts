@@ -30,7 +30,7 @@ export type PhilipsHueOptions = {
   deviceType: string;
   hueUsername: string | null;
   hueApiKey: string | null;
-  buttons: { [keyof: string]: PhilipsHueButtonAction } | null;
+  buttons: { [key: string]: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction } | null;
 };
 
 export const philipsHueBridgeRootCA = `-----BEGIN CERTIFICATE-----
@@ -48,12 +48,16 @@ MAoGCCqGSM49BAMCA0gAMEUCIEBYYEOsa07TH7E5MJnGw557lVkORgit2Rm1h3B2
 sFgDAiEA1Fj/C3AN5psFMjo0//mrQebo0eKd3aWRx+pQY08mk48=
 -----END CERTIFICATE----`;
 
-function readButtons(val: unknown): { [keyof: string]: PhilipsHueButtonAction } | null {
-  if (typeof val !== "object") {
+function readButtons(val: unknown): { [key: string]: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction } | null {
+  if (val === null || typeof val !== "object") {
     return null;
   }
 
-  return val as { [keyof: string]: PhilipsHueButtonAction };
+  return val as { [key: string]: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction };
+}
+
+function castAsArray(val: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction): Array<PhilipsHueButtonAction> {
+  return Array.isArray(val) ? val : [val];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -183,19 +187,21 @@ async function onMessage(options: PhilipsHueOptions, data: string): Promise<void
       continue;
     }
 
-    const action = options.buttons![event.buttonEvent.id];
-    switch (action.type) {
-      case PhilipsHueButtonActionType.wakeUpDevice:
-        await wakeUpDevice(action.target);
-        break;
-      case PhilipsHueButtonActionType.toggleGroupedLight:
-        await toggleGroupedLight(options, action.target);
-        break;
-      case PhilipsHueButtonActionType.toggleLight:
-        await toggleLight(options, action.target);
-        break;
-      default:
-        logger.warn(`Unkown action type ${action.type}`);
+    const actions = castAsArray(options.buttons![event.buttonEvent.id]);
+    for (const action of actions) {
+      switch (action.type) {
+        case PhilipsHueButtonActionType.wakeUpDevice:
+          await wakeUpDevice(action.target);
+          break;
+        case PhilipsHueButtonActionType.toggleGroupedLight:
+          await toggleGroupedLight(options, action.target);
+          break;
+        case PhilipsHueButtonActionType.toggleLight:
+          await toggleLight(options, action.target);
+          break;
+        default:
+          logger.warn(`Unknown action type ${action.type}`);
+      }
     }
   }
 }
