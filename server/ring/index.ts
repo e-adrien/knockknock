@@ -32,19 +32,19 @@ type RingLocation = {
 
 export type RingOptions = {
   refreshToken: string;
-  contactSensors: { [keyof: string]: Array<RingContactSensorAction> | RingContactSensorAction } | null;
+  contactSensors: { [key: string]: Array<RingContactSensorAction> | RingContactSensorAction } | null;
   philipsHueOptions: PhilipsHueOptions;
   location: RingLocation | null;
 };
 
 function readContactSensors(
   val: unknown
-): { [keyof: string]: Array<RingContactSensorAction> | RingContactSensorAction } | null {
-  if (typeof val !== "object") {
+): { [key: string]: Array<RingContactSensorAction> | RingContactSensorAction } | null {
+  if (val === null || typeof val !== "object") {
     return null;
   }
 
-  return val as { [keyof: string]: Array<RingContactSensorAction> | RingContactSensorAction };
+  return val as { [key: string]: Array<RingContactSensorAction> | RingContactSensorAction };
 }
 
 function castAsArray(val: Array<RingContactSensorAction> | RingContactSensorAction): Array<RingContactSensorAction> {
@@ -158,10 +158,11 @@ async function startLiveStream(location: Location, target: number): Promise<Stre
   }
 }
 
-function stopLiveStream(liveStream: StreamingSession | null, target: number): null {
+async function stopLiveStream(liveStream: Promise<StreamingSession | null>, target: number): Promise<null> {
   try {
-    if (liveStream !== null) {
-      liveStream.stop();
+    const stream = await liveStream;
+    if (stream !== null) {
+      stream.stop();
     }
   } catch (error) {
     logger.error(`Failed to stop live stream on camera ${target}:`, error);
@@ -177,7 +178,7 @@ function listenContactSensorEvents(
   actions: Array<RingContactSensorAction>
 ): void {
   // Live stream reference to stop it when the contact sensor is no longer faulted
-  let liveStream: StreamingSession | null = null;
+  let liveStream: Promise<StreamingSession | null> | null = null;
 
   // Listen events on the device
   logger.info(`Listen data events on the contact sensor ${device.data.zid}`);
@@ -196,9 +197,9 @@ function listenContactSensorEvents(
             }
             break;
           case RingContactSensorActionType.startLiveStream:
-            startLiveStream(location, action.target).then((stream) => {
-              liveStream = stream;
-            });
+            if (liveStream === null) {
+              liveStream = startLiveStream(location, action.target);
+            }
             break;
         }
       }
@@ -210,7 +211,10 @@ function listenContactSensorEvents(
       for (const action of actions) {
         switch (action.type) {
           case RingContactSensorActionType.startLiveStream:
-            liveStream = stopLiveStream(liveStream, action.target);
+            if (liveStream !== null) {
+              stopLiveStream(liveStream, action.target);
+              liveStream = null;
+            }
             break;
         }
       }

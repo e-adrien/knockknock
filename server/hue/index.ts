@@ -30,7 +30,7 @@ export type PhilipsHueOptions = {
   deviceType: string;
   hueUsername: string | null;
   hueApiKey: string | null;
-  buttons: { [keyof: string]: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction } | null;
+  buttons: { [key: string]: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction } | null;
 };
 
 export const philipsHueBridgeRootCA = `-----BEGIN CERTIFICATE-----
@@ -48,12 +48,12 @@ MAoGCCqGSM49BAMCA0gAMEUCIEBYYEOsa07TH7E5MJnGw557lVkORgit2Rm1h3B2
 sFgDAiEA1Fj/C3AN5psFMjo0//mrQebo0eKd3aWRx+pQY08mk48=
 -----END CERTIFICATE----`;
 
-function readButtons(val: unknown): { [keyof: string]: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction } | null {
-  if (typeof val !== "object") {
+function readButtons(val: unknown): { [key: string]: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction } | null {
+  if (val === null || typeof val !== "object") {
     return null;
   }
 
-  return val as { [keyof: string]: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction };
+  return val as { [key: string]: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction };
 }
 
 function castAsArray(val: Array<PhilipsHueButtonAction> | PhilipsHueButtonAction): Array<PhilipsHueButtonAction> {
@@ -200,7 +200,7 @@ async function onMessage(options: PhilipsHueOptions, data: string): Promise<void
           await toggleLight(options, action.target);
           break;
         default:
-          logger.warn(`Unkown action type ${action.type}`);
+          logger.warn(`Unknown action type ${action.type}`);
       }
     }
   }
