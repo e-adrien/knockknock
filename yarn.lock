@@ -4563,7 +4563,7 @@ __metadata:
     postcss: "npm:^8.5.8"
     postcss-loader: "npm:^8.2.1"
     prettier: "npm:3.8.1"
-    pug: "npm:^3.0.3"
+    pug: "npm:^3.0.4"
     ring-client-api: "npm:14.3.0"
     sass: "npm:^1.98.0"
     sass-loader: "npm:^16.0.7"
@@ -4575,7 +4575,7 @@ __metadata:
     ts-node: "npm:10.9.2"
     typescript: "npm:^5.9.3"
     typescript-eslint: "npm:8.57.0"
-    undici: "npm:^7.22.0"
+    undici: "npm:^7.24.3"
     webpack: "npm:^5.105.4"
     webpack-cli: "npm:^7.0.0"
     winston: "npm:^3.19.0"
@@ -6091,9 +6091,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pug-code-gen@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "pug-code-gen@npm:3.0.3"
+"pug-code-gen@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "pug-code-gen@npm:3.0.4"
   dependencies:
     constantinople: "npm:^4.0.1"
     doctypes: "npm:^1.1.0"
@@ -6103,7 +6103,7 @@ __metadata:
     pug-runtime: "npm:^3.0.1"
     void-elements: "npm:^3.1.0"
     with: "npm:^7.0.0"
-  checksum: 10/1918b2a75794b730ee29fc2278658ff2ccb74445742c175c55b18e414cf038e5ac5802e71db070b08f92c5304a66e141dc2261e401be4d5884f1c0bcfb3194ee
+  checksum: 10/d9ce1121ab16b586aad55965a0bc7390149369f44b98e78def5c87427a5c46981bbbc3446989828bda9e59d369dd20846600744e77f61e503c2b24e00f120f6f
   languageName: node
   linkType: hard
 
@@ -6191,11 +6191,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pug@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "pug@npm:3.0.3"
+"pug@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "pug@npm:3.0.4"
   dependencies:
-    pug-code-gen: "npm:^3.0.3"
+    pug-code-gen: "npm:^3.0.4"
     pug-filters: "npm:^4.0.0"
     pug-lexer: "npm:^5.0.1"
     pug-linker: "npm:^4.0.0"
@@ -6203,7 +6203,7 @@ __metadata:
     pug-parser: "npm:^6.0.0"
     pug-runtime: "npm:^3.0.1"
     pug-strip-comments: "npm:^2.0.0"
-  checksum: 10/a88364757512e3b9af024c008f23b910de049659655b5d9e6ca42f996d7849ce1aab059f61e2d44ccce0dde5ff291995682338c285e9f76f3e5bfa02de9c481b
+  checksum: 10/389efaeda35452720af818597341d90ef220d70604ceb6941c797142802f7eb801bd7562fb97021f297533505f64826b0c94eb5346a3aad86fea5fd182e2d96a
   languageName: node
   linkType: hard
 
@@ -7468,10 +7468,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^7.19.2, undici@npm:^7.22.0":
+"undici@npm:^7.19.2":
   version: 7.24.1
   resolution: "undici@npm:7.24.1"
   checksum: 10/0af4ec2fc2ae50b1d0636895793ea2274a89a7cd445690089a1b957c4ac4a0336e48ab9ac48a4e8f5023d4b5eab56368c3f17c75d6b4c81b4281b674d1e60c9f
+  languageName: node
+  linkType: hard
+
+"undici@npm:^7.24.3":
+  version: 7.24.3
+  resolution: "undici@npm:7.24.3"
+  checksum: 10/9fadddd1039b21d7022a17eeb1c132383b5570606f55e67d1d7752d3db768864674e734ddf477b1f1aac862a8f33e41d24b8d5396c398c29527f732bd19b4886
   languageName: node
   linkType: hard
 
