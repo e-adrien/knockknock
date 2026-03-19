@@ -4580,7 +4580,7 @@ __metadata:
     ts-node: "npm:10.9.2"
     typescript: "npm:^5.9.3"
     typescript-eslint: "npm:8.57.0"
-    undici: "npm:^7.24.3"
+    undici: "npm:^7.24.4"
     webpack: "npm:^5.105.4"
     webpack-cli: "npm:^7.0.0"
     winston: "npm:^3.19.0"
@@ -7452,10 +7452,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^7.19.2, undici@npm:^7.24.3":
+"undici@npm:^7.19.2":
   version: 7.24.3
   resolution: "undici@npm:7.24.3"
   checksum: 10/9fadddd1039b21d7022a17eeb1c132383b5570606f55e67d1d7752d3db768864674e734ddf477b1f1aac862a8f33e41d24b8d5396c398c29527f732bd19b4886
+  languageName: node
+  linkType: hard
+
+"undici@npm:^7.24.4":
+  version: 7.24.4
+  resolution: "undici@npm:7.24.4"
+  checksum: 10/747e76e0fd685ae1bb6fc1a2ebce0caca4ee8bd5599a77da36a3f94eac146987a9547bdbec7a74d18c0776df8ad348dccb4209901ca83fc4076f560de0d5dc7a
   languageName: node
   linkType: hard
 
