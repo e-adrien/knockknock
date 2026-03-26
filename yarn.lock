@@ -4607,7 +4607,7 @@ __metadata:
     ts-node: "npm:10.9.2"
     typescript: "npm:^5.9.3"
     typescript-eslint: "npm:8.57.0"
-    undici: "npm:^7.24.5"
+    undici: "npm:^7.24.6"
     webpack: "npm:^5.105.4"
     webpack-cli: "npm:^7.0.0"
     winston: "npm:^3.19.0"
@@ -5575,9 +5575,9 @@ __metadata:
   linkType: hard
 
 "picomatch@npm:^2.0.4, picomatch@npm:^2.2.1, picomatch@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "picomatch@npm:2.3.1"
-  checksum: 10/60c2595003b05e4535394d1da94850f5372c9427ca4413b71210f437f7b2ca091dbd611c45e8b37d10036fa8eade25c1b8951654f9d3973bfa66a2ff4d3b08bc
+  version: 2.3.2
+  resolution: "picomatch@npm:2.3.2"
+  checksum: 10/b788ef8148a2415b9dec12f0bb350ae6a5830f8f1950e472abc2f5225494debf7d1b75eb031df0ceaea9e8ec3e7bad599e8dbf3c60d61b42be429ba41bff4426
   languageName: node
   linkType: hard
 
@@ -7480,10 +7480,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^7.19.2, undici@npm:^7.24.5":
+"undici@npm:^7.19.2":
   version: 7.24.5
   resolution: "undici@npm:7.24.5"
   checksum: 10/1eef66817e5bd1ee6ba908553452e8e23c6b743221f8435e838a87fcec84db901ad9bca5853e7a6e123520abd8d3dd03215b19bf57c2ffb114bfeb0b7c206027
+  languageName: node
+  linkType: hard
+
+"undici@npm:^7.24.6":
+  version: 7.24.6
+  resolution: "undici@npm:7.24.6"
+  checksum: 10/9c8df674284b1e9b8c3fee543883ad71c20d5fb3b6f6595330342f3dad30de944c2d55ff15aa59e7a088af272ce73be6e93baad9ab817b1b82e5c83298c23d8e
   languageName: node
   linkType: hard
 
