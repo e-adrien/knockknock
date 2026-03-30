@@ -71,12 +71,12 @@ __metadata:
   linkType: hard
 
 "@cacheable/utils@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@cacheable/utils@npm:2.4.0"
+  version: 2.4.1
+  resolution: "@cacheable/utils@npm:2.4.1"
   dependencies:
-    hashery: "npm:^1.5.0"
+    hashery: "npm:^1.5.1"
     keyv: "npm:^5.6.0"
-  checksum: 10/a28c527c1e5c054844ae40c366f099873382a89fe9d08210dd41ce0ad07115ef47a1d0fd58382e37f1bb3250ea3991cf304f07e32461442bec29cace1233ac83
+  checksum: 10/5fbea553fd53c8ffe4f3a2e746ce6ecf76f3d90f599b49f2c677c3922e4f643a40f3e90a13727b6e866b7ab3c8e267368d98b54d88d08181050a8d066997cfe7
   languageName: node
   linkType: hard
 
@@ -1076,9 +1076,9 @@ __metadata:
   linkType: hard
 
 "@sinclair/typebox@npm:^0.34.0":
-  version: 0.34.48
-  resolution: "@sinclair/typebox@npm:0.34.48"
-  checksum: 10/186eebb338255db7cfd77c2f94be0ad91816c7b5ee994c3adb95e0474ae98b769574c2b6b1f26a81613d7148ed20b11e02528f4263d8d95e3ca8dcf8faaf5306
+  version: 0.34.49
+  resolution: "@sinclair/typebox@npm:0.34.49"
+  checksum: 10/5eb77de66c9deff83d43aa1f667832e2468f4dbd0ba91b80684f741a2e1e4120ffedb779be1578ae5b848250c3fbeffc032dc726947c5e42f3393903c1358cb9
   languageName: node
   linkType: hard
 
@@ -2055,11 +2055,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.9.0":
-  version: 2.10.10
-  resolution: "baseline-browser-mapping@npm:2.10.10"
+  version: 2.10.12
+  resolution: "baseline-browser-mapping@npm:2.10.12"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: 10/c956e25cd566bf36dcd594a3f3050d33ed24309bd84572469ac2f4332942efd30b8b014241484a3b6101bd975d32d58def2df9f7881d66ff11e0ab8069ae99ae
+  checksum: 10/ec3ecf8885a8aaf0c8294ac7414aa6948d1a0d2bdc68be238f7403b5a8b9bc52bbbb0ba9e230b487128047154565552c98cdf5489d31cc8ae49607b4ff5e1064
   languageName: node
   linkType: hard
 
@@ -2125,20 +2125,20 @@ __metadata:
   linkType: hard
 
 "brace-expansion@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "brace-expansion@npm:2.0.2"
+  version: 2.0.3
+  resolution: "brace-expansion@npm:2.0.3"
   dependencies:
     balanced-match: "npm:^1.0.0"
-  checksum: 10/01dff195e3646bc4b0d27b63d9bab84d2ebc06121ff5013ad6e5356daa5a9d6b60fa26cf73c74797f2dc3fbec112af13578d51f75228c1112b26c790a87b0488
+  checksum: 10/e9dd66caaf0784126e1654f1bc19adb28f3ef86f39f2226f833f7700ec727c141f6cd85eaa47bacf3426beda01c9fbc3a2f28174cf59330dc9b58ffaf9e09d96
   languageName: node
   linkType: hard
 
 "brace-expansion@npm:^5.0.2":
-  version: 5.0.4
-  resolution: "brace-expansion@npm:5.0.4"
+  version: 5.0.5
+  resolution: "brace-expansion@npm:5.0.5"
   dependencies:
     balanced-match: "npm:^4.0.2"
-  checksum: 10/cfd57e20d8ded9578149e47ae4d3fff2b2f78d06b54a32a73057bddff65c8e9b930613f0cbcfefedf12dd117151e19d4da16367d5127c54f3bff02d8a4479bb2
+  checksum: 10/f259b2ddf04489da9512ad637ba6b4ef2d77abd4445d20f7f1714585f153435200a53fa6a2e4a5ee974df14ddad4cd16421f6f803e96e8b452bd48598878d0ee
   languageName: node
   linkType: hard
 
@@ -2229,7 +2229,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cacheable@npm:^2.3.3":
+"cacheable@npm:^2.3.4":
   version: 2.3.4
   resolution: "cacheable@npm:2.3.4"
   dependencies:
@@ -2289,9 +2289,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001759, caniuse-lite@npm:^1.0.30001774":
-  version: 1.0.30001781
-  resolution: "caniuse-lite@npm:1.0.30001781"
-  checksum: 10/13000e0bbb340d5b7d2543293c84439acf3ac6b643ae9a5b69e92138c95471b5e97067a8eb2b28e79b67d1390cc2a51ba2d5c474f745f7f1f7a955392fd0ec4f
+  version: 1.0.30001782
+  resolution: "caniuse-lite@npm:1.0.30001782"
+  checksum: 10/bf75e7813d56e08888858d18aaf401adf1086b9b7bc4223efb246b3db46c8434bb7c39ab026d3735be07f09fb17f780d4ddcfdbc99759b0ee94cb381882e5bd6
   languageName: node
   linkType: hard
 
@@ -2851,9 +2851,9 @@ __metadata:
   linkType: hard
 
 "discord-api-types@npm:^0.38.1, discord-api-types@npm:^0.38.33, discord-api-types@npm:^0.38.40":
-  version: 0.38.42
-  resolution: "discord-api-types@npm:0.38.42"
-  checksum: 10/8c1e9906df6aa6894cfe23ff876e7a48035956d53f3bcc3c4394749dbba135369f94c53102e63affeb8dbb157ea91a7a7c08418f9a8cfe6dc6edf6b7bc757633
+  version: 0.38.43
+  resolution: "discord-api-types@npm:0.38.43"
+  checksum: 10/3a562f14104f8be9f4253ac5b9530fb08ef2b68ff00fc8e2aed7894ccc6672415ff546051a3cbb4898debce76ac787d5258eb9437ef2b17610af616ac8a75f31
   languageName: node
   linkType: hard
 
@@ -2967,9 +2967,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.263":
-  version: 1.5.321
-  resolution: "electron-to-chromium@npm:1.5.321"
-  checksum: 10/ccb635798bf9451f4b77ef10288c43f39f30904300c176aac38dbb082ab080828588c3f48952f27b4157dcf068405dc44a7df439715907dadf9d65d9785215e7
+  version: 1.5.328
+  resolution: "electron-to-chromium@npm:1.5.328"
+  checksum: 10/bec0f12759edb8ee10a8856c7f8343a69e92d7626c443dec66a7718a3e54b0114397238ecc8320cb8502cab050a890988550da126843d2216b1a3e745914c512
   languageName: node
   linkType: hard
 
@@ -3424,11 +3424,11 @@ __metadata:
   linkType: hard
 
 "ffmpeg-for-homebridge@npm:^2.1.7":
-  version: 2.2.1
-  resolution: "ffmpeg-for-homebridge@npm:2.2.1"
+  version: 2.2.2
+  resolution: "ffmpeg-for-homebridge@npm:2.2.2"
   dependencies:
-    tar: "npm:^7.5.6"
-  checksum: 10/60b5daba021441de7694a227af61dd2fbc5867518cb9eaee054c6000873a80003e4bd17d9f607682c9183151e4fa1a18deea1d84579836b62e0e3d38bffbfd4b
+    tar: "npm:^7.5.12"
+  checksum: 10/a2be880cfc7986e7d64bb6c76dd770c4893acb60135683f5c2d0543d8e4bc64ae6f743100b40ef7b12fe5cd5fff9c2213222ab4702f05bbd6efc41bb90b83447
   languageName: node
   linkType: hard
 
@@ -3525,13 +3525,13 @@ __metadata:
   linkType: hard
 
 "flat-cache@npm:^6.1.20":
-  version: 6.1.21
-  resolution: "flat-cache@npm:6.1.21"
+  version: 6.1.22
+  resolution: "flat-cache@npm:6.1.22"
   dependencies:
-    cacheable: "npm:^2.3.3"
-    flatted: "npm:^3.4.1"
+    cacheable: "npm:^2.3.4"
+    flatted: "npm:^3.4.2"
     hookified: "npm:^1.15.0"
-  checksum: 10/ba79647471c3e9e1989b14c9962ace5781fb3d6c93461e8d605a2f640a3ad7e1318fcd514e117f611251041c59b05885303b32704e0e080d2fbec98af3e63c15
+  checksum: 10/1133b75077c87260324b5b768af742242eacdbcb78e7260e365caef74dd4f31625e95661d25dce8c823b889d657a030f6a8a0b7ef3719223de267cbb1c647143
   languageName: node
   linkType: hard
 
@@ -3544,7 +3544,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flatted@npm:^3.2.9, flatted@npm:^3.4.1":
+"flatted@npm:^3.2.9, flatted@npm:^3.4.2":
   version: 3.4.2
   resolution: "flatted@npm:3.4.2"
   checksum: 10/a9e78fe5c2c1fcd98209a015ccee3a6caa953e01729778e83c1fe92e68601a63e1e69cd4e573010ca99eaf585a581b80ccf1018b99283e6cbc2117bcba1e030f
@@ -3857,7 +3857,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hashery@npm:^1.4.0, hashery@npm:^1.5.0":
+"hashery@npm:^1.4.0, hashery@npm:^1.5.1":
   version: 1.5.1
   resolution: "hashery@npm:1.5.1"
   dependencies:
@@ -3892,9 +3892,9 @@ __metadata:
   linkType: hard
 
 "hookified@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "hookified@npm:2.1.0"
-  checksum: 10/caca0265acc47951099b74b011585cc58fd7d04d8349762c9a0df290b7401a12c1860210895856665ec85e73282210978273234bf4e3137e73f93bb17d78c91c
+  version: 2.1.1
+  resolution: "hookified@npm:2.1.1"
+  checksum: 10/36e61d173b2426528c026f6ec36bcf4d4f4478ca589da0b1eb432d154ad9634ddd93ba232eee22d418da639a582bdbb5560a5ce6cd4b9be2ebbd34d1606a694f
   languageName: node
   linkType: hard
 
@@ -4987,14 +4987,14 @@ __metadata:
   linkType: hard
 
 "mini-css-extract-plugin@npm:^2.10.1":
-  version: 2.10.1
-  resolution: "mini-css-extract-plugin@npm:2.10.1"
+  version: 2.10.2
+  resolution: "mini-css-extract-plugin@npm:2.10.2"
   dependencies:
     schema-utils: "npm:^4.0.0"
     tapable: "npm:^2.2.1"
   peerDependencies:
     webpack: ^5.0.0
-  checksum: 10/2d0cecc3bea85cd7f9b1ce0974f1672976d610a9267e2988ff19f5d03b017bff12b32151a412de0f519a70be7d3b050b499b20101445fb21728cc2d35dd4041a
+  checksum: 10/d2b01f25e229d04263274fceccfcb3ec0937a448859e4cb65e32652e26dde46ae6ecf7d15a52a4bb700bea6e47675db88691d3abc418901ec8542e1cfdc62b85
   languageName: node
   linkType: hard
 
@@ -5041,11 +5041,11 @@ __metadata:
   linkType: hard
 
 "minipass-flush@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "minipass-flush@npm:1.0.5"
+  version: 1.0.7
+  resolution: "minipass-flush@npm:1.0.7"
   dependencies:
     minipass: "npm:^3.0.0"
-  checksum: 10/56269a0b22bad756a08a94b1ffc36b7c9c5de0735a4dd1ab2b06c066d795cfd1f0ac44a0fcae13eece5589b908ecddc867f04c745c7009be0b566421ea0944cf
+  checksum: 10/dc43fd1644aaea31b6ba88281d928a136b9fcd5425c718791e1007db15cf2cd41c75d073548d2f46088f90971833b3bd86752d2a2612bf8256122dedf5b7f3db
   languageName: node
   linkType: hard
 
@@ -5566,9 +5566,9 @@ __metadata:
   linkType: hard
 
 "picomatch@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "picomatch@npm:4.0.3"
-  checksum: 10/57b99055f40b16798f2802916d9c17e9744e620a0db136554af01d19598b96e45e2f00014c91d1b8b13874b80caa8c295b3d589a3f72373ec4aaf54baa5962d5
+  version: 4.0.4
+  resolution: "picomatch@npm:4.0.4"
+  checksum: 10/f6ef80a3590827ce20378ae110ac78209cc4f74d39236370f1780f957b7ee41c12acde0e4651b90f39983506fd2f5e449994716f516db2e9752924aff8de93ce
   languageName: node
   linkType: hard
 
@@ -6618,9 +6618,9 @@ __metadata:
   linkType: hard
 
 "serialize-javascript@npm:^7.0.3":
-  version: 7.0.4
-  resolution: "serialize-javascript@npm:7.0.4"
-  checksum: 10/f96d59d6053739785822750e6ffbe06ec5a2651b836b3e6c76742c613e1b2fcb846b5df92294857ecfe69730fe36a1968c0eb8f258b02fd9173a1d5e73f0a32f
+  version: 7.0.5
+  resolution: "serialize-javascript@npm:7.0.5"
+  checksum: 10/6237c76ef6df3d1ad61dd4a393b71ca758c7654f4d1cf77529e513134c0f0660302e03b7ec88a8f3a3daa79e1f93d6de8218ecbc45e073d7cc6b66284a1d3e83
   languageName: node
   linkType: hard
 
@@ -7141,22 +7141,22 @@ __metadata:
   linkType: hard
 
 "tapable@npm:^2.2.1, tapable@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "tapable@npm:2.3.0"
-  checksum: 10/496a841039960533bb6e44816a01fffc2a1eb428bb2051ecab9e87adf07f19e1f937566cbbbb09dceff31163c0ffd81baafcad84db900b601f0155dd0b37e9f2
+  version: 2.3.2
+  resolution: "tapable@npm:2.3.2"
+  checksum: 10/fd3affe2e34efb3970883f934b1828f10b48dffb1eb71a52b7f955bfdd88bf80e94ec388704d95334f72ddf77e34d813b19e1f4bf56897d20252fa025d44bede
   languageName: node
   linkType: hard
 
-"tar@npm:^7.5.4, tar@npm:^7.5.6":
-  version: 7.5.12
-  resolution: "tar@npm:7.5.12"
+"tar@npm:^7.5.12, tar@npm:^7.5.4":
+  version: 7.5.13
+  resolution: "tar@npm:7.5.13"
   dependencies:
     "@isaacs/fs-minipass": "npm:^4.0.0"
     chownr: "npm:^3.0.0"
     minipass: "npm:^7.1.2"
     minizlib: "npm:^3.1.0"
     yallist: "npm:^5.0.0"
-  checksum: 10/a72114d28ab9b4878eeebaae8987692a577c390683c13f150d8330e139237038cc46fbb0be6983b02acf5a31b01d74776436ba03790f320a59efb44b8ac39e39
+  checksum: 10/2bc2b6f0349038a6621dbba1c4522d45752d5071b2994692257113c2050cd23fafc30308f820e5f8ad6fda3f7d7f92adc9a432aa733daa04c42af2061c021c3f
   languageName: node
   linkType: hard
 
@@ -7464,14 +7464,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^7.19.2":
-  version: 7.24.5
-  resolution: "undici@npm:7.24.5"
-  checksum: 10/1eef66817e5bd1ee6ba908553452e8e23c6b743221f8435e838a87fcec84db901ad9bca5853e7a6e123520abd8d3dd03215b19bf57c2ffb114bfeb0b7c206027
-  languageName: node
-  linkType: hard
-
-"undici@npm:^7.24.6":
+"undici@npm:^7.19.2, undici@npm:^7.24.6":
   version: 7.24.6
   resolution: "undici@npm:7.24.6"
   checksum: 10/9c8df674284b1e9b8c3fee543883ad71c20d5fb3b6f6595330342f3dad30de944c2d55ff15aa59e7a088af272ce73be6e93baad9ab817b1b82e5c83298c23d8e
