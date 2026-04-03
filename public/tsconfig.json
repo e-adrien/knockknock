@@ -1,9 +1,10 @@
 {
 	"extends": "../node_modules/@tsconfig/next/tsconfig.json",
 	"compilerOptions": {
-		"target": "ES6",
+		"target": "es2024",
 		"outDir": "../dist/assets",
 		"rootDir": ".",
+		"types": ["node"],
 		"sourceMap": true,
 		"noEmit": false
 	},
