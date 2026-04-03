@@ -1348,12 +1348,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^24.12.0":
-  version: 24.12.0
-  resolution: "@types/node@npm:24.12.0"
+"@types/node@npm:^24.12.2":
+  version: 24.12.2
+  resolution: "@types/node@npm:24.12.2"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10/e9dcf8a378af5a636353b6d88a6fae018504bab776410ac6b5411e29afbe601ba9d7957356556fc27268a62814ca4085974f785613482c18f739686efcd49655
+  checksum: 10/99b9f15e67a4b3c39b39ad83ee0febad7f0b4709c004863104d7acfa4146dd7e58c12a08a9a7ff2be8c2eefd0063bf991fade0879d7c4a370a0ee7fd4c799e8a
   languageName: node
   linkType: hard
 
@@ -4604,7 +4604,7 @@ __metadata:
     "@types/method-override": "npm:^3.0.0"
     "@types/mocha": "npm:10.0.10"
     "@types/nconf": "npm:^0.10.7"
-    "@types/node": "npm:^24.12.0"
+    "@types/node": "npm:^24.12.2"
     "@types/passport": "npm:^1.0.17"
     "@types/passport-local": "npm:^1.0.38"
     "@types/pug": "npm:^2.0.10"
@@ -4625,7 +4625,7 @@ __metadata:
     file-loader: "npm:^6.2.0"
     fs-extra: "npm:^11.3.4"
     globals: "npm:17.4.0"
-    lodash: "npm:^4.17.23"
+    lodash: "npm:^4.18.1"
     memorystore: "npm:^1.6.7"
     method-override: "npm:^3.0.0"
     mini-css-extract-plugin: "npm:^2.10.2"
@@ -4640,13 +4640,13 @@ __metadata:
     prettier: "npm:3.8.1"
     pug: "npm:^3.0.4"
     ring-client-api: "npm:14.3.0"
-    sass: "npm:^1.98.0"
+    sass: "npm:^1.99.0"
     sass-loader: "npm:^16.0.7"
     stylelint: "npm:17.6.0"
     stylelint-config-standard-scss: "npm:17.0.0"
-    suncalc-ts: "npm:^3.0.2"
+    suncalc-ts: "npm:^3.0.3"
     terser-webpack-plugin: "npm:^5.4.0"
-    ts-loader: "npm:^9.5.4"
+    ts-loader: "npm:^9.5.7"
     ts-node: "npm:10.9.2"
     typescript: "npm:^5.9.3"
     typescript-eslint: "npm:8.58.0"
@@ -4815,7 +4815,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.21, lodash@npm:^4.17.23":
+"lodash@npm:^4.17.21, lodash@npm:^4.18.1":
   version: 4.18.1
   resolution: "lodash@npm:4.18.1"
   checksum: 10/306fea53dfd39dad1f03d45ba654a2405aebd35797b673077f401edb7df2543623dc44b9effbb98f69b32152295fff725a4cec99c684098947430600c6af0c3f
@@ -6612,9 +6612,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.98.0":
-  version: 1.98.0
-  resolution: "sass@npm:1.98.0"
+"sass@npm:^1.99.0":
+  version: 1.99.0
+  resolution: "sass@npm:1.99.0"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^4.0.0"
@@ -6625,7 +6625,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10/37d134d07639dc8fc8557495c3b98801bb736f0d1fc5fbfb2e0dba3c21200f447cf3e6166cd285603c922171366696c1d2e766af2c4cf82d882a3dc4d4e39f00
+  checksum: 10/93f9d5c3b3e4659fb68a8e90d9637818581b0152dfb543ac159d57bb1e384f6b2009b7ac35ef88883f441cddfabd248fdcbba3fe814f4f23e3bfe58c917787a6
   languageName: node
   linkType: hard
 
@@ -7120,10 +7120,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"suncalc-ts@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "suncalc-ts@npm:3.0.2"
-  checksum: 10/fc7fad09f32e4551228fb6f66f1a00d07242b7f7b46f7a511aa061bf0fd4c56aa2c8b2492dcf6ec7ec4b208936d9532cf8f7c91035de7be5cb1d6dd10820e5cd
+"suncalc-ts@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "suncalc-ts@npm:3.0.3"
+  checksum: 10/a08b887e007772c2737627a5ad63db4b46d4617a99555f3fb21d146dee3817651b3bc8344a0d9de4902734c8a20a9538fae68c8d142ead9be05de7c62a7656f6
   languageName: node
   linkType: hard
 
@@ -7352,9 +7352,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-loader@npm:^9.5.4":
-  version: 9.5.4
-  resolution: "ts-loader@npm:9.5.4"
+"ts-loader@npm:^9.5.7":
+  version: 9.5.7
+  resolution: "ts-loader@npm:9.5.7"
   dependencies:
     chalk: "npm:^4.1.0"
     enhanced-resolve: "npm:^5.0.0"
@@ -7364,7 +7364,7 @@ __metadata:
   peerDependencies:
     typescript: "*"
     webpack: ^5.0.0
-  checksum: 10/a9977dce1cda5af08010ae92d96fb57981ce52cb6123054b232fc7f71e151969f45e36ca055c0babe01b3b97dcba54b631ad7a50e3e96e839dfd7033c385de05
+  checksum: 10/c70c53679a877f94ae75c03eb0c7690e5c00891af9d2eef9a95271e84ac1b7144e25451dc41385ac3eb05950465c5b231cc5ce2fbd1c711a68c4012323ab03b7
   languageName: node
   linkType: hard
 
