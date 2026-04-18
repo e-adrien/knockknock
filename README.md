@@ -4,7 +4,7 @@ This is the repository of the knockknock website.
 
 ### Requirements
 
-Node.JS 22
+Node.JS 24.x
 
 The project use the `arp -a` command.
 On ubuntu you can install it with `sudo apt-get install net-tools`
