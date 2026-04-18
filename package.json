@@ -71,7 +71,7 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "picocolors": "^1.1.1",
-    "postcss": "^8.5.8",
+    "postcss": "^8.5.9",
     "postcss-loader": "^8.2.1",
     "pug": "^3.0.4",
     "ring-client-api": "14.3.0",
@@ -81,8 +81,8 @@
     "terser-webpack-plugin": "^5.4.0",
     "ts-loader": "^9.5.7",
     "typescript": "^6.0.2",
-    "undici": "^8.0.1",
-    "webpack": "^5.105.4",
+    "undici": "^8.0.2",
+    "webpack": "^5.106.1",
     "webpack-cli": "^7.0.2",
     "winston": "^3.19.0"
   },
@@ -95,11 +95,11 @@
     "globals": "17.4.0",
     "mocha": "11.7.5",
     "nodemon": "3.1.14",
-    "prettier": "3.8.1",
+    "prettier": "3.8.2",
     "stylelint": "17.6.0",
     "stylelint-config-standard-scss": "17.0.0",
     "ts-node": "10.9.2",
-    "typescript-eslint": "8.58.0"
+    "typescript-eslint": "8.58.1"
   },
   "dependenciesMeta": {
     "@parcel/watcher": {
