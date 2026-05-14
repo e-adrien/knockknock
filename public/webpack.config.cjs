@@ -1,8 +1,7 @@
 const path = require("path");
 const sass = require("sass");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const MinimizerPlugin = require("minimizer-webpack-plugin");
 
 module.exports = {
   mode: "production",
@@ -89,19 +88,24 @@ module.exports = {
   ],
   optimization: {
     minimizer: [
-      new CssMinimizerPlugin({
-        minimizerOptions: [{ preset: "default" }],
-        minify: [CssMinimizerPlugin.cssnanoMinify],
-      }),
-      new TerserPlugin({
-        terserOptions: {
-          ecma: 6,
-          compress: true,
-          format: {
-            comments: false,
-          },
-        },
+      new MinimizerPlugin({
+        test: /\.(?:[cm]?js|css)(\?.*)?$/i,
         extractComments: false,
+        minify: [MinimizerPlugin.terserMinify, MinimizerPlugin.cssnanoMinify],
+        minimizerOptions: [
+          // Options for `MinimizerPlugin.terserMinify`
+          {
+            ecma: 6,
+            compress: true,
+            format: {
+              comments: false,
+            },
+          },
+          // Options for `MinimizerPlugin.cssnanoMinify`
+          {
+            preset: ["cssnano-preset-default", { discardComments: { removeAll: true } }],
+          },
+        ],
       }),
     ],
   },
